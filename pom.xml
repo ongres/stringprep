@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ongres.string-prep</groupId>
+  <artifactId>parent</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>string-prep</name>
+  <description>Java Implementation of Stringprep</description>
+  <url>https://gitlab.com/ongresinc/string-prep</url>
+  <inceptionYear>2019</inceptionYear>
+
+  <modules>
+    <module>core</module>
+    <module>sasl-prep</module>
+  </modules>
+
+    <licenses>
+        <license>
+            <name>The 2-Clause BSD License</name>
+            <url>https://opensource.org/licenses/BSD-2-Clause</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+</project>
