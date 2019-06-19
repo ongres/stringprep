@@ -11,14 +11,11 @@ import com.ongres.string_prep.core.parsers.ParserUnicodeRepertoires;
 
 public class StringPrep {
 
-	public boolean unassignedCodePoints(String value) throws IOException {
+	public boolean unassignedCodePoints(char value) throws IOException {
 		Character[][] unassignedCodePoints = ParserUnicodeRepertoires.parseUnassignedCodePoints();
-		char[] valueChar = value.toCharArray();
-		for (int i=0; i<valueChar.length; i++) {
-			for (int j=0; j<unassignedCodePoints.length; j++) {
-				if (valueChar[i] >= unassignedCodePoints[j][0] && valueChar[i] <= unassignedCodePoints[i][1]) {
-					return true;
-				}
+		for (int j=0; j<unassignedCodePoints.length; j++) {
+			if (value >= unassignedCodePoints[j][0] && value <= unassignedCodePoints[j][1]) {
+				return true;
 			}
 		}
 		return false;
@@ -198,5 +195,49 @@ public class StringPrep {
 			}
 		}
 		return false;
+	}
+	
+	public boolean bidirectional(boolean checkChangeDisplayProperties, String value) throws IllegalArgumentException, IOException {
+		char[] characters = value.toCharArray();
+		boolean propertyRorAL = false;
+		boolean firstCharacterPropertyRorAL = false;
+		boolean lastCharacterPropertyRorAL = false;
+		boolean propertyL = false;
+		for (int i=0; i<characters.length; i++) {
+			char character = characters[i];
+			//1) The characters in section 5.8 MUST be prohibited.
+			if (checkChangeDisplayProperties) {
+				if (this.prohibitionChangeDisplayProperties(character)) {
+					throw new IllegalArgumentException("Prohibited character '"+character);
+					//return false;
+				}
+			}
+			if (bidirectionalPropertyRorAL(character)) {
+				propertyRorAL = true;
+				if (i == 0) {
+					firstCharacterPropertyRorAL= true;
+				} else if (i == characters.length-1) {
+					lastCharacterPropertyRorAL = true;
+				}
+			}
+			if (bidirectionalPropertyL(character)) {
+				propertyL = true;
+			}
+		}
+		//2) If a string contains any RandALCat character, 
+		//the string MUST NOT contain any LCat character.
+		if (propertyRorAL && propertyL) {
+			throw new IllegalArgumentException("Prohibited string with RandALCat and LCat");
+			//return false;
+		}
+		//3) If a string contains any RandALCat character, a RandALCat
+	    //character MUST be the first character of the string, and a
+	    //RandALCat character MUST be the last character of the string.
+		if (propertyRorAL && !(firstCharacterPropertyRorAL && lastCharacterPropertyRorAL)) {
+			throw new IllegalArgumentException("The string contains any RandALCat character "
+					+ "but a RandALCat character is not the first and the last characters");
+			//return false;
+		}
+		return true;
 	}
 }

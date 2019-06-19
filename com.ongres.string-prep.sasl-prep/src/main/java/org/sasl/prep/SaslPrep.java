@@ -14,7 +14,7 @@ public class SaslPrep {
 		this.value = value;
 	}
 	
-	public String saslPrep() throws IOException {
+	public String saslPrep(boolean storedString) throws IOException {
 		StringPrep stringPrep = new StringPrep();
 		StringBuilder valueBuilder = new StringBuilder();
 		//Mapping
@@ -52,7 +52,14 @@ public class SaslPrep {
 					|| stringPrep.prohibitionChangeDisplayProperties(character) ||	stringPrep.prohibitionTaggingCharacters(character)) {
                 throw new IllegalArgumentException("Prohibited character '"+character);
                 }
-			}
+			//Unassigned Code Points
+			if(storedString && stringPrep.unassignedCodePoints(character)) {
+				throw new IllegalArgumentException("Prohibited character '"+character);
+				}
+		}
+		//Bidirectional
+		stringPrep.bidirectional(false, normalized);
+		
 		return normalized;
 		}
 	}
