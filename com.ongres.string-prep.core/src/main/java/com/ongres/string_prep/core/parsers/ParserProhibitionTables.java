@@ -1,9 +1,9 @@
 package com.ongres.string_prep.core.parsers;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -11,211 +11,321 @@ import java.util.regex.Pattern;
 
 public class ParserProhibitionTables {
 	
-	private ParserProhibitionTables() {
+	public ParserProhibitionTables() {
 	}
 
-	private static final Pattern PROHIBITION_PATTERN = Pattern.compile("([^;-]*)[-([^;])]?;[^;]*");
+	private static final Pattern PROHIBITION_PATTERN = Pattern.compile("([^;]*);[^;]*");
 	
-	public static List<Character> parseAsciiSpace() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c1.1"), Charset.defaultCharset());
+	public List<Character> parseAsciiSpace() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c1.1");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
 		List<Character> asciiSpace = new ArrayList<>();
-		for (String line : allLines) {
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			String comment = matcherLine.group(2);
-			asciiSpace.add(value.toCharArray()[0]);
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				int decimal = Integer.parseInt(value, 16);
+				char character = (char) decimal;
+				asciiSpace.add(character);
+			}
 		}
 		return asciiSpace;
 	}
 	
-	public static List<Character> parseNonAsciiSpace() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c1.2"), Charset.defaultCharset());
+	public List<Character> parseNonAsciiSpace() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c1.2");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
 		List<Character> nonAsciiSpace = new ArrayList<>();
-		for (String line : allLines) {
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			String comment = matcherLine.group(2);
-			nonAsciiSpace.add(value.toCharArray()[0]);
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				int decimal = Integer.parseInt(value, 16);
+				char character = (char) decimal;
+				nonAsciiSpace.add(character);
+			}
 		}
 		return nonAsciiSpace;
 	}
 	
-	public static Character[][] parseAsciiControl() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c2.1"), Charset.defaultCharset());
-		Character[][] asciiControl = new Character[allLines.size()][2];
-		for (int i=0; i<allLines.size(); i++) {
-			String line = allLines.get(i);
+	public List<Character[]> parseAsciiControl() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c2.1");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
+		List<Character[]> asciiControl = new ArrayList<>();
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			if(value.contains("-")) {
-				int separator = line.indexOf('-');
-				asciiControl[i][0] = line.substring(0, separator).toCharArray()[0];
-				asciiControl[i][1] = line.substring(separator).toCharArray()[0];
-			} else {
-				asciiControl[i][0] = line.toCharArray()[0];
-				asciiControl[i][1] = line.toCharArray()[0];
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				Character[] characters = new Character[2];
+				if (value.contains("-")) {
+					int separator = value.indexOf('-');
+					int decimalStart = Integer.parseInt(value.substring(0, separator), 16);
+					char characterStart = (char) decimalStart;
+					int decimalEnd = Integer.parseInt(value.substring(separator+1), 16);
+					char characterEnd = (char) decimalEnd;
+					characters[0] = characterStart;
+					characters[1] = characterEnd;
+				} else {
+					int decimalStart = Integer.parseInt(value, 16);
+					char characterStart = (char) decimalStart;
+					characters[0] = characterStart;
+					characters[1] = characterStart;
+				}
+				asciiControl.add(characters);
 			}
-			String comment = matcherLine.group(2);
 		}
 		return asciiControl;
 	}
 	
-	public static Character[][] parseNonAsciiControl() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c2.2"), Charset.defaultCharset());
-		Character[][] nonAsciiControl = new Character[allLines.size()][2];
-		for (int i=0; i<allLines.size(); i++) {
-			String line = allLines.get(i);
+	public List<Character[]> parseNonAsciiControl() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c2.2");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
+		List<Character[]> nonAsciiControl = new ArrayList<>();
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			if(value.contains("-")) {
-				int separator = line.indexOf('-');
-				nonAsciiControl[i][0] = line.substring(0, separator).toCharArray()[0];
-				nonAsciiControl[i][1] = line.substring(separator).toCharArray()[0];
-			} else {
-				nonAsciiControl[i][0] = line.toCharArray()[0];
-				nonAsciiControl[i][1] = line.toCharArray()[0];
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				Character[] characters = new Character[2];
+				if (value.contains("-")) {
+					int separator = value.indexOf('-');
+					int decimalStart = Integer.parseInt(value.substring(0, separator), 16);
+					char characterStart = (char) decimalStart;
+					int decimalEnd = Integer.parseInt(value.substring(separator+1), 16);
+					char characterEnd = (char) decimalEnd;
+					characters[0] = characterStart;
+					characters[1] = characterEnd;
+				} else {
+					int decimalStart = Integer.parseInt(value, 16);
+					char characterStart = (char) decimalStart;
+					characters[0] = characterStart;
+					characters[1] = characterStart;
+				}
+				nonAsciiControl.add(characters);
 			}
-			String comment = matcherLine.group(2);
 		}
 		return nonAsciiControl;
 	}
 	
-	public static Character[][] parsePrivateUse() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c3"), Charset.defaultCharset());
-		Character[][] privateUse = new Character[allLines.size()][2];
-		for (int i=0; i<allLines.size(); i++) {
-			String line = allLines.get(i);
+	public List<int[]> parsePrivateUse() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c3");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
+		List<int[]> privateUse = new ArrayList<>();
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			if(value.contains("-")) {
-				int separator = line.indexOf('-');
-				privateUse[i][0] = line.substring(0, separator).toCharArray()[0];
-				privateUse[i][1] = line.substring(separator).toCharArray()[0];
-			} else {
-				privateUse[i][0] = line.toCharArray()[0];
-				privateUse[i][1] = line.toCharArray()[0];
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				int[] codePoints = new int[2];
+				Character[] characters = new Character[2];
+				if (value.contains("-")) {
+					int separator = value.indexOf('-');
+					int decimalStart = Integer.parseInt(value.substring(0, separator), 16);
+					codePoints[0] = decimalStart;
+					char characterStart = (char) decimalStart;
+					int decimalEnd = Integer.parseInt(value.substring(separator+1), 16);
+					codePoints[1] = decimalEnd;
+					char characterEnd = (char) decimalEnd;
+					characters[0] = characterStart;
+					characters[1] = characterEnd;
+				} else {
+					int decimalStart = Integer.parseInt(value, 16);
+					codePoints[0] = decimalStart;
+					codePoints[1] = decimalStart;
+					char characterStart = (char) decimalStart;
+					characters[0] = characterStart;
+					characters[1] = characterStart;
+				}
+				privateUse.add(codePoints);
 			}
-			String comment = matcherLine.group(2);
 		}
 		return privateUse;
 	}
 	
-	public static Character[][] parseNonCharacterCodePoints() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c4"), Charset.defaultCharset());
-		Character[][] nonCharacterCodePoints = new Character[allLines.size()][2];
-		for (int i=0; i<allLines.size(); i++) {
-			String line = allLines.get(i);
+	public List<Character[]> parseNonCharacterCodePoints() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c4");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
+		List<Character[]> nonCharacterCodePoints = new ArrayList<>();
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			if(value.contains("-")) {
-				int separator = line.indexOf('-');
-				nonCharacterCodePoints[i][0] = line.substring(0, separator).toCharArray()[0];
-				nonCharacterCodePoints[i][1] = line.substring(separator).toCharArray()[0];
-			} else {
-				nonCharacterCodePoints[i][0] = line.toCharArray()[0];
-				nonCharacterCodePoints[i][1] = line.toCharArray()[0];
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				Character[] characters = new Character[2];
+				if (value.contains("-")) {
+					int separator = value.indexOf('-');
+					int decimalStart = Integer.parseInt(value.substring(0, separator), 16);
+					char characterStart = (char) decimalStart;
+					int decimalEnd = Integer.parseInt(value.substring(separator+1), 16);
+					char characterEnd = (char) decimalEnd;
+					characters[0] = characterStart;
+					characters[1] = characterEnd;
+				} else {
+					int decimalStart = Integer.parseInt(value, 16);
+					char characterStart = (char) decimalStart;
+					characters[0] = characterStart;
+					characters[1] = characterStart;
+				}
+				nonCharacterCodePoints.add(characters);
 			}
-			String comment = matcherLine.group(2);
 		}
 		return nonCharacterCodePoints;
 	}
 	
-	public static Character[][] parseSurrogateCodes() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c5"), Charset.defaultCharset());
-		Character[][] surrogateCodes = new Character[allLines.size()][2];
-		for (int i=0; i<allLines.size(); i++) {
-			String line = allLines.get(i);
+	public List<Character[]> parseSurrogateCodes() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c5");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
+		List<Character[]> surrogateCodes = new ArrayList<>();
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			if(value.contains("-")) {
-				int separator = line.indexOf('-');
-				surrogateCodes[i][0] = line.substring(0, separator).toCharArray()[0];
-				surrogateCodes[i][1] = line.substring(separator).toCharArray()[0];
-			} else {
-				surrogateCodes[i][0] = line.toCharArray()[0];
-				surrogateCodes[i][1] = line.toCharArray()[0];
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				Character[] characters = new Character[2];
+				if (value.contains("-")) {
+					int separator = value.indexOf('-');
+					int decimalStart = Integer.parseInt(value.substring(0, separator), 16);
+					char characterStart = (char) decimalStart;
+					int decimalEnd = Integer.parseInt(value.substring(separator+1), 16);
+					char characterEnd = (char) decimalEnd;
+					characters[0] = characterStart;
+					characters[1] = characterEnd;
+				} else {
+					int decimalStart = Integer.parseInt(value, 16);
+					char characterStart = (char) decimalStart;
+					characters[0] = characterStart;
+					characters[1] = characterStart;
+				}
+				surrogateCodes.add(characters);
 			}
-			String comment = matcherLine.group(2);
 		}
 		return surrogateCodes;
 	}
 	
-	public static Character[][] parseInappropriatePlainText() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c6"), Charset.defaultCharset());
-		Character[][] inappropiatePlainText = new Character[allLines.size()][2];
-		for (int i=0; i<allLines.size(); i++) {
-			String line = allLines.get(i);
+	public List<Character[]> parseInappropriatePlainText() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c6");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
+		List<Character[]> inappropiatePlainText = new ArrayList<>();
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			if(value.contains("-")) {
-				int separator = line.indexOf('-');
-				inappropiatePlainText[i][0] = line.substring(0, separator).toCharArray()[0];
-				inappropiatePlainText[i][1] = line.substring(separator).toCharArray()[0];
-			} else {
-				inappropiatePlainText[i][0] = line.toCharArray()[0];
-				inappropiatePlainText[i][1] = line.toCharArray()[0];
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				Character[] characters = new Character[2];
+				if (value.contains("-")) {
+					int separator = value.indexOf('-');
+					int decimalStart = Integer.parseInt(value.substring(0, separator), 16);
+					char characterStart = (char) decimalStart;
+					int decimalEnd = Integer.parseInt(value.substring(separator+1), 16);
+					char characterEnd = (char) decimalEnd;
+					characters[0] = characterStart;
+					characters[1] = characterEnd;
+				} else {
+					int decimalStart = Integer.parseInt(value, 16);
+					char characterStart = (char) decimalStart;
+					characters[0] = characterStart;
+					characters[1] = characterStart;
+				}
+				inappropiatePlainText.add(characters);
 			}
-			String comment = matcherLine.group(2);
 		}
 		return inappropiatePlainText;
 	}
 	
-	public static Character[][] parseInappropriateCanonicalRepresentation() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c7"), Charset.defaultCharset());
-		Character[][] inappropiateCanonicalRepresentation = new Character[allLines.size()][2];
-		for (int i=0; i<allLines.size(); i++) {
-			String line = allLines.get(i);
+	public List<Character[]> parseInappropriateCanonicalRepresentation() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c7");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
+		List<Character[]> inappropiateCanonicalRepresentation = new ArrayList<>();
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			if(value.contains("-")) {
-				int separator = line.indexOf('-');
-				inappropiateCanonicalRepresentation[i][0] = line.substring(0, separator).toCharArray()[0];
-				inappropiateCanonicalRepresentation[i][1] = line.substring(separator).toCharArray()[0];
-			} else {
-				inappropiateCanonicalRepresentation[i][0] = line.toCharArray()[0];
-				inappropiateCanonicalRepresentation[i][1] = line.toCharArray()[0];
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				Character[] characters = new Character[2];
+				if (value.contains("-")) {
+					int separator = value.indexOf('-');
+					int decimalStart = Integer.parseInt(value.substring(0, separator), 16);
+					char characterStart = (char) decimalStart;
+					int decimalEnd = Integer.parseInt(value.substring(separator+1), 16);
+					char characterEnd = (char) decimalEnd;
+					characters[0] = characterStart;
+					characters[1] = characterEnd;
+				} else {
+					int decimalStart = Integer.parseInt(value, 16);
+					char characterStart = (char) decimalStart;
+					characters[0] = characterStart;
+					characters[1] = characterStart;
+				}
+				inappropiateCanonicalRepresentation.add(characters);
 			}
-			String comment = matcherLine.group(2);
 		}
 		return inappropiateCanonicalRepresentation;
 	}
 	
-	public static Character[][] parseChangeDisplayProperties() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c8"), Charset.defaultCharset());
-		Character[][] changeDisplayProperties = new Character[allLines.size()][2];
-		for (int i=0; i<allLines.size(); i++) {
-			String line = allLines.get(i);
+	public List<Character[]> parseChangeDisplayProperties() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c8");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
+		List<Character[]> changeDisplayProperties = new ArrayList<>();
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			if(value.contains("-")) {
-				int separator = line.indexOf('-');
-				changeDisplayProperties[i][0] = line.substring(0, separator).toCharArray()[0];
-				changeDisplayProperties[i][1] = line.substring(separator).toCharArray()[0];
-			} else {
-				changeDisplayProperties[i][0] = line.toCharArray()[0];
-				changeDisplayProperties[i][1] = line.toCharArray()[0];
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				Character[] characters = new Character[2];
+				if (value.contains("-")) {
+					int separator = value.indexOf('-');
+					int decimalStart = Integer.parseInt(value.substring(0, separator), 16);
+					char characterStart = (char) decimalStart;
+					int decimalEnd = Integer.parseInt(value.substring(separator+1), 16);
+					char characterEnd = (char) decimalEnd;
+					characters[0] = characterStart;
+					characters[1] = characterEnd;
+				} else {
+					int decimalStart = Integer.parseInt(value, 16);
+					char characterStart = (char) decimalStart;
+					characters[0] = characterStart;
+					characters[1] = characterStart;
+				}
+				changeDisplayProperties.add(characters);
 			}
-			String comment = matcherLine.group(2);
 		}
 		return changeDisplayProperties;
 	}
 	
-	public static Character[][] parseTaggingCharacters() throws IOException {
-		List<String> allLines = Files.readAllLines(Paths.get("c9"), Charset.defaultCharset());
-		Character[][] taggingCharacters = new Character[allLines.size()][2];
-		for (int i=0; i<allLines.size(); i++) {
-			String line = allLines.get(i);
+	public List<int[]> parseTaggingCharacters() throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream("/c9");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		String line = null;
+		List<int[]> taggingCharacters = new ArrayList<>();
+		while (null != (line = bufferedReader.readLine())) {
 			Matcher matcherLine = PROHIBITION_PATTERN.matcher(line);
-			String value = matcherLine.group(1);
-			if(value.contains("-")) {
-				int separator = line.indexOf('-');
-				taggingCharacters[i][0] = line.substring(0, separator).toCharArray()[0];
-				taggingCharacters[i][1] = line.substring(separator).toCharArray()[0];
-			} else {
-				taggingCharacters[i][0] = line.toCharArray()[0];
-				taggingCharacters[i][1] = line.toCharArray()[0];
+			if (matcherLine.matches()) {
+				String value = matcherLine.group(1).replaceAll("\\s", "");
+				int[] codePoints = new int[2];
+				Character[] characters = new Character[2];
+				if (value.contains("-")) {
+					int separator = value.indexOf('-');
+					int decimalStart = Integer.parseInt(value.substring(0, separator), 16);
+					codePoints[0] = decimalStart;
+					char characterStart = (char) decimalStart;
+					int decimalEnd = Integer.parseInt(value.substring(separator+1), 16);
+					codePoints[1] = decimalEnd;
+					char characterEnd = (char) decimalEnd;
+					characters[0] = characterStart;
+					characters[1] = characterEnd;
+				} else {
+					int decimalStart = Integer.parseInt(value, 16);
+					codePoints[0] = decimalStart;
+					codePoints[1] = decimalStart;
+					char characterStart = (char) decimalStart;
+					characters[0] = characterStart;
+					characters[1] = characterStart;
+				}
+				taggingCharacters.add(codePoints);
 			}
-			String comment = matcherLine.group(2);
 		}
 		return taggingCharacters;
 	}

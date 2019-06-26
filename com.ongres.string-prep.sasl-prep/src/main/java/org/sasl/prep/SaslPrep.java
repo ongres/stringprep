@@ -7,14 +7,8 @@ import java.text.Normalizer;
 import com.ongres.string_prep.core.StringPrep;
 
 public class SaslPrep {
-
-	private final String value;
 	
-	public SaslPrep(String value) {
-		this.value = value;
-	}
-	
-	public String saslPrep(boolean storedString) throws IOException {
+	public String saslPrep(String value, boolean storedString) throws IOException {
 		StringPrep stringPrep = new StringPrep();
 		StringBuilder valueBuilder = new StringBuilder();
 		//Mapping
@@ -26,10 +20,10 @@ public class SaslPrep {
 			}
 		}
 		//commonly mapped to nothing
-		stringPrep.mapToNothing(valueBuilder.toString());
+		String mapped = stringPrep.mapToNothing(valueBuilder.toString());
 		
 		//Normalization
-		String normalized = Normalizer.normalize(CharBuffer.wrap(valueBuilder.toString().toCharArray()), Normalizer.Form.NFKC);
+		String normalized = Normalizer.normalize(CharBuffer.wrap(mapped.toCharArray()), Normalizer.Form.NFKC);
 		
 		//Prohibited
 		//Non-ASCII space characters
@@ -50,11 +44,11 @@ public class SaslPrep {
 					|| stringPrep.prohibitionInappropriatePlainText(character) 
 					|| stringPrep.prohibitionInappropriateCanonicalRepresentation(character)
 					|| stringPrep.prohibitionChangeDisplayProperties(character) ||	stringPrep.prohibitionTaggingCharacters(character)) {
-                throw new IllegalArgumentException("Prohibited character '"+character);
+                throw new IllegalArgumentException("Prohibited character "+character);
                 }
 			//Unassigned Code Points
 			if(storedString && stringPrep.unassignedCodePoints(character)) {
-				throw new IllegalArgumentException("Prohibited character '"+character);
+				throw new IllegalArgumentException("Prohibited character "+character);
 				}
 		}
 		//Bidirectional
