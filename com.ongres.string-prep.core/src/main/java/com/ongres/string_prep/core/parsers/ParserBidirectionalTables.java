@@ -8,61 +8,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParserBidirectionalTables {
-	
-	public ParserBidirectionalTables() {
-	}
-	
-	public List<Character[]> parseBidirectionalPropertyRorAL() throws IOException {
-		InputStream inputStream = getClass().getResourceAsStream("/d1");
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-		String line = null;
-		List<Character[]> bidirectionalPropertyRorAL = new ArrayList<>();
-		while (null != (line = bufferedReader.readLine())) {
-			line = line.replaceAll("\\s", "");
-			Character[] characters = new Character[2];
-			if(line.contains("-")) {
-				int separator = line.indexOf('-');
-				int decimalStart = Integer.parseInt(line.substring(0, separator), 16);
-				char characterStart = (char) decimalStart;
-				int decimalEnd = Integer.parseInt(line.substring(separator+1), 16);
-				char characterEnd = (char) decimalEnd;
-				characters[0] = characterStart;
-				characters[1] = characterEnd;
-			} else {
-				int decimalStart = Integer.parseInt(line, 16);
-				char characterStart = (char) decimalStart;
-				characters[0] = characterStart;
-				characters[1] = characterStart;
-			}
-			bidirectionalPropertyRorAL.add(characters);
-		}
-		return bidirectionalPropertyRorAL;
-	}
-	
-	public List<Character[]> parseBidirectionalPropertyL() throws IOException {
-		InputStream inputStream = getClass().getResourceAsStream("/d2");
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-		String line = null;
-		List<Character[]> bidirectionalPropertyL = new ArrayList<>();
-		while (null != (line = bufferedReader.readLine())) {
-			line = line.replaceAll("\\s", "");
-			Character[] characters = new Character[2];
-			if(line.contains("-")) {
-				int separator = line.indexOf('-');
-				int decimalStart = Integer.parseInt(line.substring(0, separator), 16);
-				char characterStart = (char) decimalStart;
-				int decimalEnd = Integer.parseInt(line.substring(separator+1), 16);
-				char characterEnd = (char) decimalEnd;
-				characters[0] = characterStart;
-				characters[1] = characterEnd;
-			} else {
-				int decimalStart = Integer.parseInt(line, 16);
-				char characterStart = (char) decimalStart;
-				characters[0] = characterStart;
-				characters[1] = characterStart;
-			}
-			bidirectionalPropertyL.add(characters);
-		}
-		return bidirectionalPropertyL;
-	}
+    
+    public ParserBidirectionalTables() {
+    }
+    
+    public List<int[]> parseBidirectionalPropertyRorAL() throws IOException {
+        InputStream inputStream = getClass().getResourceAsStream("/d1");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String line = null;
+        List<int[]> bidirectionalPropertyRorAL = new ArrayList<>();
+        while (null != (line = bufferedReader.readLine())) {
+            line = line.replaceAll("\\s", "");
+            int[] characters = new int[2];
+            if(line.contains("-")) {
+                int separator = line.indexOf('-');
+                characters[0] = Integer.parseInt(line.substring(0, separator), 16);
+                characters[1] = Integer.parseInt(line.substring(separator + 1), 16);
+            } else {
+                characters[0] = Integer.parseInt(line, 16);
+                characters[1] = Integer.parseInt(line, 16);
+            }
+            bidirectionalPropertyRorAL.add(characters);
+        }
+        return bidirectionalPropertyRorAL;
+    }
+    
+    public List<int[]> parseBidirectionalPropertyL() throws IOException {
+        InputStream inputStream = getClass().getResourceAsStream("/d2");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String line = null;
+        List<int[]> bidirectionalPropertyL = new ArrayList<>();
+        while (null != (line = bufferedReader.readLine())) {
+            line = line.replaceAll("\\s", "");
+            int[] characters = new int[2];
+            if(line.contains("-")) {
+                int separator = line.indexOf('-');
+                characters[0] = Integer.parseInt(line.substring(0, separator), 16);
+                characters[1] = Integer.parseInt(line.substring(separator + 1), 16);
+            } else {
+                characters[0] = Integer.parseInt(line, 16);
+                characters[1] = Integer.parseInt(line, 16);
+            }
+            bidirectionalPropertyL.add(characters);
+        }
+        return bidirectionalPropertyL;
+    }
 }

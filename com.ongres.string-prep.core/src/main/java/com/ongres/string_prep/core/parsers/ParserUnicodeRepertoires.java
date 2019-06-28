@@ -8,34 +8,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParserUnicodeRepertoires {
-	
-	public ParserUnicodeRepertoires() {
-	}
-	
-	public List<Character[]> parseUnassignedCodePoints() throws IOException {
-		InputStream inputStream = getClass().getResourceAsStream("a1");
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-		String line = null;
-		List<Character[]> unassignedCodePoints = new ArrayList<>();
-		while (null != (line = bufferedReader.readLine())) {
-			Character[] characters = new Character[2];
-			line = line.replaceAll("\\s", "");
-			if(line.contains("-")) {
-				int separator = line.indexOf('-');
-				int decimalStart = Integer.parseInt(line.substring(0, separator), 16);
-				char characterStart = (char) decimalStart;
-				int decimalEnd = Integer.parseInt(line.substring(separator), 16);
-				char characterEnd = (char) decimalEnd;
-				characters[0] = characterStart;
-				characters[1] = characterEnd;
-			} else {
-				int decimalStart = Integer.parseInt(line, 16);
-				char characterStart = (char) decimalStart;
-				characters[0] = characterStart;
-				characters[1] = characterStart;
-			}
-			unassignedCodePoints.add(characters);
-		}
-		return unassignedCodePoints;
-	}
+    
+    public ParserUnicodeRepertoires() {
+    }
+    
+    public List<int[]> parseUnassignedCodePoints() throws IOException {
+        InputStream inputStream = getClass().getResourceAsStream("/a1");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String line = null;
+        List<int[]> unassignedCodePoints = new ArrayList<>();
+        while (null != (line = bufferedReader.readLine())) {
+            int[] characters = new int[2];
+            line = line.replaceAll("\\s", "");
+            if(line.contains("-")) {
+                int separator = line.indexOf('-');
+                characters[0] = Integer.parseInt(line.substring(0, separator), 16);
+                characters[1] = Integer.parseInt(line.substring(separator + 1), 16);
+            } else {
+                characters[0] = Integer.parseInt(line, 16);
+                characters[1] = Integer.parseInt(line, 16);
+            }
+            unassignedCodePoints.add(characters);
+        }
+        return unassignedCodePoints;
+    }
 }
