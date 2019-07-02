@@ -67,12 +67,30 @@ public class StringPrepTest {
         result = stringPrep.mapUsedWithNFKC(Arrays.asList(Integer.parseInt("00DF", 16),
                 Integer.parseInt("33C6", 16), Integer.parseInt("03B0", 16), Integer.parseInt("1D7BB", 16),
                 Integer.parseInt("1D7BC", 16)));
-        assertEquals(5, result.size());
+        assertEquals(11, result.size());
+        assertTrue(Integer.parseInt("0073", 16) == result.get(0));
+        assertTrue(Integer.parseInt("0073", 16) == result.get(1));
+        assertTrue(Integer.parseInt("0063", 16) == result.get(2));
+        assertTrue(Integer.parseInt("2215", 16) == result.get(3));
+        assertTrue(Integer.parseInt("006B", 16) == result.get(4));
+        assertTrue(Integer.parseInt("0067", 16) == result.get(5));
+        assertTrue(Integer.parseInt("03C5", 16) == result.get(6));
+        assertTrue(Integer.parseInt("0308", 16) == result.get(7));
+        assertTrue(Integer.parseInt("0301", 16) == result.get(8));
+        assertTrue(Integer.parseInt("03C3", 16) == result.get(9));
+        assertTrue(Integer.parseInt("1D7BC", 16) == result.get(10));
         
         //Map NoNormalization
         result = stringPrep.mapUsedWithNoNormalization(Arrays.asList(Integer.parseInt("10425", 16),
-                Integer.parseInt("0130", 16), Integer.parseInt("0390", 16)));
-        assertEquals(3, result.size());
+                Integer.parseInt("0130", 16), Integer.parseInt("0390", 16), Integer.parseInt("10426", 16)));
+        assertEquals(7, result.size());
+        assertTrue(Integer.parseInt("1044D", 16) == result.get(0));
+        assertTrue(Integer.parseInt("0069", 16) == result.get(1));
+        assertTrue(Integer.parseInt("0307", 16) == result.get(2));
+        assertTrue(Integer.parseInt("03B9", 16) == result.get(3));
+        assertTrue(Integer.parseInt("0308", 16) == result.get(4));
+        assertTrue(Integer.parseInt("0301", 16) == result.get(5));
+        assertTrue(Integer.parseInt("10426", 16) == result.get(6));
     }
     
     @Test

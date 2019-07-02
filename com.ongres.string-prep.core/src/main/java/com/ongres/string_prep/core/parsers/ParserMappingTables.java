@@ -17,7 +17,7 @@ public class ParserMappingTables {
     }
     
     private static final Pattern LINE_PATTERN = Pattern.compile("([^;]*);([^;]*);[^;]*");
-    private static final Pattern CODE_POINTS_PATTERN = Pattern.compile("[([^ ]*) ]*");
+    private static final Pattern CODE_POINTS_PATTERN = Pattern.compile("\\s*([0-9A-F]+)");
     
     public List<Integer> parseMapToNothing() throws IOException {
         InputStream inputStream = getClass().getResourceAsStream("/b1");
@@ -46,14 +46,11 @@ public class ParserMappingTables {
                 String mappedFrom = matcherLine.group(1);
                 String mappedTo = matcherLine.group(2);
                 Matcher matcherCodePoints = CODE_POINTS_PATTERN.matcher(mappedTo);
-                if (matcherCodePoints.matches()) {
-                    for(int i=0; i<=matcherCodePoints.groupCount(); i++) {
-                        String codePoint = matcherCodePoints.group(i);
-                        codePoints.add(Integer.parseInt(codePoint, 16));
-                    }
+                while(matcherCodePoints.find()) {
+                    codePoints.add(Integer.parseInt(matcherCodePoints.group(1), 16));
+                }
                     String mapped = mappedFrom.replaceAll("\\s", "");
                     mapUsedWithNFKC.put(Integer.parseInt(mapped, 16), codePoints);
-                }
             }
         }
         return mapUsedWithNFKC;
@@ -71,14 +68,11 @@ public class ParserMappingTables {
                 String mappedFrom = matcherLine.group(1);
                 String mappedTo = matcherLine.group(2);
                 Matcher matcherCodePoints = CODE_POINTS_PATTERN.matcher(mappedTo);
-                if (matcherCodePoints.matches()) {
-                    for(int i=1; i<=matcherCodePoints.groupCount(); i++) {
-                        String codePoint = matcherCodePoints.group(i).replaceAll("\\s", "");
-                        codePoints.add(Integer.parseInt(codePoint, 16));
-                    }
+                while(matcherCodePoints.find()) {
+                    codePoints.add(Integer.parseInt(matcherCodePoints.group(1), 16));
+                }
                     String mapped = mappedFrom.replaceAll("\\s", "");
                     mapWithNoNormalization.put(Integer.parseInt(mapped, 16), codePoints);
-                }
             }
         }
         return mapWithNoNormalization;
