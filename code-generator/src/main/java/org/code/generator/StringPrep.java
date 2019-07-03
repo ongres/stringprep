@@ -1,34 +1,34 @@
-package com.ongres.string_prep.core;
+package org.code.generator;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.ongres.string_prep.core.parsers.ParserBidirectionalTables;
-import com.ongres.string_prep.core.parsers.ParserMappingTables;
-import com.ongres.string_prep.core.parsers.ParserProhibitionTables;
-import com.ongres.string_prep.core.parsers.ParserUnicodeRepertoires;
+import org.code.generator.parsers.ParserBidirectionalTables;
+import org.code.generator.parsers.ParserMappingTables;
+import org.code.generator.parsers.ParserProhibitionTables;
+import org.code.generator.parsers.ParserUnicodeRepertoires;
 
 public class StringPrep {
     
-    private final List<int[]> unassignedCodePoints;
+    private final List<List<Integer>> unassignedCodePoints;
     private final List<Integer> mapToNothing;
     private final Map<Integer, List<Integer>> mapUsedWithNFKC;
     private final Map<Integer, List<Integer>> mapUsedWithNoNormalization;
     private final List<Integer> asciiSpace;
     private final List<Integer> nonAsciiSpace;
-    private final List<int[]> asciiControl;
-    private final List<int[]> nonAsciiControl;
-    private final List<int[]> privateUse;
-    private final List<int[]> nonCharacterCodePoints;
-    private final List<int[]> surrogateCodes;
-    private final List<int[]> inappropriatePlainText;
-    private final List<int[]> inappropriateCanonicalRepresentation;
-    private final List<int[]> changeDisplayProperties;
-    private final List<int[]> taggingCharacters;
-    private final List<int[]> propertyRorAL;
-    private final List<int[]> propertyL;
+    private final List<List<Integer>> asciiControl;
+    private final List<List<Integer>> nonAsciiControl;
+    private final List<List<Integer>> privateUse;
+    private final List<List<Integer>> nonCharacterCodePoints;
+    private final List<List<Integer>> surrogateCodes;
+    private final List<List<Integer>> inappropriatePlainText;
+    private final List<List<Integer>> inappropriateCanonicalRepresentation;
+    private final List<List<Integer>> changeDisplayProperties;
+    private final List<List<Integer>> taggingCharacters;
+    private final List<List<Integer>> propertyRorAL;
+    private final List<List<Integer>> propertyL;
     
     public StringPrep() throws IOException {
             unassignedCodePoints = ParserUnicodeRepertoires.parseUnassignedCodePoints();
@@ -50,9 +50,77 @@ public class StringPrep {
             propertyL = ParserBidirectionalTables.parseBidirectionalPropertyL();
     }
 
+    public List<List<Integer>> getUnassignedCodePoints() {
+        return unassignedCodePoints;
+    }
+
+    public List<Integer> getMapToNothing() {
+        return mapToNothing;
+    }
+
+    public Map<Integer, List<Integer>> getMapUsedWithNFKC() {
+        return mapUsedWithNFKC;
+    }
+
+    public Map<Integer, List<Integer>> getMapUsedWithNoNormalization() {
+        return mapUsedWithNoNormalization;
+    }
+
+    public List<Integer> getAsciiSpace() {
+        return asciiSpace;
+    }
+
+    public List<Integer> getNonAsciiSpace() {
+        return nonAsciiSpace;
+    }
+
+    public List<List<Integer>> getAsciiControl() {
+        return asciiControl;
+    }
+
+    public List<List<Integer>> getNonAsciiControl() {
+        return nonAsciiControl;
+    }
+
+    public List<List<Integer>> getPrivateUse() {
+        return privateUse;
+    }
+
+    public List<List<Integer>> getNonCharacterCodePoints() {
+        return nonCharacterCodePoints;
+    }
+
+    public List<List<Integer>> getSurrogateCodes() {
+        return surrogateCodes;
+    }
+
+    public List<List<Integer>> getInappropriatePlainText() {
+        return inappropriatePlainText;
+    }
+
+    public List<List<Integer>> getInappropriateCanonicalRepresentation() {
+        return inappropriateCanonicalRepresentation;
+    }
+
+    public List<List<Integer>> getChangeDisplayProperties() {
+        return changeDisplayProperties;
+    }
+
+    public List<List<Integer>> getTaggingCharacters() {
+        return taggingCharacters;
+    }
+
+    public List<List<Integer>> getPropertyRorAL() {
+        return propertyRorAL;
+    }
+
+    public List<List<Integer>> getPropertyL() {
+        return propertyL;
+    }
+
     public boolean unassignedCodePoints(int value) throws IOException {
         for (int j=0; j<unassignedCodePoints.size(); j++) {
-            if (value >= unassignedCodePoints.get(j)[0] && value <= unassignedCodePoints.get(j)[1]) {
+            if (value >= unassignedCodePoints.get(j).get(0) && value <= unassignedCodePoints.get(j).get(1)) {
                 return true;
             }
         }
@@ -123,7 +191,7 @@ public class StringPrep {
     
     public boolean prohibitionAsciiControl(int value) throws IOException {
         for (int j=0; j<asciiControl.size(); j++) {
-            if (value >= asciiControl.get(j)[0] && value <= asciiControl.get(j)[1]) {
+            if (value >= asciiControl.get(j).get(0) && value <= asciiControl.get(j).get(1)) {
                 return true;
             }
         }
@@ -132,7 +200,7 @@ public class StringPrep {
     
     public boolean prohibitionNonAsciiControl(int value) throws IOException {
         for (int j=0; j<nonAsciiControl.size(); j++) {
-            if (value >= nonAsciiControl.get(j)[0] && value <= nonAsciiControl.get(j)[1]) {
+            if (value >= nonAsciiControl.get(j).get(0) && value <= nonAsciiControl.get(j).get(1)) {
                 return true;
             }
         }
@@ -141,7 +209,7 @@ public class StringPrep {
     
     public boolean prohibitionPrivateUse(int value) throws IOException {
         for (int j=0; j<privateUse.size(); j++) {
-            if (value >= privateUse.get(j)[0] && value <= privateUse.get(j)[1]) {
+            if (value >= privateUse.get(j).get(0) && value <= privateUse.get(j).get(1)) {
                 return true;
             }
         }
@@ -150,7 +218,7 @@ public class StringPrep {
     
     public boolean prohibitionNonCharacterCodePoints(int value) throws IOException {
         for (int j=0; j<nonCharacterCodePoints.size(); j++) {
-            if (value >= nonCharacterCodePoints.get(j)[0] && value <= nonCharacterCodePoints.get(j)[1]) {
+            if (value >= nonCharacterCodePoints.get(j).get(0) && value <= nonCharacterCodePoints.get(j).get(1)) {
                 return true;
             }
         }
@@ -159,7 +227,7 @@ public class StringPrep {
     
     public boolean prohibitionSurrogateCodes(int value) throws IOException {
         for (int j=0; j<surrogateCodes.size(); j++) {
-            if (value >= surrogateCodes.get(j)[0] && value <= surrogateCodes.get(j)[1]) {
+            if (value >= surrogateCodes.get(j).get(0) && value <= surrogateCodes.get(j).get(1)) {
                 return true;
             }
         }
@@ -168,7 +236,7 @@ public class StringPrep {
     
     public boolean prohibitionInappropriatePlainText(int value) throws IOException {
         for (int j=0; j<inappropriatePlainText.size(); j++) {
-            if (value >= inappropriatePlainText.get(j)[0] && value <= inappropriatePlainText.get(j)[1]) {
+            if (value >= inappropriatePlainText.get(j).get(0) && value <= inappropriatePlainText.get(j).get(1)) {
                 return true;
             }
         }
@@ -177,7 +245,7 @@ public class StringPrep {
     
     public boolean prohibitionInappropriateCanonicalRepresentation(int value) throws IOException {
         for (int j=0; j<inappropriateCanonicalRepresentation.size(); j++) {
-            if (value >= inappropriateCanonicalRepresentation.get(j)[0] && value <= inappropriateCanonicalRepresentation.get(j)[1]) {
+            if (value >= inappropriateCanonicalRepresentation.get(j).get(0) && value <= inappropriateCanonicalRepresentation.get(j).get(1)) {
                 return true;
             }
         }
@@ -186,7 +254,7 @@ public class StringPrep {
     
     public boolean prohibitionChangeDisplayProperties(int value) throws IOException {
         for (int j=0; j<changeDisplayProperties.size(); j++) {
-            if (value >= changeDisplayProperties.get(j)[0] && value <= changeDisplayProperties.get(j)[1]) {
+            if (value >= changeDisplayProperties.get(j).get(0) && value <= changeDisplayProperties.get(j).get(1)) {
                 return true;
             }
         }
@@ -195,7 +263,7 @@ public class StringPrep {
     
     public boolean prohibitionTaggingCharacters(int value) throws IOException {
         for (int j=0; j<taggingCharacters.size(); j++) {
-            if (value >= taggingCharacters.get(j)[0] && value <= taggingCharacters.get(j)[1]) {
+            if (value >= taggingCharacters.get(j).get(0) && value <= taggingCharacters.get(j).get(1)) {
                 return true;
             }
         }
@@ -204,7 +272,7 @@ public class StringPrep {
     
     public boolean bidirectionalPropertyRorAL(int value) throws IOException {
         for (int j=0; j<propertyRorAL.size(); j++) {
-            if (value >= propertyRorAL.get(j)[0] && value <= propertyRorAL.get(j)[1]) {
+            if (value >= propertyRorAL.get(j).get(0) && value <= propertyRorAL.get(j).get(1)) {
                 return true;
             }
         }
@@ -213,7 +281,7 @@ public class StringPrep {
     
     public boolean bidirectionalPropertyL(int value) throws IOException {
         for (int j=0; j<propertyL.size(); j++) {
-            if (value >= propertyL.get(j)[0] && value <= propertyL.get(j)[1]) {
+            if (value >= propertyL.get(j).get(0) && value <= propertyL.get(j).get(1)) {
                 return true;
             }
         }

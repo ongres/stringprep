@@ -6,7 +6,8 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ongres.string_prep.core.StringPrep;
+import org.code.generator.StringPrep;
+
 
 public class SaslPrep {
     

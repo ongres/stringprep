@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import org.code.generator.StringPrep;
 import org.junit.Test;
 
 public class StringPrepTest {

@@ -1,4 +1,4 @@
-package com.ongres.string_prep.core.parsers;
+package org.code.generator.parsers;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,15 +50,15 @@ public class ParserUtil {
         return mapWithNoNormalization;
     }
     
-    public List<int[]> parseToListArrayInt(String file) throws NumberFormatException, IOException {
+    public List<List<Integer>> parseToListArrayInt(String file) throws NumberFormatException, IOException {
         return parseToListArrayInt(file, null);
         }
     
-    public List<int[]> parseToListArrayInt(String file, Pattern pattern) throws NumberFormatException, IOException {
+    public List<List<Integer>> parseToListArrayInt(String file, Pattern pattern) throws NumberFormatException, IOException {
         InputStream inputStream = getClass().getResourceAsStream(file);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line = null;
-        List<int[]> codePoints = new ArrayList<>();
+        List<List<Integer>> codePoints = new ArrayList<>();
         if(null != pattern) {
         while (null != (line = bufferedReader.readLine())) {
             Matcher matcherLine = pattern.matcher(line);
@@ -74,18 +74,17 @@ public class ParserUtil {
         return codePoints;
     }
     
-    private void fillList(List<int[]> codePoints,String value) {
-        int[] characters = new int[2];
+    private void fillList(List<List<Integer>> codePoints,String value) {
+        List<Integer> characters = new ArrayList<>();
         if (value.contains("-")) {
             int separator = value.indexOf('-');
-            characters[0] = Integer.parseInt(value.substring(0, separator), 16);
-            characters[1] = Integer.parseInt(value.substring(separator + 1), 16);
+            characters.add(Integer.parseInt(value.substring(0, separator), 16));
+            characters.add(Integer.parseInt(value.substring(separator + 1), 16));
         } else {
-            characters[0] = Integer.parseInt(value, 16);
-            characters[1] = Integer.parseInt(value, 16);
+            characters.add(Integer.parseInt(value, 16));
+            characters.add(Integer.parseInt(value, 16));
         }
         codePoints.add(characters);
     }
-    
     
 }

@@ -3,13 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.ongres.string-prep</groupId>
+    <groupId>com.ongres.stringprep</groupId>
     <artifactId>parent</artifactId>
     <version>0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.ongres.string-prep</groupId>
   <artifactId>core</artifactId>
-  <version>0.1-SNAPSHOT</version>
   <name>core</name>
   <url>http://maven.apache.org</url>
   <properties>
