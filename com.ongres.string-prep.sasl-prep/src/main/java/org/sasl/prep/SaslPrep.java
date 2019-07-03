@@ -6,7 +6,7 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.code.generator.StringPrep;
+import parser.StringPrep;
 
 
 public class SaslPrep {
@@ -14,7 +14,6 @@ public class SaslPrep {
     private static final int MAX_UTF = 65535;
 
     public String saslPrep(String value, boolean storedString) throws IOException {
-        StringPrep stringPrep = new StringPrep();
         List<Integer> valueBuilder = new ArrayList<>();
         //Mapping
         //non-ASCII space characters
@@ -25,16 +24,18 @@ public class SaslPrep {
             if (codePoint > MAX_UTF) {
                 i++;
             }
-            if (!stringPrep.prohibitionNonAsciiSpace(codePoint)) {
+            if (!StringPrep.prohibitionNonAsciiSpace(codePoint)) {
                 valueBuilder.add(codePoint);
             }
         }
         //commonly mapped to nothing
         StringBuilder stringBuilder = new StringBuilder();
-        List<Integer> mapped = stringPrep.mapToNothing(codePoints);
-        for (int i=0; i<mapped.size(); i++) {
-            char[] characters = Character.toChars(mapped.get(i));
-            stringBuilder.append(characters);
+        
+        for (int codePoint : codePoints) {
+            if (!StringPrep.mapToNothing(codePoint)) {
+                char[] characters = Character.toChars(codePoint);
+                stringBuilder.append(characters);
+            }
         }
         
         //Normalization
@@ -47,7 +48,7 @@ public class SaslPrep {
             if (codePoint > MAX_UTF) {
                 i++;
             }
-            if (!stringPrep.prohibitionNonAsciiSpace(codePoint)) {
+            if (!StringPrep.prohibitionNonAsciiSpace(codePoint)) {
                 valueBuilder.add(codePoint);
             }
         }
@@ -64,21 +65,21 @@ public class SaslPrep {
         //Change display properties or deprecated characters
         //Tagging characters [StringPrep, C.9]
         for (int character : valueBuilder) {
-            if (stringPrep.prohibitionNonAsciiSpace(character) || stringPrep.prohibitionAsciiControl(character) 
-                    || stringPrep.prohibitionNonAsciiControl(character) || stringPrep.prohibitionPrivateUse(character)
-                    || stringPrep.prohibitionNonCharacterCodePoints(character) || stringPrep.prohibitionSurrogateCodes(character)
-                    || stringPrep.prohibitionInappropriatePlainText(character) 
-                    || stringPrep.prohibitionInappropriateCanonicalRepresentation(character)
-                    || stringPrep.prohibitionChangeDisplayProperties(character) ||    stringPrep.prohibitionTaggingCharacters(character)) {
+            if (StringPrep.prohibitionNonAsciiSpace(character) || StringPrep.prohibitionAsciiControl(character) 
+                    || StringPrep.prohibitionNonAsciiControl(character) || StringPrep.prohibitionPrivateUse(character)
+                    || StringPrep.prohibitionNonCharacterCodePoints(character) || StringPrep.prohibitionSurrogateCodes(character)
+                    || StringPrep.prohibitionInappropriatePlainText(character) 
+                    || StringPrep.prohibitionInappropriateCanonicalRepresentation(character)
+                    || StringPrep.prohibitionChangeDisplayProperties(character) ||    StringPrep.prohibitionTaggingCharacters(character)) {
                 throw new IllegalArgumentException("Prohibited character " + String.valueOf(Character.toChars(character)));
                 }
             //Unassigned Code Points
-            if(storedString && stringPrep.unassignedCodePoints(character)) {
+            if(storedString && StringPrep.unassignedCodePoints(character)) {
                 throw new IllegalArgumentException("Prohibited character " + String.valueOf(Character.toChars(character)));
                 }
         }
         //Bidirectional
-        stringPrep.bidirectional(valueBuilder);
+        StringPrep.bidirectional(valueBuilder);
         
         return normalized;
         }

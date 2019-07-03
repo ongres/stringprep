@@ -10,7 +10,7 @@ import org.code.generator.parsers.ParserMappingTables;
 import org.code.generator.parsers.ParserProhibitionTables;
 import org.code.generator.parsers.ParserUnicodeRepertoires;
 
-public class StringPrep {
+public class Parser {
     
     private final List<List<Integer>> unassignedCodePoints;
     private final List<Integer> mapToNothing;
@@ -30,7 +30,7 @@ public class StringPrep {
     private final List<List<Integer>> propertyRorAL;
     private final List<List<Integer>> propertyL;
     
-    public StringPrep() throws IOException {
+    public Parser() throws IOException {
             unassignedCodePoints = ParserUnicodeRepertoires.parseUnassignedCodePoints();
             mapToNothing = ParserMappingTables.parseMapToNothing();
             mapUsedWithNFKC = ParserMappingTables.parseMapUsedWithNFKC();

@@ -9,14 +9,14 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.code.generator.StringPrep;
+import org.code.generator.Parser;
 import org.junit.Test;
 
 public class StringPrepTest {
 
     @Test
     public void testBidirectionalTables() throws Exception {
-        StringPrep stringPrep = new StringPrep();
+        Parser stringPrep = new Parser();
         //Property R or AL
         assertTrue(stringPrep.bidirectionalPropertyRorAL(Integer.parseInt("061B", 16)));
         assertTrue(stringPrep.bidirectionalPropertyRorAL(Integer.parseInt("FE76", 16)));
@@ -57,7 +57,7 @@ public class StringPrepTest {
     
     @Test
     public void testMappingTables() throws Exception {
-        StringPrep stringPrep = new StringPrep();
+        Parser stringPrep = new Parser();
         //Map to nothing
         List<Integer> result = stringPrep.mapToNothing(Arrays.asList(Integer.parseInt("00AD", 16), 
                 Integer.parseInt("0100", 16), Integer.parseInt("FE0F", 16)));
@@ -96,7 +96,7 @@ public class StringPrepTest {
     
     @Test
     public void testProhibitionTables() throws NumberFormatException, IOException {
-        StringPrep stringPrep = new StringPrep();
+        Parser stringPrep = new Parser();
         //AsciiSpace
         assertFalse(stringPrep.prohibitionAsciiSpace(Integer.parseInt("00A0", 16)));
         assertTrue(stringPrep.prohibitionAsciiSpace(Integer.parseInt("0020", 16)));
@@ -151,7 +151,7 @@ public class StringPrepTest {
     
     @Test
     public void testUnicodeRepertoires() throws NumberFormatException, IOException {
-        StringPrep stringPrep = new StringPrep();
+        Parser stringPrep = new Parser();
         assertTrue(stringPrep.unassignedCodePoints(Integer.parseInt("1D49D", 16)));
         assertTrue(stringPrep.unassignedCodePoints(Integer.parseInt("E0080", 16)));
         assertTrue(stringPrep.unassignedCodePoints(Integer.parseInt("E2FFD", 16)));

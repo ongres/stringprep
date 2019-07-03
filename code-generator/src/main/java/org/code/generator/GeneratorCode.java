@@ -3,7 +3,6 @@ package org.code.generator;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.StringWriter;
 import java.io.Writer;
 
 import javax.annotation.processing.SupportedAnnotationTypes;
@@ -19,19 +18,9 @@ import org.apache.velocity.app.VelocityEngine;
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class GeneratorCode {
 
-    public void generateCode() {
-        VelocityEngine velocityEngine = new VelocityEngine();
-        //velocityEngine.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, "../../../src/main/resources/");
-        velocityEngine.init();
-        Template t = velocityEngine.getTemplate("templates/ParserUtil.vm");
-        VelocityContext ctx = new VelocityContext();
-        Writer writer = new StringWriter();
-        t.merge(ctx, writer);
-    }
-
     public static void main( String[] args ) throws IOException {
 
-        StringPrep stringPrep = new StringPrep();
+        Parser parser = new Parser();
         VelocityEngine velocityEngine = new VelocityEngine();
         
         velocityEngine.setProperty(Velocity.RESOURCE_LOADER, "class");
@@ -40,10 +29,11 @@ public class GeneratorCode {
         velocityEngine.init();
         Template template = velocityEngine.getTemplate("templates/ParserUtil.vm");
         VelocityContext ctx = new VelocityContext();
-        ctx.put("stringPrep", stringPrep);
+        ctx.put("parser", parser);
         try {
-            Writer writer = new FileWriter(new File(args[0]));
-            //Writer writer = new StringWriter();
+            String path = "../com.ongres.string-prep.core/src/main/java/parser/StringPrep.java";
+            //Writer writer = new FileWriter(new File(args[0]));
+            Writer writer = new FileWriter(new File(path));
             template.merge(ctx, writer);
             writer.close();
         } catch (IOException e) {
