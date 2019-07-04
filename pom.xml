@@ -14,7 +14,7 @@
   <inceptionYear>2019</inceptionYear>
 
   <modules>
-    <module>core</module>
+    <module>stringprep</module>
     <module>saslprep</module>
     <module>codegenerator</module>
   </modules>

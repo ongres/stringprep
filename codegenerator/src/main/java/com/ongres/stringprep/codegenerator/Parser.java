@@ -30,6 +30,7 @@ public class Parser {
     
   /**
  * Constructor of Parser class used to read all rfc files.
+ * @throws IOException if a RFC file can't be read
  */
   public Parser() throws IOException {
     unassignedCodePoints = ParserUnicodeRepertoires.parseUnassignedCodePoints();

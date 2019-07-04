@@ -15,6 +15,10 @@ public class ParserUtil {
     
   /**
  * Parse a file with hexadecimal to a list of integers.
+ * @param file with the RFC file to parse
+ * @param pattern of the lines
+ * @return list of integers
+ * @throws IOException if a RFC file can't be read
  */
   public List<Integer> parseToListInteger(
           String file, Pattern pattern) throws NumberFormatException, IOException {
@@ -34,6 +38,11 @@ public class ParserUtil {
 
   /**
  * Parse a file with mappings to a map of list of integers.
+ * @param file with THE RFC file to parse
+ * @param patternLine pattern of the lines
+ * @param mapTo pattern of the conversion
+ * @return map of list of integers
+ * @throws IOException if a RFC file can't be read
  */
   public Map<Integer, List<Integer>> parseToMapListInteger(
           String file, Pattern patternLine, Pattern mapTo) throws IOException {
@@ -60,6 +69,9 @@ public class ParserUtil {
 
   /**
  * Parse a file with ranges of hexadecimal to a list of list of integers.
+ * @param file with the RFC file to parse
+ * @return list of list of integers
+ * @throws IOException if a RFC file can't be read
  */
   public List<List<Integer>> parseToListArrayInt(
         String file) throws NumberFormatException, IOException {
@@ -68,6 +80,10 @@ public class ParserUtil {
 
   /**
  * Parse a file with ranges of hexadecimal to a list of list of integers.
+ * @param file with the RFC file to parse
+ * @param pattern of the lines
+ * @return list of list of integers
+ * @throws IOException if a RFC file can't be read
  */
   public List<List<Integer>> parseToListArrayInt(
         String file, Pattern pattern) throws NumberFormatException, IOException {

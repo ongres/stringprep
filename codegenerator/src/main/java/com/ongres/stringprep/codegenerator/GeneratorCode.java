@@ -20,6 +20,8 @@ public class GeneratorCode {
 
   /**
  * Generate StringPrep class dynamically.
+ * @param args with the path used to generate StringPrep class
+ * @throws IOException if a RFC file can't be read
  */
   public static void main(String[] args) throws IOException {
 
@@ -34,7 +36,7 @@ public class GeneratorCode {
     VelocityContext ctx = new VelocityContext();
     Parser parser = new Parser();
     ctx.put("parser", parser);
-    String path = args[0] + "/com/ongres/stringprep/core/StringPrep.java";
+    String path = args[0] + "/com/ongres/stringprep/stringprep/StringPrep.java";
     File file = new File(path);
     file.getParentFile().mkdirs();
     Writer writer = new FileWriter(file);
