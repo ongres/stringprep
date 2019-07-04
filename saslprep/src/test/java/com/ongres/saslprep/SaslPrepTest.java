@@ -1,9 +1,9 @@
-package org.sasl.prep;
+package com.ongres.saslprep;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import com.ongres.stringprep.saslprep.SaslPrep;
+import com.ongres.saslprep.SaslPrep;
 import java.io.IOException;
 import org.junit.Test;
 

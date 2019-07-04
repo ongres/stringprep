@@ -1,6 +1,6 @@
-package com.ongres.stringprep.saslprep;
+package com.ongres.saslprep;
 
-import com.ongres.stringprep.core.StringPrep;
+import com.ongres.stringprep.StringPrep;
 import java.io.IOException;
 import java.nio.CharBuffer;
 import java.text.Normalizer;

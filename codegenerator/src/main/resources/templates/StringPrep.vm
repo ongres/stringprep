@@ -1,4 +1,4 @@
-package com.ongres.stringprep.stringprep;
+package com.ongres.stringprep;
 
 import java.io.IOException;
 import java.util.List;

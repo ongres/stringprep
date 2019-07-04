@@ -1,10 +1,11 @@
-package com.ongres.stringprep.stringprep;
+package com.ongres.stringprep;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import com.ongres.stringprep.StringPrep;
 import java.io.IOException;
 import java.util.Arrays;
 

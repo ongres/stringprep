@@ -19,7 +19,7 @@
     </dependency>
     <dependency>
       <groupId>com.ongres.stringprep</groupId>
-      <artifactId>core</artifactId>
+      <artifactId>stringprep</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
