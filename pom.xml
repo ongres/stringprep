@@ -14,8 +14,8 @@
 
   <modules>
     <module>core</module>
-    <module>sasl-prep</module>
-    <module>code-generator</module>
+    <module>saslprep</module>
+    <module>codegenerator</module>
   </modules>
 
     <licenses>

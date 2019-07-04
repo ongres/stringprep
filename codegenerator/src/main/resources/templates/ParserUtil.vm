@@ -1,0 +1,207 @@
+package com.ongres.stringprep.core;
+
+import java.io.IOException;
+import java.util.List;
+
+public class StringPrep {
+
+  public static boolean unassignedCodePoints(int codepoint) {
+    return 
+  #foreach( $unassignedCodePoints in $parser.getUnassignedCodePoints() ) #if( $unassignedCodePoints.get(0) == $unassignedCodePoints.get(1) ) codepoint == $unassignedCodePoints.get(0) #else codepoint >= $unassignedCodePoints.get(0) && codepoint <= $unassignedCodePoints.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean mapToNothing(int codepoint) {
+    return 
+  #foreach( $mapToNothing in $parser.getMapToNothing() )  codepoint == $mapToNothing #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static int[] mapUsedWithNfkc(int codepoint) {
+  #set ( $mapNfkc = $parser.getMapUsedWithNfkc() ) 
+  switch(codepoint) {
+#foreach( $mapUsedWithNfkc in $mapNfkc.keySet() ) 
+    case( $mapUsedWithNfkc ):
+#set ( $valuesNfkc = $mapNfkc.get($mapUsedWithNfkc) )
+    return new int[]{#foreach($value in $valuesNfkc) $value #if($foreach.hasNext),#end#end};
+#end
+    default:
+    return new int[] { codepoint};
+    }
+  }
+
+  public static int[] mapUsedWithNoNormalization(int codepoint) {
+  #set ( $mapNormal = $parser.getMapUsedWithNoNormalization() ) 
+  switch(codepoint) {
+#foreach( $mapUsedWithNoNormalization in $mapNormal.keySet() ) 
+    case( $mapUsedWithNoNormalization ):
+#set ( $valuesNormal = $mapNormal.get($mapUsedWithNoNormalization) )
+    return new int[]{#foreach($value in $valuesNormal) $value #if($foreach.hasNext),#end#end};
+#end
+    default:
+    return new int[] { codepoint};
+    }
+  }
+
+  public static boolean prohibitionAsciiSpace(int codepoint) {
+    return 
+  #foreach( $asciiSpace in $parser.getAsciiSpace() )  codepoint == $asciiSpace #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+    public static boolean prohibitionNonAsciiSpace(int codepoint) {
+    return 
+  #foreach( $nonAsciiSpace in $parser.getNonAsciiSpace() )  codepoint == $nonAsciiSpace #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean prohibitionAsciiControl(int codepoint) {
+    return 
+  #foreach( $asciiControl in $parser.getAsciiControl() ) #if( $asciiControl.get(0) == $asciiControl.get(1) ) codepoint == $asciiControl.get(0) #else codepoint >= $asciiControl.get(0) && codepoint <= $asciiControl.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean prohibitionNonAsciiControl(int codepoint) {
+    return 
+  #foreach( $nonAsciiControl in $parser.getNonAsciiControl() ) #if( $nonAsciiControl.get(0) == $nonAsciiControl.get(1) ) codepoint == $nonAsciiControl.get(0) #else codepoint >= $nonAsciiControl.get(0) && codepoint <= $nonAsciiControl.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean prohibitionPrivateUse(int codepoint) {
+    return 
+  #foreach( $privateUse in $parser.getPrivateUse() ) #if( $privateUse.get(0) == $privateUse.get(1) ) codepoint == $privateUse.get(0) #else codepoint >= $privateUse.get(0) && codepoint <= $privateUse.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean prohibitionNonCharacterCodePoints(int codepoint) {
+    return 
+  #foreach( $nonCharacterCodePoints in $parser.getNonCharacterCodePoints() ) #if( $nonCharacterCodePoints.get(0) == $nonCharacterCodePoints.get(1) ) codepoint == $nonCharacterCodePoints.get(0) #else codepoint >= $nonCharacterCodePoints.get(0) && codepoint <= $nonCharacterCodePoints.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean prohibitionSurrogateCodes(int codepoint) {
+    return 
+  #foreach( $surrogateCodes in $parser.getSurrogateCodes() ) #if( $surrogateCodes.get(0) == $surrogateCodes.get(1) ) codepoint == $surrogateCodes.get(0) #else codepoint >= $surrogateCodes.get(0) && codepoint <= $surrogateCodes.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean prohibitionInappropriatePlainText(int codepoint) {
+    return 
+  #foreach( $inappropriatePlainText in $parser.getInappropriatePlainText() ) #if( $inappropriatePlainText.get(0) == $inappropriatePlainText.get(1) ) codepoint == $inappropriatePlainText.get(0) #else codepoint >= $inappropriatePlainText.get(0) && codepoint <= $inappropriatePlainText.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean prohibitionInappropriateCanonicalRepresentation(int codepoint) {
+    return 
+  #foreach( $inappropriateCanonicalRepresentation in $parser.getInappropriateCanonicalRepresentation() ) #if( $inappropriateCanonicalRepresentation.get(0) == $inappropriateCanonicalRepresentation.get(1) ) codepoint == $inappropriateCanonicalRepresentation.get(0) #else codepoint >= $inappropriateCanonicalRepresentation.get(0) && codepoint <= $inappropriateCanonicalRepresentation.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean prohibitionChangeDisplayProperties(int codepoint) {
+    return 
+  #foreach( $changeDisplayProperties in $parser.getChangeDisplayProperties() ) #if( $changeDisplayProperties.get(0) == $changeDisplayProperties.get(1) ) codepoint == $changeDisplayProperties.get(0) #else codepoint >= $changeDisplayProperties.get(0) && codepoint <= $changeDisplayProperties.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+
+  public static boolean prohibitionTaggingCharacters(int codepoint) {
+    return 
+  #foreach( $taggingCharacters in $parser.getTaggingCharacters() ) #if( $taggingCharacters.get(0) == $taggingCharacters.get(1) ) codepoint == $taggingCharacters.get(0) #else codepoint >= $taggingCharacters.get(0) && codepoint <= $taggingCharacters.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+  
+  public static boolean bidirectionalPropertyRorAL(int codepoint) {
+    return 
+  #foreach( $propertyRorAL in $parser.getPropertyRorAL() ) #if( $propertyRorAL.get(0) == $propertyRorAL.get(1) ) codepoint == $propertyRorAL.get(0) #else codepoint >= $propertyRorAL.get(0) && codepoint <= $propertyRorAL.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+  
+  public static boolean bidirectionalPropertyL(int codepoint) {
+    return 
+  #foreach( $propertyL in $parser.getPropertyL() ) #if( $propertyL.get(0) == $propertyL.get(1) ) codepoint == $propertyL.get(0) #else codepoint >= $propertyL.get(0) && codepoint <= $propertyL.get(1) #end #if( $foreach.hasNext )||
+#end
+  #end
+  
+    ;
+  }
+  
+    public static boolean bidirectional(List<Integer> value) throws IllegalArgumentException, IOException {
+        boolean containPropertyRorAL = false;
+        boolean firstCharacterPropertyRorAL = false;
+        boolean lastCharacterPropertyRorAL = false;
+        boolean containPropertyL = false;
+        for (int i=0; i<value.size(); i++) {
+            int character = value.get(i);
+            //1) The characters in section 5.8 MUST be prohibited.
+            if (prohibitionChangeDisplayProperties(character)) {
+                throw new IllegalArgumentException("Prohibited codepoint " + character + " at position " + i 
+                        + " (unicode name: " + Character.getName(character) + ")");
+            }
+            if (bidirectionalPropertyRorAL(character)) {
+                containPropertyRorAL = true;
+                if (i == 0) {
+                    firstCharacterPropertyRorAL= true;
+                } else if (i == value.size()-1) {
+                    lastCharacterPropertyRorAL = true;
+                }
+            }
+            if (bidirectionalPropertyL(character)) {
+                containPropertyL = true;
+            }
+        }
+        //2) If a string contains any RandALCat character, 
+        //the string MUST NOT contain any LCat character.
+        if (containPropertyRorAL && containPropertyL) {
+            throw new IllegalArgumentException("Prohibited string with RandALCat and LCat");
+        }
+        //3) If a string contains any RandALCat character, a RandALCat
+        //character MUST be the first character of the string, and a
+        //RandALCat character MUST be the last character of the string.
+        if (containPropertyRorAL && !(firstCharacterPropertyRorAL && lastCharacterPropertyRorAL)) {
+            throw new IllegalArgumentException("The string contains any RandALCat character "
+                    + "but a RandALCat character is not the first and the last characters");
+        }
+        return true;
+    }
+}
