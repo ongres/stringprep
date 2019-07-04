@@ -30,13 +30,14 @@ public class GeneratorCode {
             "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader"); 
         
     velocityEngine.init();
-    Template template = velocityEngine.getTemplate("templates/ParserUtil.vm");
+    Template template = velocityEngine.getTemplate("templates/StringPrep.vm");
     VelocityContext ctx = new VelocityContext();
     Parser parser = new Parser();
     ctx.put("parser", parser);
-    String path = "../core/src/main/java/com/ongres/stringprep/core/StringPrep.java";
-    //Writer writer = new FileWriter(new File(args[0]));
-    Writer writer = new FileWriter(new File(path));
+    String path = args[0] + "/com/ongres/stringprep/core/StringPrep.java";
+    File file = new File(path);
+    file.getParentFile().mkdirs();
+    Writer writer = new FileWriter(file);
     template.merge(ctx, writer);
     writer.close();
   }
