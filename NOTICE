@@ -1,0 +1,9 @@
+This source code includes source code from other projects. Below the list
+of the project were the source code has been copied together with the
+path of the copied source files, their license, their notice (if any)
+and the modification that have been done.
+
+1. org.apache.velocity with the artifacts velocity and velocity-tools
+
+Module codegenerator needs these dependencies to generate the class StringPrep dynamically.
+The dependency org.apache.velocity is licensed under the Apache 2.0 license (see thirdparty/velocity-LICENSE).

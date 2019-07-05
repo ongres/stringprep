@@ -1,0 +1,19 @@
+image: openjdk:11-stretch
+
+stages:
+  - build
+
+cache:
+  paths:
+    - .m2/
+
+variables:
+  M2_HOME: ".m2/maven"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+  GITLAB_BASE_URL: "https://gitlab.com"
+
+build:
+  stage: build
+  script:
+    - bash mvnw clean verify -P safer
+
