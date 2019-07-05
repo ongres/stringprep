@@ -6,5 +6,4 @@ and the modification that have been done.
 1. org.apache.velocity with the artifacts velocity and velocity-tools
 
 Module codegenerator needs these dependencies to generate the class StringPrep dynamically.
-The dependency org.apache.velocity is licensed under the Apache 2.0 license 
-(http://velocity.apache.org/engine/devel/license.html).
+The dependency org.apache.velocity is licensed under the Apache 2.0 license (see thirdparty/velocity-LICENSE).
