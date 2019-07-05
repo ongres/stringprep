@@ -7,7 +7,7 @@
   <parent>
     <groupId>com.ongres.stringprep</groupId>
     <artifactId>parent</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>1.0</version>
   </parent>
   <artifactId>stringprep</artifactId>
   <properties>
@@ -22,7 +22,7 @@
     <dependency>
       <groupId>com.ongres.stringprep</groupId>
       <artifactId>codegenerator</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>${project.version}</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
