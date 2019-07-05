@@ -26,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,8 +45,9 @@ public class ParserUtil {
  */
   public List<Integer> parseToListInteger(
           String file, Pattern pattern) throws NumberFormatException, IOException {
-    InputStream inputStream = getClass().getResourceAsStream(file);
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    InputStream inputStream = ParserUtil.class.getResourceAsStream(file);
+    BufferedReader bufferedReader = new BufferedReader(
+            new InputStreamReader(inputStream, Charset.defaultCharset()));
     String line = null;
     List<Integer> codePoints = new ArrayList<>();
     while (null != (line = bufferedReader.readLine())) {
@@ -68,8 +70,9 @@ public class ParserUtil {
  */
   public Map<Integer, List<Integer>> parseToMapListInteger(
           String file, Pattern patternLine, Pattern mapTo) throws IOException {
-    InputStream inputStream = getClass().getResourceAsStream(file);
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    InputStream inputStream = ParserUtil.class.getResourceAsStream(file);
+    BufferedReader bufferedReader = new BufferedReader(
+            new InputStreamReader(inputStream, Charset.defaultCharset()));
     String line = null;
     Map<Integer, List<Integer>> mapWithNoNormalization = new HashMap<>();
     while (null != (line = bufferedReader.readLine())) {
@@ -109,8 +112,9 @@ public class ParserUtil {
  */
   public List<List<Integer>> parseToListArrayInt(
         String file, Pattern pattern) throws NumberFormatException, IOException {
-    InputStream inputStream = getClass().getResourceAsStream(file);
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    InputStream inputStream = ParserUtil.class.getResourceAsStream(file);
+    BufferedReader bufferedReader = new BufferedReader(
+            new InputStreamReader(inputStream, Charset.defaultCharset()));
     String line = null;
     List<List<Integer>> codePoints = new ArrayList<>();
     if (null != pattern) {

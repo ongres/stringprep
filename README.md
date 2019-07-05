@@ -33,9 +33,9 @@ Import maven dependency:
 
 ## Contributing
 
-Please submit [Merge Request](https://gitlab.com/ongresinc/stringprep) for code contributions.
-Make sure to compile with `mvn -Psafer` before submitting a PR.
+Please submit [Merge Requests](https://gitlab.com/ongresinc/stringprep) for code contributions.
+Make sure to compile with `mvn compile -P safer` before submitting a MR.
 
 Releases (on the master branch only) must be verified with:
 
-    mvn -Psafer -Pmaster-branch
+    mvn -P safer -Pmaster-branch

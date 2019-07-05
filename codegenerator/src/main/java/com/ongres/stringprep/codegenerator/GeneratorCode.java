@@ -23,9 +23,11 @@
 package com.ongres.stringprep.codegenerator;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
@@ -60,8 +62,10 @@ public class GeneratorCode {
     ctx.put("parser", parser);
     String path = args[0] + "/com/ongres/stringprep/StringPrep.java";
     File file = new File(path);
-    file.getParentFile().mkdirs();
-    Writer writer = new FileWriter(file);
+    if (!file.getParentFile().mkdirs()) {
+      throw new IOException("The directory couldn't be created");
+    }
+    Writer writer = new OutputStreamWriter(new FileOutputStream(file),StandardCharsets.UTF_8);
     template.merge(ctx, writer);
     writer.close();
   }
