@@ -95,6 +95,9 @@
             <goals>
               <goal>jar</goal>
             </goals>
+            <configuration>
+              <source>7</source>
+            </configuration>
           </execution>
         </executions>
       </plugin>
