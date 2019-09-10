@@ -19,12 +19,6 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.ongres.stringprep</groupId>
-      <artifactId>codegenerator</artifactId>
-      <version>${project.version}</version>
-      <scope>compile</scope>
-    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -32,6 +26,13 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.6.0</version>
+        <dependencies>
+          <dependency>
+            <groupId>com.ongres.stringprep</groupId>
+            <artifactId>codegenerator</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+        </dependencies>
         <executions>
           <execution>
             <id>generate-stringprep</id>
@@ -40,6 +41,7 @@
             </goals>
             <phase>generate-sources</phase>
             <configuration>
+              <includePluginDependencies>true</includePluginDependencies>
               <mainClass>com.ongres.stringprep.codegenerator.GeneratorCode</mainClass>
               <arguments>
                 <argument>${project.build.directory}/generated-sources/stringprep</argument>
