@@ -99,3 +99,7 @@ hs_err_pid*
 
 /target
 /*/target
+
+.flattened-pom.xml
+
+*pom.xml.versionsBackup
