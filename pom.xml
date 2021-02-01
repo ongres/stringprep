@@ -310,6 +310,8 @@
           <configuration>
             <tagNameFormat>@{project.version}</tagNameFormat>
             <autoVersionSubmodules>true</autoVersionSubmodules>
+            <scmReleaseCommitComment>Preparing @{releaseLabel} release</scmReleaseCommitComment>
+            <scmDevelopmentCommitComment>Preparing next development iteration</scmDevelopmentCommitComment>
             <releaseProfiles>release</releaseProfiles>
             <goals>deploy</goals>
           </configuration>
