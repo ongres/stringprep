@@ -9,9 +9,9 @@
     <version>2.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>saslprep</artifactId>
-  <name>SASLprep (RFC 4013)</name>
-  <description>SASLprep: Stringprep Profile for User Names and Passwords</description>
+  <artifactId>nameprep</artifactId>
+  <name>Nameprep (RFC 3491)</name>
+  <description>Nameprep: A Stringprep Profile for Internationalized Domain Names (IDN)</description>
 
   <properties>
     <checks.location>${project.parent.basedir}/checks</checks.location>

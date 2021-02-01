@@ -1,19 +1,52 @@
-image: openjdk:11-stretch
+image: docker.io/azul/zulu-openjdk:11
+
+variables:
+  # This will suppress any download for dependencies and plugins or upload messages which would clutter the console log.
+  # `showDateTime` will show the passed time in milliseconds. You need to specify `--batch-mode` to make this work.
+  MAVEN_OPTS: |
+    -Dhttps.protocols=TLSv1.2
+    -Dorg.slf4j.simpleLogger.showDateTime=true
+    -Djava.awt.headless=true
+  MAVEN_CLI_OPTS: |
+    --batch-mode
+    --errors
+    --fail-at-end
+    --show-version
+    --no-transfer-progress
+    -DinstallAtEnd=true
+    -DdeployAtEnd=true
+    -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository
+    -Dmaven.user.home=$CI_PROJECT_DIR/.m2
+
+# Cache downloaded dependencies and plugins between builds.
+# To keep cache across branches add 'key: "$CI_JOB_NAME"'
+cache:
+  paths:
+    - .m2
 
 stages:
   - build
+  - check
 
-cache:
-  paths:
-    - .m2/
-
-variables:
-  M2_HOME: ".m2/maven"
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
-  GITLAB_BASE_URL: "https://gitlab.com"
+codegen:
+  stage: build
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS verify -Pcodegen
 
 build:
   stage: build
   script:
-    - bash mvnw clean verify -P safer
+    - ./mvnw $MAVEN_CLI_OPTS verify -Pjacoco
+  coverage: '/Code coverage (\d{1,3}\.\d{2})%/'
+  after_script:
+    - awk -F"," '{ instructions += $4 + $5; covered += $5 } END { print covered, "/", instructions, " instructions covered"; printf "Code coverage %0.2f%%\n", 100*covered/instructions }' jacoco-report/target/site/jacoco-aggregate/jacoco.csv
+  artifacts:
+    reports:
+      junit:
+        - "*/target/surefire-reports/TEST-*.xml"
+
+check:
+  stage: check
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS verify -Pcheck
 

@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.ongres.stringprep</groupId>
   <artifactId>parent</artifactId>
-  <version>1.1</version>
+  <version>2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>StringPrep</name>
-  <description>Java Implementation of StringPrep</description>
+  <name>Stringprep Project</name>
+  <description>Stringprep Java implementation</description>
   <url>https://gitlab.com/ongresinc/stringprep</url>
   <inceptionYear>2019</inceptionYear>
-
-  <modules>
-    <module>stringprep</module>
-    <module>saslprep</module>
-    <module>codegenerator</module>
-  </modules>
-
+  <organization>
+    <name>OnGres, Inc</name>
+    <url>https://www.ongres.com</url>
+  </organization>
   <licenses>
     <license>
-      <name>The 2-Clause BSD License</name>
-      <url>https://opensource.org/licenses/BSD-2-Clause</url>
+      <name>BSD 2-Clause "Simplified" License</name>
+      <url>https://spdx.org/licenses/BSD-2-Clause</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -39,173 +35,502 @@
       <name>Matteo Melli</name>
       <email>matteom@ongres.com</email>
     </developer>
-     <developer>
+    <developer>
       <id>com.ongres.begona</id>
       <name>Begoña Pérez Martín</name>
       <email>begonapm@ongres.com</email>
     </developer>
+    <developer>
+      <id>com.ongres.jorsol</id>
+      <name>Jorge Solórzano</name>
+      <email>jorsol@ongres.com</email>
+    </developer>
   </developers>
 
-  <scm>
-    <connection>scm:git:https://gitlab.com/ongresinc/stirngprep.git</connection>
-    <developerConnection>scm:git:git@gitlab.com:ongresinc/stringprep.git</developerConnection>
-    <url>git@gitlab.com:ongresinc/stringprep.git</url>
-  </scm>
+  <modules>
+    <module>stringprep</module>
+    <module>saslprep</module>
+    <module>nameprep</module>
+  </modules>
 
+  <scm>
+    <connection>scm:git:git@gitlab.com:ongresinc/stringprep.git</connection>
+    <developerConnection>scm:git:git@gitlab.com:ongresinc/stringprep.git</developerConnection>
+    <url>https://gitlab.com/ongresinc/stringprep</url>
+  </scm>
   <issueManagement>
     <system>GitLab</system>
     <url>https://gitlab.com/ongresinc/stringprep/issues</url>
   </issueManagement>
 
   <distributionManagement>
-    <repository>
-      <id>ossrh-release</id>
-      <name>OSSRH Release repository</name>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-    </repository>
     <snapshotRepository>
-      <id>ossrh-snapshot</id>
-      <name>OSSRH Snapshot repository</name>
+      <id>ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
   </distributionManagement>
 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.build.outputTimestamp>2019-06-18T12:46:42Z</project.build.outputTimestamp>
+    <java.version>8</java.version>
+    <maven.compiler.release>${java.version}</maven.compiler.release>
+    <!-- Dependency versions -->
+    <junit5.version>5.7.0</junit5.version>
+    <!-- Plugins versions -->
+    <compiler-plugin.version>3.8.1</compiler-plugin.version>
+    <jar-plugin.version>3.2.0</jar-plugin.version>
+    <source-plugin.version>3.2.1</source-plugin.version>
+    <javadoc-plugin.version>3.2.0</javadoc-plugin.version>
+    <clean-plugin.version>3.1.0</clean-plugin.version>
+    <resources-plugin.version>3.2.0</resources-plugin.version>
+    <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+    <enforcer-plugin.version>3.0.0-M3</enforcer-plugin.version>
+    <release-plugin.version>3.0.0-M1</release-plugin.version>
+    <install-plugin.version>3.0.0-M1</install-plugin.version>
+    <gpg-plugin.version>1.6</gpg-plugin.version>
+    <jacoco-plugin.verson>0.8.6</jacoco-plugin.verson>
+    <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+    <flatten-maven-plugin.version>1.2.5</flatten-maven-plugin.version>
+    <!-- Checkstyle, SpotBugs and PMD properties -->
+    <checkstyle.version>8.40</checkstyle.version>
+    <checkstyle-plugin.version>3.1.2</checkstyle-plugin.version>
+    <spotbugs.version>4.2.0</spotbugs.version>
+    <spotbugs-plugin.version>4.2.0</spotbugs-plugin.version>
+    <findsecbugs.version>1.11.0</findsecbugs.version>
+    <pmd.version>6.31.0</pmd.version>
+    <pmd-plugin.version>3.14.0</pmd-plugin.version>
+    <checks.location>${project.basedir}/checks</checks.location>
+    <checkstyle.config.location>${checks.location}/checkstyle.xml</checkstyle.config.location>
+    <checkstyle.suppressions.location>${checks.location}/checkstyle-suppressions.xml</checkstyle.suppressions.location>
+    <checkstyle.header.file>${checks.location}/checkstyle-header.txt</checkstyle.header.file>
+    <spotbugs.excludeFilterFile>${checks.location}/spotbugs-exclude.xml</spotbugs.excludeFilterFile>
+    <pmd.ruleset>${checks.location}/pmd-ruleset.xml</pmd.ruleset>
+  </properties>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.12</version>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit5.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.7</java.version>
-  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${compiler-plugin.version}</version>
+          <configuration>
+            <showDeprecation>true</showDeprecation>
+            <showWarnings>true</showWarnings>
+            <parameters>true</parameters>
+            <useIncrementalCompilation>false</useIncrementalCompilation>
+            <compilerArgs>
+              <arg>-Xlint:all</arg>
+            </compilerArgs>
+          </configuration>
+          <executions>
+            <execution>
+              <id>compile-java9</id>
+              <phase>compile</phase>
+              <goals>
+                <goal>compile</goal>
+              </goals>
+              <configuration>
+                <release>9</release>
+                <compileSourceRoots>
+                  <compileSourceRoot>${project.basedir}/src/main/java9</compileSourceRoot>
+                </compileSourceRoots>
+                <multiReleaseOutput>true</multiReleaseOutput>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${jar-plugin.version}</version>
+          <configuration>
+            <skipIfEmpty>true</skipIfEmpty>
+            <archive>
+              <index>true</index>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              </manifest>
+              <manifestEntries>
+                <Multi-Release>true</Multi-Release>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${source-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${javadoc-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <release>${java.version}</release>
+            <doclint>none</doclint>
+            <quiet>true</quiet>
+            <includeDependencySources>true</includeDependencySources>
+            <notimestamp>true</notimestamp>
+            <tags>
+              <tag>
+                <name>apiNote</name>
+                <placement>a</placement>
+                <head>API Note:</head>
+              </tag>
+              <tag>
+                <name>implSpec</name>
+                <placement>a</placement>
+                <head>Implementation Requirements:</head>
+              </tag>
+              <tag>
+                <name>implNote</name>
+                <placement>a</placement>
+                <head>Implementation Note:</head>
+              </tag>
+            </tags>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${resources-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>add-license</id>
+              <phase>generate-resources</phase>
+              <goals>
+                <goal>copy-resources</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
+                <resources>
+                  <resource>
+                    <directory>..</directory>
+                    <include>LICENSE</include>
+                    <filtering>false</filtering>
+                  </resource>
+                </resources>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${surefire-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${install-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${clean-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${enforcer-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>enforce-versions</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireMavenVersion>
+                    <version>[3.6.3,)</version>
+                  </requireMavenVersion>
+                  <requireJavaVersion>
+                    <version>[11,)</version>
+                  </requireJavaVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.0.0-M1</version>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${release-plugin.version}</version>
+          <configuration>
+            <tagNameFormat>@{project.version}</tagNameFormat>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <releaseProfiles>release</releaseProfiles>
+            <goals>deploy</goals>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${jacoco-plugin.verson}</version>
+          <executions>
+            <!-- prepare the agent -->
+            <execution>
+              <id>prepare-agent</id>
+              <phase>process-test-classes</phase>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>flatten-maven-plugin</artifactId>
+          <version>${flatten-maven-plugin.version}</version>
+          <executions>
+            <!-- enable flattening -->
+            <execution>
+              <id>flatten</id>
+              <phase>process-resources</phase>
+              <goals>
+                <goal>flatten</goal>
+              </goals>
+            </execution>
+            <!-- ensure proper cleanup -->
+            <execution>
+              <id>flatten-clean</id>
+              <phase>clean</phase>
+              <goals>
+                <goal>clean</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <flattenMode>ossrh</flattenMode>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.6.1</version>
-        <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
-          <compilerArgument>-Xlint:all</compilerArgument>
-          <compilerArgument>-Xlint:-options</compilerArgument>
-          <showDeprecation>true</showDeprecation>
-          <showWarnings>true</showWarnings>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.0.1</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-            <configuration>
-              <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-              <source>7</source>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.4</version>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-            <configuration>
-              <source>7</source>
-            </configuration>
-          </execution>
-        </executions>
+        <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
 
   <profiles>
     <profile>
-      <id>safer</id> <!-- Slower but safer profile used to look for errors before pushing to SCM -->
+      <id>codegen</id>
+      <modules>
+        <module>codegen</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>jacoco</id>
+      <modules>
+        <module>jacoco-report</module>
+      </modules>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>findbugs-maven-plugin</artifactId>
-            <version>3.0.5</version>
-            <configuration>
-              <effort>Max</effort>
-              <threshold>Low</threshold>
-              <xmlOutput>true</xmlOutput>
-              <excludeFilterFile>${spotbugs.excluded.location}</excludeFilterFile>
-              <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
-            </configuration>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <!-- Slower but safer profile used to look for errors before pushing to SCM -->
+      <id>check</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>${checkstyle-plugin.version}</version>
             <executions>
               <execution>
-                <id>analyze-compile</id>
+                <id>style</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+                <configuration>
+                  <violationSeverity>error</violationSeverity>
+                  <failOnViolation>true</failOnViolation>
+                  <failsOnError>true</failsOnError>
+                  <consoleOutput>true</consoleOutput>
+                  <linkXRef>false</linkXRef>
+                  <includeResources>false</includeResources>
+                  <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                  <includeTestResources>false</includeTestResources>
+                </configuration>
+              </execution>
+            </executions>
+            <dependencies>
+              <dependency>
+                <groupId>com.puppycrawl.tools</groupId>
+                <artifactId>checkstyle</artifactId>
+                <version>${checkstyle.version}</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+          <plugin>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-maven-plugin</artifactId>
+            <version>${spotbugs-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>scan</id>
+                <phase>verify</phase>
                 <goals>
                   <goal>check</goal>
                 </goals>
               </execution>
             </executions>
+            <dependencies>
+              <dependency>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs</artifactId>
+                <version>${spotbugs.version}</version>
+              </dependency>
+            </dependencies>
+            <configuration>
+              <effort>Max</effort>
+              <threshold>Low</threshold>
+              <xmlOutput>true</xmlOutput>
+              <failOnError>true</failOnError>
+              <addSourceDirs>true</addSourceDirs>
+              <plugins>
+                <plugin>
+                  <groupId>com.h3xstream.findsecbugs</groupId>
+                  <artifactId>findsecbugs-plugin</artifactId>
+                  <version>${findsecbugs.version}</version>
+                </plugin>
+              </plugins>
+            </configuration>
           </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>master-branch</id>
-      <build>
-        <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-enforcer-plugin</artifactId>
-            <version>1.4.1</version>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <version>${pmd-plugin.version}</version>
             <executions>
               <execution>
-                <id>enforce-release</id>
+                <id>pmd-scan</id>
+                <phase>verify</phase>
                 <goals>
-                  <goal>enforce</goal>
+                  <goal>check</goal>
                 </goals>
-                <configuration>
-                  <rules>
-                    <requireReleaseVersion>
-                      <message>Artifacts on master branch must not be
-                        snapshot!</message>
-                    </requireReleaseVersion>
-                  </rules>
-                </configuration>
               </execution>
             </executions>
+            <dependencies>
+              <dependency>
+                <groupId>net.sourceforge.pmd</groupId>
+                <artifactId>pmd-core</artifactId>
+                <version>${pmd.version}</version>
+              </dependency>
+              <dependency>
+                <groupId>net.sourceforge.pmd</groupId>
+                <artifactId>pmd-java</artifactId>
+                <version>${pmd.version}</version>
+              </dependency>
+            </dependencies>
+            <configuration>
+              <failurePriority>5</failurePriority>
+              <failOnViolation>true</failOnViolation>
+              <printFailingErrors>true</printFailingErrors>
+              <linkXRef>false</linkXRef>
+              <rulesets>
+                <ruleset>${pmd.ruleset}</ruleset>
+              </rulesets>
+            </configuration>
           </plugin>
         </plugins>
       </build>
     </profile>
+
     <profile>
       <id>release</id>
       <build>
         <plugins>
           <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>flatten-maven-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+          </plugin>
+          <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>nexus-staging-maven-plugin</artifactId>
-	    <version>1.6.8</version>
+            <version>1.6.8</version>
             <extensions>true</extensions>
+            <executions>
+              <execution>
+                <id>default-deploy</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>deploy</goal>
+                </goals>
+              </execution>
+            </executions>
             <configuration>
               <serverId>ossrh</serverId>
               <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-              <autoReleaseAfterClose>true</autoReleaseAfterClose>
+              <autoReleaseAfterClose>false</autoReleaseAfterClose>
             </configuration>
           </plugin>
           <plugin>
@@ -219,9 +544,6 @@
                 <goals>
                   <goal>sign</goal>
                 </goals>
-                <configuration>
-                  <keyname>software@ongres.com</keyname>
-                </configuration>
               </execution>
             </executions>
           </plugin>

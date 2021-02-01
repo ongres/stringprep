@@ -1,0 +1,323 @@
+/*
+ * Copyright (C) 2019 OnGres, Inc.
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
+
+package com.ongres.stringprep;
+
+// AUTO-GENERATED FILE - DO NOT EDIT!
+
+/**
+ * Expose tables parsed from the StringPrep RFC-3454.
+ */
+public final class Tables {
+
+  private Tables() {
+    throw new AssertionError();
+  }
+
+  /**
+   * Unassigned code points in Unicode 3.2.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is
+   *         "Unassigned code points in Unicode 3.2".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-A.1">RFC 3454, Appendix A.1</a>
+   */
+  public static boolean unassignedCodePoints(int codePoint) {
+    return #foreach( $unassignedCodePoints in $parser.getUnassignedCodePoints() )
+#if( $unassignedCodePoints.get(0) == $unassignedCodePoints.get(1) )
+codePoint == $unassignedCodePoints.get(0)
+#else
+codePoint >= $unassignedCodePoints.get(0) && codePoint <= $unassignedCodePoints.get(1)
+#end
+#if($foreach.hasNext)        || #end#end
+      ;
+  }
+
+  /**
+   * Commonly mapped to nothing.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is "Commonly mapped to nothing".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-B.1">RFC 3454, Appendix B.1</a>
+   */
+  public static boolean mapToNothing(int codePoint) {
+    return #foreach( $mapToNothing in $parser.getMapToNothing() )
+codePoint == $mapToNothing
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Mapping for case-folding used with NFKC.
+   *
+   * @param codePoint the character (Unicode code point) to be mapped.
+   * @return  Case-folding used with NFKC for the given {@code codePoint}.
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-B.2">RFC 3454, Appendix B.2</a>
+   */
+  public static int[] mapWithNfkc(int codePoint) {
+#set ($mapNfkc = $parser.getMapUsedWithNfkc()) 
+    switch (codePoint) {
+#foreach($mapUsedWithNfkc in $mapNfkc.keySet()) 
+      case $mapUsedWithNfkc:
+#set ($valuesNfkc = $mapNfkc.get($mapUsedWithNfkc) )
+        return new int[] {#foreach($value in $valuesNfkc)$value#if($foreach.hasNext), #end#end};
+#end
+      default:
+        return new int[] {codePoint};
+    }
+  }
+
+  /**
+   * Mapping for case-folding used with no normalization.
+   *
+   * @param codePoint the character (Unicode code point) to be mapped.
+   * @return  Case-folding used with no normalization for the given {@code codePoint}.
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-B.3">RFC 3454, Appendix B.3</a>
+   */
+  public static int[] mapWithoutNormalization(int codePoint) {
+#set ( $mapNormal = $parser.getMapUsedWithNoNormalization() ) 
+    switch (codePoint) {
+#foreach($mapUsedWithNoNormalization in $mapNormal.keySet() ) 
+      case $mapUsedWithNoNormalization:
+#set ($valuesNormal = $mapNormal.get($mapUsedWithNoNormalization))
+        return new int[] {#foreach($value in $valuesNormal)$value#if($foreach.hasNext), #end#end};
+#end
+      default:
+        return new int[] {codePoint};
+    }
+  }
+
+  /**
+   * ASCII space characters.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is "ASCII space characters".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.1.1">RFC 3454, Appendix C.1.1</a>
+   */
+  public static boolean prohibitionAsciiSpace(int codePoint) {
+    return #foreach( $asciiSpace in $parser.getAsciiSpace() )
+codePoint == $asciiSpace
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Non-ASCII space characters.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is "Non-ASCII space characters".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.1.2">RFC 3454, Appendix C.1.2</a>
+   */
+  public static boolean prohibitionNonAsciiSpace(int codePoint) {
+    return #foreach( $nonAsciiSpace in $parser.getNonAsciiSpace() )
+codePoint == $nonAsciiSpace
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * ASCII control characters.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is "ASCII control characters".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.2.1">RFC 3454, Appendix C.2.1</a>
+   */
+  public static boolean prohibitionAsciiControl(int codePoint) {
+    return #foreach( $asciiControl in $parser.getAsciiControl() )
+#if( $asciiControl.get(0) == $asciiControl.get(1) )
+codePoint == $asciiControl.get(0)
+#else
+codePoint >= $asciiControl.get(0) && codePoint <= $asciiControl.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Non-ASCII control characters.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is "Non-ASCII control characters".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.2.2">RFC 3454, Appendix C.2.2</a>
+   */
+  public static boolean prohibitionNonAsciiControl(int codePoint) {
+    return #foreach( $nonAsciiControl in $parser.getNonAsciiControl() )
+#if( $nonAsciiControl.get(0) == $nonAsciiControl.get(1) )
+codePoint == $nonAsciiControl.get(0)
+#else
+codePoint >= $nonAsciiControl.get(0) && codePoint <= $nonAsciiControl.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Private use.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is "Private use".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.3">RFC 3454, Appendix C.3</a>
+   */
+  public static boolean prohibitionPrivateUse(int codePoint) {
+    return #foreach( $privateUse in $parser.getPrivateUse() )
+#if( $privateUse.get(0) == $privateUse.get(1) )
+codePoint == $privateUse.get(0)
+#else
+codePoint >= $privateUse.get(0) && codePoint <= $privateUse.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Non-character code points.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is "Non-character code points".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.4">RFC 3454, Appendix C.4</a>
+   */
+  public static boolean prohibitionNonCharacterCodePoints(int codePoint) {
+    return #foreach( $nonCharacterCodePoints in $parser.getNonCharacterCodePoints() )
+#if( $nonCharacterCodePoints.get(0) == $nonCharacterCodePoints.get(1) )
+codePoint == $nonCharacterCodePoints.get(0)
+#else
+codePoint >= $nonCharacterCodePoints.get(0) && codePoint <= $nonCharacterCodePoints.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Surrogate codes.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is "Surrogate codes".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.5">RFC 3454, Appendix C.5</a>
+   */
+  public static boolean prohibitionSurrogateCodes(int codePoint) {
+    return #foreach( $surrogateCodes in $parser.getSurrogateCodes() )
+#if( $surrogateCodes.get(0) == $surrogateCodes.get(1) )
+codePoint == $surrogateCodes.get(0)
+#else
+codePoint >= $surrogateCodes.get(0) && codePoint <= $surrogateCodes.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Inappropriate for plain text.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is
+   *         "Inappropriate for plain text".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.6">RFC 3454, Appendix C.6</a>
+   */
+  public static boolean prohibitionInappropriatePlainText(int codePoint) {
+    return #foreach( $inappropriatePlainText in $parser.getInappropriatePlainText() )
+#if( $inappropriatePlainText.get(0) == $inappropriatePlainText.get(1) )
+codePoint == $inappropriatePlainText.get(0)
+#else
+codePoint >= $inappropriatePlainText.get(0) && codePoint <= $inappropriatePlainText.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Inappropriate for canonical representation.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is
+   *         "Inappropriate for canonical representation".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.7">RFC 3454, Appendix C.7</a>
+   */
+  public static boolean prohibitionInappropriateCanonicalRepresentation(int codePoint) {
+    return #foreach( $inappropriateCanonicalRepresentation in $parser.getInappropriateCanonicalRepresentation() )
+#if( $inappropriateCanonicalRepresentation.get(0) == $inappropriateCanonicalRepresentation.get(1) )
+codePoint == $inappropriateCanonicalRepresentation.get(0)
+#else
+codePoint >= $inappropriateCanonicalRepresentation.get(0) && codePoint <= $inappropriateCanonicalRepresentation.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Change display properties or are deprecated.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is
+   *         "Change display properties or are deprecated".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.8">RFC 3454, Appendix C.8</a>
+   */
+  public static boolean prohibitionChangeDisplayProperties(int codePoint) {
+    return #foreach( $changeDisplayProperties in $parser.getChangeDisplayProperties() )
+#if( $changeDisplayProperties.get(0) == $changeDisplayProperties.get(1) )
+codePoint == $changeDisplayProperties.get(0)
+#else
+codePoint >= $changeDisplayProperties.get(0) && codePoint <= $changeDisplayProperties.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Tagging characters.
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is "Tagging characters".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.9">RFC 3454, Appendix C.9</a>
+   */
+  public static boolean prohibitionTaggingCharacters(int codePoint) {
+    return #foreach( $taggingCharacters in $parser.getTaggingCharacters() )
+#if( $taggingCharacters.get(0) == $taggingCharacters.get(1) )
+codePoint == $taggingCharacters.get(0)
+#else
+codePoint >= $taggingCharacters.get(0) && codePoint <= $taggingCharacters.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Characters with bidirectional property "R" or "AL".
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is
+   *         "Characters with bidirectional property R or AL".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-D.1">RFC 3454, Appendix D.1</a>
+   */
+  public static boolean bidirectionalPropertyRorAL(int codePoint) {
+    return #foreach( $propertyRorAL in $parser.getPropertyRorAL() )
+#if( $propertyRorAL.get(0) == $propertyRorAL.get(1) )
+codePoint == $propertyRorAL.get(0)
+#else
+codePoint >= $propertyRorAL.get(0) && codePoint <= $propertyRorAL.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+  /**
+   * Characters with bidirectional property "L".
+   *
+   * @param codePoint the character (Unicode code point) to be tested.
+   * @return {@code true} if the given {@code codePoint} is
+   *         "Characters with bidirectional property L".
+   * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-D.2">RFC 3454, Appendix D.2</a>
+   */
+  public static boolean bidirectionalPropertyL(int codePoint) {
+    return #foreach( $propertyL in $parser.getPropertyL() )
+#if( $propertyL.get(0) == $propertyL.get(1) )
+codePoint == $propertyL.get(0)
+#else
+codePoint >= $propertyL.get(0) && codePoint <= $propertyL.get(1)
+#end
+#if( $foreach.hasNext )        || #end#end
+      ;
+  }
+
+}
