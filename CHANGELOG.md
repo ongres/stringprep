@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+### :bug: Bug Fixes
+- `Stringprep.getProvider` was not working in the module path.
+
 ## [2.0] - 2021-02-01
 ### :boom: Breaking changes
 - Full rewrite of the `stringprep` implementation, this release is compatible with Java 8+.
@@ -15,4 +19,5 @@ All notable changes to this project will be documented in this file.
   - `com.ongres.saslprep`
   - `com.ongres.nodeprep`
 
+[Unreleased]: https://gitlab.com/ongresinc/stringprep/-/compare/2.0...main
 [2.0]: https://gitlab.com/ongresinc/stringprep/-/compare/1.1...2.0
