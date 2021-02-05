@@ -15,6 +15,7 @@
 
   <properties>
     <checks.location>${project.parent.basedir}/checks</checks.location>
+    <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../${aggregate.report.xml}</sonar.coverage.jacoco.xmlReportPaths>
   </properties>
 
   <profiles>

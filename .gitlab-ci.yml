@@ -7,6 +7,7 @@ variables:
     -Dhttps.protocols=TLSv1.2
     -Dorg.slf4j.simpleLogger.showDateTime=true
     -Djava.awt.headless=true
+    -Xss4m
   MAVEN_CLI_OPTS: |
     --batch-mode
     --errors
@@ -26,27 +27,41 @@ cache:
 
 stages:
   - build
+  - test
   - check
 
 codegen:
   stage: build
   script:
-    - ./mvnw $MAVEN_CLI_OPTS verify -Pcodegen
+    - ./mvnw $MAVEN_CLI_OPTS verify -Pcodegen -DskipTests
 
-build:
-  stage: build
+tests:
+  stage: test
   script:
-    - ./mvnw $MAVEN_CLI_OPTS verify -Pjacoco
-  coverage: '/Code coverage (\d{1,3}\.\d{2})%/'
-  after_script:
-    - awk -F"," '{ instructions += $4 + $5; covered += $5 } END { print covered, "/", instructions, " instructions covered"; printf "Code coverage %0.2f%%\n", 100*covered/instructions }' jacoco-report/target/site/jacoco-aggregate/jacoco.csv
+    - ./mvnw $MAVEN_CLI_OPTS verify
   artifacts:
     reports:
       junit:
         - "*/target/surefire-reports/TEST-*.xml"
 
-check:
+sonarcloud-check:
+  stage: check
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  variables:
+    GIT_STRATEGY: clone
+    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS verify sonar:sonar -Pcoverage
+  only:
+    - merge_requests
+    - develop
+    - main
+
+static-checks:
   stage: check
   script:
     - ./mvnw $MAVEN_CLI_OPTS verify -Pcheck
-

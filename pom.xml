@@ -54,7 +54,8 @@
     <module>nameprep</module>
   </modules>
 
-  <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
+  <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false"
+    child.scm.url.inherit.append.path="false">
     <connection>scm:git:git@gitlab.com:ongresinc/stringprep.git</connection>
     <developerConnection>scm:git:git@gitlab.com:ongresinc/stringprep.git</developerConnection>
     <url>https://gitlab.com/ongresinc/stringprep</url>
@@ -82,7 +83,7 @@
     <java.version>8</java.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
     <!-- Dependency versions -->
-    <junit5.version>5.7.0</junit5.version>
+    <junit5.version>5.7.1</junit5.version>
     <!-- Plugins versions -->
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <jar-plugin.version>3.2.0</jar-plugin.version>
@@ -106,6 +107,7 @@
     <findsecbugs.version>1.11.0</findsecbugs.version>
     <pmd.version>6.31.0</pmd.version>
     <pmd-plugin.version>3.14.0</pmd-plugin.version>
+    <sonar-plugin.version>3.8.0.2131</sonar-plugin.version>
     <checks.location>${project.basedir}/checks</checks.location>
     <checkstyle.config.location>${checks.location}/checkstyle.xml</checkstyle.config.location>
     <checkstyle.suppressions.location>${checks.location}/checkstyle-suppressions.xml</checkstyle.suppressions.location>
@@ -333,6 +335,11 @@
           </executions>
         </plugin>
         <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>${sonar-plugin.version}</version>
+        </plugin>
+        <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>flatten-maven-plugin</artifactId>
           <version>${flatten-maven-plugin.version}</version>
@@ -375,8 +382,14 @@
         <module>codegen</module>
       </modules>
     </profile>
+
     <profile>
-      <id>jacoco</id>
+      <id>coverage</id>
+      <properties>
+        <sonar.organization>ongresinc</sonar.organization>
+        <aggregate.report.xml>jacoco-report/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.xml>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/${aggregate.report.xml}</sonar.coverage.jacoco.xmlReportPaths>
+      </properties>
       <modules>
         <module>jacoco-report</module>
       </modules>
