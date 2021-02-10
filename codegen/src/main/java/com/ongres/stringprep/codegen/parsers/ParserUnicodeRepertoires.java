@@ -14,6 +14,6 @@ class ParserUnicodeRepertoires {
   }
 
   public static List<List<String>> parseUnassignedCodePoints() {
-    return new ParserUtil().parseToListArrayInt("/rfcs/a1");
+    return new ParserUtil().parseToListArrayInt("/rfcs/a1.txt");
   }
 }
