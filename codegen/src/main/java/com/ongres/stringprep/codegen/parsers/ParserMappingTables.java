@@ -19,14 +19,14 @@ class ParserMappingTables {
   }
 
   public static List<String> parseMapToNothing()  {
-    return new ParserUtil().parseToListInteger("/rfcs/b1", LINE_PATTERN);
+    return new ParserUtil().parseToListInteger("/rfcs/b1.txt", LINE_PATTERN);
   }
 
   public static Map<String, List<String>> parseMapUsedWithNfkc()  {
-    return new ParserUtil().parseToMapListInteger("/rfcs/b2", LINE_PATTERN, CODE_POINTS_PATTERN);
+    return new ParserUtil().parseToMapListInteger("/rfcs/b2.txt", LINE_PATTERN, CODE_POINTS_PATTERN);
   }
 
   public static Map<String, List<String>> parseMapUsedWithNoNormalization()  {
-    return new ParserUtil().parseToMapListInteger("/rfcs/b3", LINE_PATTERN, CODE_POINTS_PATTERN);
+    return new ParserUtil().parseToMapListInteger("/rfcs/b3.txt", LINE_PATTERN, CODE_POINTS_PATTERN);
   }
 }

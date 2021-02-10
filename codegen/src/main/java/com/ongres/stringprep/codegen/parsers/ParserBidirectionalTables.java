@@ -14,10 +14,10 @@ class ParserBidirectionalTables {
   }
 
   public static List<List<String>> parseBidirectionalPropertyRorAL() {
-    return new ParserUtil().parseToListArrayInt("/rfcs/d1");
+    return new ParserUtil().parseToListArrayInt("/rfcs/d1.txt");
   }
 
   public static List<List<String>> parseBidirectionalPropertyL() {
-    return new ParserUtil().parseToListArrayInt("/rfcs/d2");
+    return new ParserUtil().parseToListArrayInt("/rfcs/d2.txt");
   }
 }
