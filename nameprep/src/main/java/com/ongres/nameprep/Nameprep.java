@@ -21,12 +21,13 @@ import com.ongres.stringprep.Profile;
  */
 public final class Nameprep implements Profile {
 
+  private final EnumSet<Option> nameprepProfile;
+
   /**
-   * {@inheritDoc}
+   * Construct an instance of the {@code Nameprep} profile.
    */
-  @Override
-  public Set<Option> profile() {
-    return EnumSet.of(
+  public Nameprep() {
+    this.nameprepProfile = EnumSet.of(
         Option.MAP_TO_NOTHING, // [StringPrep, B.1]
         Option.CASE_FOLD_NFKC, // [StringPrep, B.2]
         Option.NORMALIZE_KC, // Normalization form KC
@@ -46,7 +47,15 @@ public final class Nameprep implements Profile {
    * {@inheritDoc}
    */
   @Override
-  public String prepareQuery(String string) {
+  public Set<Option> profile() {
+    return nameprepProfile.clone();
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String prepareQuery(CharSequence string) {
     return Profile.super.prepareQuery(string);
   }
 
@@ -54,7 +63,7 @@ public final class Nameprep implements Profile {
    * {@inheritDoc}
    */
   @Override
-  public String prepareStored(String string) {
+  public String prepareStored(CharSequence string) {
     return Profile.super.prepareStored(string);
   }
 

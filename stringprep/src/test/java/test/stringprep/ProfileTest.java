@@ -13,11 +13,18 @@ import java.util.Set;
 
 import com.ongres.stringprep.Option;
 import com.ongres.stringprep.Profile;
+import com.ongres.stringprep.Stringprep;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class ProfileTest {
+
+  @Test
+  void nullProvider() {
+    assertThrows(NullPointerException.class, () -> Stringprep.getProvider(null));
+    assertThrows(IllegalArgumentException.class, () -> Stringprep.getProvider(""));
+  }
 
   @Test
   void testAllOptions() {
@@ -74,6 +81,14 @@ class ProfileTest {
     IllegalArgumentException queryIllegal =
         assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example1));
     assertEquals("Prohibited code point \"0x0062\"", queryIllegal.getMessage());
+  }
+
+  @Test
+  void testEmptyAdditionalMappingOptions() {
+    Profile profile = () -> EnumSet.of(Option.ADDITIONAL_MAPPING);
+    String example = "ab";
+    assertEquals(example, profile.prepareStored(example));
+    assertEquals(example, profile.prepareQuery(example));
   }
 
   @Test

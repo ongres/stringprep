@@ -23,12 +23,13 @@ import com.ongres.stringprep.Tables;
  */
 public final class SASLprep implements Profile {
 
+  private final EnumSet<Option> saslprepProfile;
+
   /**
-   * {@inheritDoc}
+   * Construct an instance of the {@code SASLprep} profile.
    */
-  @Override
-  public Set<Option> profile() {
-    return EnumSet.of(
+  public SASLprep() {
+    this.saslprepProfile = EnumSet.of(
         Option.ADDITIONAL_MAPPING, // [StringPrep, C.1.2]
         Option.MAP_TO_NOTHING, // [StringPrep, B.1]
         Option.NORMALIZE_KC, // Normalization form KC
@@ -49,7 +50,15 @@ public final class SASLprep implements Profile {
    * {@inheritDoc}
    */
   @Override
-  public String prepareQuery(String string) {
+  public Set<Option> profile() {
+    return saslprepProfile.clone();
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String prepareQuery(CharSequence string) {
     return Profile.super.prepareQuery(string);
   }
 
@@ -57,7 +66,7 @@ public final class SASLprep implements Profile {
    * {@inheritDoc}
    */
   @Override
-  public String prepareStored(String string) {
+  public String prepareStored(CharSequence string) {
     return Profile.super.prepareStored(string);
   }
 
