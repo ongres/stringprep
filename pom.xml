@@ -99,6 +99,7 @@
     <jacoco-plugin.verson>0.8.6</jacoco-plugin.verson>
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
     <flatten-maven-plugin.version>1.2.5</flatten-maven-plugin.version>
+    <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
     <checkstyle.version>8.40</checkstyle.version>
     <checkstyle-plugin.version>3.1.2</checkstyle-plugin.version>
@@ -408,6 +409,22 @@
       <id>check</id>
       <build>
         <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jdeps-plugin</artifactId>
+            <version>${jdeps-plugin.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>jdkinternals</goal>
+                  <goal>test-jdkinternals</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <multiRelease>9</multiRelease>
+            </configuration>
+          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
