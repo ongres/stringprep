@@ -65,3 +65,6 @@ static-checks:
   stage: check
   script:
     - ./mvnw $MAVEN_CLI_OPTS verify -Pcheck
+
+include:
+  - template: Dependency-Scanning.gitlab-ci.yml
