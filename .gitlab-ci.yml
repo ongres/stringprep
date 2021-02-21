@@ -10,6 +10,7 @@ variables:
     -Xss4m
   MAVEN_CLI_OPTS: |
     --batch-mode
+    --strict-checksums
     --errors
     --fail-at-end
     --show-version
