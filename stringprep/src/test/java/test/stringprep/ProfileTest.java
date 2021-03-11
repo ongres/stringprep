@@ -9,18 +9,17 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.stream.IntStream;
+
 import com.ongres.stringprep.Option;
 import com.ongres.stringprep.Profile;
 import com.ongres.stringprep.Stringprep;
 import com.ongres.stringprep.Tables;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.stream.IntStream;
 
 class ProfileTest {
 

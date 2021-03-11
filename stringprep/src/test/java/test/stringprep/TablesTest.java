@@ -8,13 +8,12 @@ package test.stringprep;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.ongres.stringprep.Tables;
+import java.util.stream.IntStream;
 
+import com.ongres.stringprep.Tables;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.stream.IntStream;
 
 class TablesTest {
 
