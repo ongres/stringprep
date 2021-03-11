@@ -5,18 +5,22 @@
 
 package test.stringprep;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.util.EnumSet;
-import java.util.Set;
 
 import com.ongres.stringprep.Option;
 import com.ongres.stringprep.Profile;
 import com.ongres.stringprep.Stringprep;
+import com.ongres.stringprep.Tables;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.stream.IntStream;
 
 class ProfileTest {
 
@@ -127,6 +131,22 @@ class ProfileTest {
     IllegalArgumentException queryIllegal =
         assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example));
     assertEquals("Prohibited non-ASCII space \"" + characterHex + "\"", queryIllegal.getMessage());
+  }
+
+  @Test
+  void testUndefinedPreparation() {
+    Profile profile = () -> EnumSet.noneOf(Option.class);
+    IntStream unassigned = IntStream.rangeClosed(Character.MIN_CODE_POINT, Character.MAX_CODE_POINT)
+        .filter(Tables::unassignedCodePoints);
+
+    for (int cp : unassigned.toArray()) {
+      String chars = new String(Character.toChars(cp));
+      String example = "abc" + chars + "def";
+      assertDoesNotThrow(() -> profile.prepareQuery(example),
+          () -> "Character: " + String.valueOf(Character.toChars(cp)) + ", CodePoint: " + cp);
+      assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
+          () -> "Character: " + String.valueOf(Character.toChars(cp)) + ", CodePoint: " + cp);
+    }
   }
 
 }

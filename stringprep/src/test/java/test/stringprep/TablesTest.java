@@ -9,9 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.ongres.stringprep.Tables;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.IntStream;
 
 class TablesTest {
 
@@ -86,15 +89,6 @@ class TablesTest {
   }
 
   @Test
-  void testPrivateUse() {
-    // PrivateUse
-    assertTrue(Tables.prohibitionPrivateUse(0x100000));
-    assertTrue(Tables.prohibitionPrivateUse(0x10000A));
-    assertTrue(Tables.prohibitionPrivateUse(0x10FFFD));
-    assertFalse(Tables.prohibitionPrivateUse(0xFFFF));
-  }
-
-  @Test
   void testNonCharacterCodePoints() {
     // NonCharacterCodePoints
     assertTrue(Tables.prohibitionNonCharacterCodePoints(0x10FFFE));
@@ -150,11 +144,25 @@ class TablesTest {
   }
 
   @Test
-  void testUnicodeRepertoires() {
-    assertTrue(Tables.unassignedCodePoints(0x1D49D));
-    assertTrue(Tables.unassignedCodePoints(0xE0080));
-    assertTrue(Tables.unassignedCodePoints(0xE2FFD));
-    assertTrue(Tables.unassignedCodePoints(0xEFFFD));
-    assertFalse(Tables.unassignedCodePoints(0xE0001));
+  void testProhibitionSurrogate() {
+    IntStream surrogate = IntStream.rangeClosed(Character.MIN_CODE_POINT, Character.MAX_CODE_POINT)
+        .filter(u -> Character.getType(u) == Character.SURROGATE);
+
+    for (int cp : surrogate.toArray()) {
+      assertTrue(Tables.prohibitionSurrogateCodes(cp),
+          () -> "Character: " + String.valueOf(Character.toChars(cp)) + ", CodePoint: " + cp);
+    }
   }
+
+  @Test
+  void testProhibitionPrivateUse() {
+    IntStream privateUse = IntStream.rangeClosed(Character.MIN_CODE_POINT, Character.MAX_CODE_POINT)
+        .filter(u -> Character.getType(u) == Character.PRIVATE_USE);
+
+    for (int cp : privateUse.toArray()) {
+      assertTrue(Tables.prohibitionPrivateUse(cp),
+          () -> "Character: " + String.valueOf(Character.toChars(cp)) + ", CodePoint: " + cp);
+    }
+  }
+
 }
