@@ -96,7 +96,7 @@
     <gpg-plugin.version>1.6</gpg-plugin.version>
     <jacoco-plugin.verson>0.8.6</jacoco-plugin.verson>
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-    <flatten-maven-plugin.version>1.2.5</flatten-maven-plugin.version>
+    <flatten-maven-plugin.version>1.2.7</flatten-maven-plugin.version>
     <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
     <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
     <reproducible-build-maven-plugin.version>0.13</reproducible-build-maven-plugin.version>
