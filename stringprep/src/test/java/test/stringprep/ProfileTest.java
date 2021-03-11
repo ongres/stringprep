@@ -142,10 +142,104 @@ class ProfileTest {
       String chars = new String(Character.toChars(cp));
       String example = "abc" + chars + "def";
       assertDoesNotThrow(() -> profile.prepareQuery(example),
-          () -> "Character: " + String.valueOf(Character.toChars(cp)) + ", CodePoint: " + cp);
+          () -> "Character: " + chars + ", CodePoint: " + cp);
       assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
-          () -> "Character: " + String.valueOf(Character.toChars(cp)) + ", CodePoint: " + cp);
+          () -> "Character: " + chars + ", CodePoint: " + cp);
     }
+  }
+
+  @Test
+  void testProhibitionSurrogate() {
+    Profile profile = () -> EnumSet.of(Option.FORBID_SURROGATE);
+    IntStream unassigned = IntStream.rangeClosed(Character.MIN_CODE_POINT, Character.MAX_CODE_POINT)
+        .filter(u -> Character.getType(u) == Character.SURROGATE);
+
+    for (int cp : unassigned.toArray()) {
+      String chars = new String(Character.toChars(cp));
+      String example = "abc" + chars + "def";
+      assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
+          () -> "Character: " + chars + ", CodePoint: " + cp);
+      assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
+          () -> "Character: " + chars + ", CodePoint: " + cp);
+    }
+  }
+
+  @Test
+  void testProhibitionPrivateUse() {
+    Profile profile = () -> EnumSet.of(Option.FORBID_PRIVATE_USE);
+    IntStream unassigned = IntStream.rangeClosed(Character.MIN_CODE_POINT, Character.MAX_CODE_POINT)
+        .filter(u -> Character.getType(u) == Character.PRIVATE_USE);
+
+    for (int cp : unassigned.toArray()) {
+      String chars = new String(Character.toChars(cp));
+      String example = "abc" + chars + "def";
+      assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
+          () -> "Character: " + chars + ", CodePoint: " + cp);
+      assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
+          () -> "Character: " + chars + ", CodePoint: " + cp);
+    }
+  }
+
+  @Test
+  void testProhibitionControlCharacter() {
+    Profile profile =
+        () -> EnumSet.of(Option.FORBID_ASCII_CONTROL, Option.FORBID_NON_ASCII_CONTROL);
+    IntStream unassigned = IntStream.rangeClosed(Character.MIN_CODE_POINT, Character.MAX_CODE_POINT)
+        .filter(u -> Character.getType(u) == Character.CONTROL);
+
+    for (int cp : unassigned.toArray()) {
+      String chars = new String(Character.toChars(cp));
+      String example = "abc" + chars + "def";
+      assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
+          () -> "Character: " + chars + ", CodePoint: " + cp);
+      assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
+          () -> "Character: " + chars + ", CodePoint: " + cp);
+    }
+  }
+
+  @Test
+  void testProhibitionSpaces() {
+    Profile profile =
+        () -> EnumSet.of(Option.FORBID_ASCII_SPACES, Option.FORBID_NON_ASCII_SPACES);
+    IntStream unassigned = IntStream.rangeClosed(Character.MIN_CODE_POINT, Character.MAX_CODE_POINT)
+        .filter(c -> Character.getType(c) == Character.SPACE_SEPARATOR);
+
+    for (int cp : unassigned.toArray()) {
+      String chars = new String(Character.toChars(cp));
+      String example = "abc" + chars + "def";
+      assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
+          () -> "Character: " + chars + ", CodePoint: " + cp);
+      assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
+          () -> "Character: " + chars + ", CodePoint: " + cp);
+    }
+  }
+
+  @ParameterizedTest
+  @ValueSource(ints = {0x0340, 0x0341, 0x200E, 0x200F, 0x202A, 0x202B, 0x202C, 0x202D, 0x202E,
+      0x206A, 0x206B, 0x206C, 0x206D, 0x206E, 0x206F})
+  void testCheckBidiChangeDisplayProperties(int cp) {
+    Profile profile = () -> EnumSet.of(Option.CHECK_BIDI);
+
+    String chars = new String(Character.toChars(cp));
+    String example = "abc" + chars + "def";
+    assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
+        () -> "Character: " + chars + ", CodePoint: " + cp);
+    assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
+        () -> "Character: " + chars + ", CodePoint: " + cp);
+  }
+
+  @ParameterizedTest
+  @ValueSource(ints = {0x0340, 0x0341, 0x200E, 0x200F, 0x202A, 0x202B, 0x202C, 0x202D, 0x202E,
+      0x206A, 0x206B, 0x206C, 0x206D, 0x206E, 0x206F})
+  void testProhibitionChangeDisplayProperties(int cp) {
+    Profile profile = () -> EnumSet.of(Option.FORBID_CHANGE_DISPLAY_AND_DEPRECATED);
+
+    String chars = new String(Character.toChars(cp));
+    String example = "abc" + chars + "def";
+    assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
+        () -> "Character: " + chars + ", CodePoint: " + cp);
+    assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
+        () -> "Character: " + chars + ", CodePoint: " + cp);
   }
 
 }

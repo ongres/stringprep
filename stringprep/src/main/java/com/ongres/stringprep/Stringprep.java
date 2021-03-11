@@ -147,7 +147,8 @@ public final class Stringprep {
         Tables.bidirectionalPropertyRorAL(string.codePointAt(string.length() - 1));
     boolean containsRandAlCat = false;
     boolean containsLcat = false;
-    for (int codePoint, i = 0; i < string.length(); i += Character.charCount(codePoint)) {
+    int codePoint;
+    for (int i = 0; i < string.length(); i += Character.charCount(codePoint)) {
       codePoint = string.codePointAt(i);
 
       // 3) Prohibit -- Check for any characters that are not allowed in the
