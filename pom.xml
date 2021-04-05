@@ -101,12 +101,12 @@
     <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
     <reproducible-build-maven-plugin.version>0.13</reproducible-build-maven-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
-    <checkstyle.version>8.40</checkstyle.version>
+    <checkstyle.version>8.41</checkstyle.version>
     <checkstyle-plugin.version>3.1.2</checkstyle-plugin.version>
-    <spotbugs.version>4.2.0</spotbugs.version>
+    <spotbugs.version>4.2.2</spotbugs.version>
     <spotbugs-plugin.version>4.2.0</spotbugs-plugin.version>
     <findsecbugs.version>1.11.0</findsecbugs.version>
-    <pmd.version>6.31.0</pmd.version>
+    <pmd.version>6.32.0</pmd.version>
     <pmd-plugin.version>3.14.0</pmd-plugin.version>
     <sonar-plugin.version>3.8.0.2131</sonar-plugin.version>
     <checks.location>${project.basedir}/checks</checks.location>
