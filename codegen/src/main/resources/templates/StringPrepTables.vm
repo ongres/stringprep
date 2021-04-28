@@ -29,7 +29,7 @@ public final class Tables {
 #if( $unassignedCodePoints.get(0) == $unassignedCodePoints.get(1) )
 codePoint == $unassignedCodePoints.get(0)
 #else
-codePoint >= $unassignedCodePoints.get(0) && codePoint <= $unassignedCodePoints.get(1)
+(codePoint >= $unassignedCodePoints.get(0) && codePoint <= $unassignedCodePoints.get(1))
 #end
 #if($foreach.hasNext)        || #end#end
       ;
@@ -129,7 +129,7 @@ codePoint == $nonAsciiSpace
 #if( $asciiControl.get(0) == $asciiControl.get(1) )
 codePoint == $asciiControl.get(0)
 #else
-codePoint >= $asciiControl.get(0) && codePoint <= $asciiControl.get(1)
+(codePoint >= $asciiControl.get(0) && codePoint <= $asciiControl.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -147,7 +147,7 @@ codePoint >= $asciiControl.get(0) && codePoint <= $asciiControl.get(1)
 #if( $nonAsciiControl.get(0) == $nonAsciiControl.get(1) )
 codePoint == $nonAsciiControl.get(0)
 #else
-codePoint >= $nonAsciiControl.get(0) && codePoint <= $nonAsciiControl.get(1)
+(codePoint >= $nonAsciiControl.get(0) && codePoint <= $nonAsciiControl.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -165,7 +165,7 @@ codePoint >= $nonAsciiControl.get(0) && codePoint <= $nonAsciiControl.get(1)
 #if( $privateUse.get(0) == $privateUse.get(1) )
 codePoint == $privateUse.get(0)
 #else
-codePoint >= $privateUse.get(0) && codePoint <= $privateUse.get(1)
+(codePoint >= $privateUse.get(0) && codePoint <= $privateUse.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -183,7 +183,7 @@ codePoint >= $privateUse.get(0) && codePoint <= $privateUse.get(1)
 #if( $nonCharacterCodePoints.get(0) == $nonCharacterCodePoints.get(1) )
 codePoint == $nonCharacterCodePoints.get(0)
 #else
-codePoint >= $nonCharacterCodePoints.get(0) && codePoint <= $nonCharacterCodePoints.get(1)
+(codePoint >= $nonCharacterCodePoints.get(0) && codePoint <= $nonCharacterCodePoints.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -201,7 +201,7 @@ codePoint >= $nonCharacterCodePoints.get(0) && codePoint <= $nonCharacterCodePoi
 #if( $surrogateCodes.get(0) == $surrogateCodes.get(1) )
 codePoint == $surrogateCodes.get(0)
 #else
-codePoint >= $surrogateCodes.get(0) && codePoint <= $surrogateCodes.get(1)
+(codePoint >= $surrogateCodes.get(0) && codePoint <= $surrogateCodes.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -220,7 +220,7 @@ codePoint >= $surrogateCodes.get(0) && codePoint <= $surrogateCodes.get(1)
 #if( $inappropriatePlainText.get(0) == $inappropriatePlainText.get(1) )
 codePoint == $inappropriatePlainText.get(0)
 #else
-codePoint >= $inappropriatePlainText.get(0) && codePoint <= $inappropriatePlainText.get(1)
+(codePoint >= $inappropriatePlainText.get(0) && codePoint <= $inappropriatePlainText.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -239,7 +239,7 @@ codePoint >= $inappropriatePlainText.get(0) && codePoint <= $inappropriatePlainT
 #if( $inappropriateCanonicalRepresentation.get(0) == $inappropriateCanonicalRepresentation.get(1) )
 codePoint == $inappropriateCanonicalRepresentation.get(0)
 #else
-codePoint >= $inappropriateCanonicalRepresentation.get(0) && codePoint <= $inappropriateCanonicalRepresentation.get(1)
+(codePoint >= $inappropriateCanonicalRepresentation.get(0) && codePoint <= $inappropriateCanonicalRepresentation.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -258,7 +258,7 @@ codePoint >= $inappropriateCanonicalRepresentation.get(0) && codePoint <= $inapp
 #if( $changeDisplayProperties.get(0) == $changeDisplayProperties.get(1) )
 codePoint == $changeDisplayProperties.get(0)
 #else
-codePoint >= $changeDisplayProperties.get(0) && codePoint <= $changeDisplayProperties.get(1)
+(codePoint >= $changeDisplayProperties.get(0) && codePoint <= $changeDisplayProperties.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -276,7 +276,7 @@ codePoint >= $changeDisplayProperties.get(0) && codePoint <= $changeDisplayPrope
 #if( $taggingCharacters.get(0) == $taggingCharacters.get(1) )
 codePoint == $taggingCharacters.get(0)
 #else
-codePoint >= $taggingCharacters.get(0) && codePoint <= $taggingCharacters.get(1)
+(codePoint >= $taggingCharacters.get(0) && codePoint <= $taggingCharacters.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -295,7 +295,7 @@ codePoint >= $taggingCharacters.get(0) && codePoint <= $taggingCharacters.get(1)
 #if( $propertyRorAL.get(0) == $propertyRorAL.get(1) )
 codePoint == $propertyRorAL.get(0)
 #else
-codePoint >= $propertyRorAL.get(0) && codePoint <= $propertyRorAL.get(1)
+(codePoint >= $propertyRorAL.get(0) && codePoint <= $propertyRorAL.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;
@@ -314,7 +314,7 @@ codePoint >= $propertyRorAL.get(0) && codePoint <= $propertyRorAL.get(1)
 #if( $propertyL.get(0) == $propertyL.get(1) )
 codePoint == $propertyL.get(0)
 #else
-codePoint >= $propertyL.get(0) && codePoint <= $propertyL.get(1)
+(codePoint >= $propertyL.get(0) && codePoint <= $propertyL.get(1))
 #end
 #if( $foreach.hasNext )        || #end#end
       ;

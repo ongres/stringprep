@@ -26,79 +26,79 @@ public final class Tables {
    */
   public static boolean unassignedCodePoints(int codePoint) {
     return codePoint == 0x0221
-        || codePoint >= 0x0234 && codePoint <= 0x024F
-        || codePoint >= 0x02AE && codePoint <= 0x02AF
-        || codePoint >= 0x02EF && codePoint <= 0x02FF
-        || codePoint >= 0x0350 && codePoint <= 0x035F
-        || codePoint >= 0x0370 && codePoint <= 0x0373
-        || codePoint >= 0x0376 && codePoint <= 0x0379
-        || codePoint >= 0x037B && codePoint <= 0x037D
-        || codePoint >= 0x037F && codePoint <= 0x0383
+        || (codePoint >= 0x0234 && codePoint <= 0x024F)
+        || (codePoint >= 0x02AE && codePoint <= 0x02AF)
+        || (codePoint >= 0x02EF && codePoint <= 0x02FF)
+        || (codePoint >= 0x0350 && codePoint <= 0x035F)
+        || (codePoint >= 0x0370 && codePoint <= 0x0373)
+        || (codePoint >= 0x0376 && codePoint <= 0x0379)
+        || (codePoint >= 0x037B && codePoint <= 0x037D)
+        || (codePoint >= 0x037F && codePoint <= 0x0383)
         || codePoint == 0x038B
         || codePoint == 0x038D
         || codePoint == 0x03A2
         || codePoint == 0x03CF
-        || codePoint >= 0x03F7 && codePoint <= 0x03FF
+        || (codePoint >= 0x03F7 && codePoint <= 0x03FF)
         || codePoint == 0x0487
         || codePoint == 0x04CF
-        || codePoint >= 0x04F6 && codePoint <= 0x04F7
-        || codePoint >= 0x04FA && codePoint <= 0x04FF
-        || codePoint >= 0x0510 && codePoint <= 0x0530
-        || codePoint >= 0x0557 && codePoint <= 0x0558
+        || (codePoint >= 0x04F6 && codePoint <= 0x04F7)
+        || (codePoint >= 0x04FA && codePoint <= 0x04FF)
+        || (codePoint >= 0x0510 && codePoint <= 0x0530)
+        || (codePoint >= 0x0557 && codePoint <= 0x0558)
         || codePoint == 0x0560
         || codePoint == 0x0588
-        || codePoint >= 0x058B && codePoint <= 0x0590
+        || (codePoint >= 0x058B && codePoint <= 0x0590)
         || codePoint == 0x05A2
         || codePoint == 0x05BA
-        || codePoint >= 0x05C5 && codePoint <= 0x05CF
-        || codePoint >= 0x05EB && codePoint <= 0x05EF
-        || codePoint >= 0x05F5 && codePoint <= 0x060B
-        || codePoint >= 0x060D && codePoint <= 0x061A
-        || codePoint >= 0x061C && codePoint <= 0x061E
+        || (codePoint >= 0x05C5 && codePoint <= 0x05CF)
+        || (codePoint >= 0x05EB && codePoint <= 0x05EF)
+        || (codePoint >= 0x05F5 && codePoint <= 0x060B)
+        || (codePoint >= 0x060D && codePoint <= 0x061A)
+        || (codePoint >= 0x061C && codePoint <= 0x061E)
         || codePoint == 0x0620
-        || codePoint >= 0x063B && codePoint <= 0x063F
-        || codePoint >= 0x0656 && codePoint <= 0x065F
-        || codePoint >= 0x06EE && codePoint <= 0x06EF
+        || (codePoint >= 0x063B && codePoint <= 0x063F)
+        || (codePoint >= 0x0656 && codePoint <= 0x065F)
+        || (codePoint >= 0x06EE && codePoint <= 0x06EF)
         || codePoint == 0x06FF
         || codePoint == 0x070E
-        || codePoint >= 0x072D && codePoint <= 0x072F
-        || codePoint >= 0x074B && codePoint <= 0x077F
-        || codePoint >= 0x07B2 && codePoint <= 0x0900
+        || (codePoint >= 0x072D && codePoint <= 0x072F)
+        || (codePoint >= 0x074B && codePoint <= 0x077F)
+        || (codePoint >= 0x07B2 && codePoint <= 0x0900)
         || codePoint == 0x0904
-        || codePoint >= 0x093A && codePoint <= 0x093B
-        || codePoint >= 0x094E && codePoint <= 0x094F
-        || codePoint >= 0x0955 && codePoint <= 0x0957
-        || codePoint >= 0x0971 && codePoint <= 0x0980
+        || (codePoint >= 0x093A && codePoint <= 0x093B)
+        || (codePoint >= 0x094E && codePoint <= 0x094F)
+        || (codePoint >= 0x0955 && codePoint <= 0x0957)
+        || (codePoint >= 0x0971 && codePoint <= 0x0980)
         || codePoint == 0x0984
-        || codePoint >= 0x098D && codePoint <= 0x098E
-        || codePoint >= 0x0991 && codePoint <= 0x0992
+        || (codePoint >= 0x098D && codePoint <= 0x098E)
+        || (codePoint >= 0x0991 && codePoint <= 0x0992)
         || codePoint == 0x09A9
         || codePoint == 0x09B1
-        || codePoint >= 0x09B3 && codePoint <= 0x09B5
-        || codePoint >= 0x09BA && codePoint <= 0x09BB
+        || (codePoint >= 0x09B3 && codePoint <= 0x09B5)
+        || (codePoint >= 0x09BA && codePoint <= 0x09BB)
         || codePoint == 0x09BD
-        || codePoint >= 0x09C5 && codePoint <= 0x09C6
-        || codePoint >= 0x09C9 && codePoint <= 0x09CA
-        || codePoint >= 0x09CE && codePoint <= 0x09D6
-        || codePoint >= 0x09D8 && codePoint <= 0x09DB
+        || (codePoint >= 0x09C5 && codePoint <= 0x09C6)
+        || (codePoint >= 0x09C9 && codePoint <= 0x09CA)
+        || (codePoint >= 0x09CE && codePoint <= 0x09D6)
+        || (codePoint >= 0x09D8 && codePoint <= 0x09DB)
         || codePoint == 0x09DE
-        || codePoint >= 0x09E4 && codePoint <= 0x09E5
-        || codePoint >= 0x09FB && codePoint <= 0x0A01
-        || codePoint >= 0x0A03 && codePoint <= 0x0A04
-        || codePoint >= 0x0A0B && codePoint <= 0x0A0E
-        || codePoint >= 0x0A11 && codePoint <= 0x0A12
+        || (codePoint >= 0x09E4 && codePoint <= 0x09E5)
+        || (codePoint >= 0x09FB && codePoint <= 0x0A01)
+        || (codePoint >= 0x0A03 && codePoint <= 0x0A04)
+        || (codePoint >= 0x0A0B && codePoint <= 0x0A0E)
+        || (codePoint >= 0x0A11 && codePoint <= 0x0A12)
         || codePoint == 0x0A29
         || codePoint == 0x0A31
         || codePoint == 0x0A34
         || codePoint == 0x0A37
-        || codePoint >= 0x0A3A && codePoint <= 0x0A3B
+        || (codePoint >= 0x0A3A && codePoint <= 0x0A3B)
         || codePoint == 0x0A3D
-        || codePoint >= 0x0A43 && codePoint <= 0x0A46
-        || codePoint >= 0x0A49 && codePoint <= 0x0A4A
-        || codePoint >= 0x0A4E && codePoint <= 0x0A58
+        || (codePoint >= 0x0A43 && codePoint <= 0x0A46)
+        || (codePoint >= 0x0A49 && codePoint <= 0x0A4A)
+        || (codePoint >= 0x0A4E && codePoint <= 0x0A58)
         || codePoint == 0x0A5D
-        || codePoint >= 0x0A5F && codePoint <= 0x0A65
-        || codePoint >= 0x0A75 && codePoint <= 0x0A80
+        || (codePoint >= 0x0A5F && codePoint <= 0x0A65)
+        || (codePoint >= 0x0A75 && codePoint <= 0x0A80)
         || codePoint == 0x0A84
         || codePoint == 0x0A8C
         || codePoint == 0x0A8E
@@ -106,321 +106,321 @@ public final class Tables {
         || codePoint == 0x0AA9
         || codePoint == 0x0AB1
         || codePoint == 0x0AB4
-        || codePoint >= 0x0ABA && codePoint <= 0x0ABB
+        || (codePoint >= 0x0ABA && codePoint <= 0x0ABB)
         || codePoint == 0x0AC6
         || codePoint == 0x0ACA
-        || codePoint >= 0x0ACE && codePoint <= 0x0ACF
-        || codePoint >= 0x0AD1 && codePoint <= 0x0ADF
-        || codePoint >= 0x0AE1 && codePoint <= 0x0AE5
-        || codePoint >= 0x0AF0 && codePoint <= 0x0B00
+        || (codePoint >= 0x0ACE && codePoint <= 0x0ACF)
+        || (codePoint >= 0x0AD1 && codePoint <= 0x0ADF)
+        || (codePoint >= 0x0AE1 && codePoint <= 0x0AE5)
+        || (codePoint >= 0x0AF0 && codePoint <= 0x0B00)
         || codePoint == 0x0B04
-        || codePoint >= 0x0B0D && codePoint <= 0x0B0E
-        || codePoint >= 0x0B11 && codePoint <= 0x0B12
+        || (codePoint >= 0x0B0D && codePoint <= 0x0B0E)
+        || (codePoint >= 0x0B11 && codePoint <= 0x0B12)
         || codePoint == 0x0B29
         || codePoint == 0x0B31
-        || codePoint >= 0x0B34 && codePoint <= 0x0B35
-        || codePoint >= 0x0B3A && codePoint <= 0x0B3B
-        || codePoint >= 0x0B44 && codePoint <= 0x0B46
-        || codePoint >= 0x0B49 && codePoint <= 0x0B4A
-        || codePoint >= 0x0B4E && codePoint <= 0x0B55
-        || codePoint >= 0x0B58 && codePoint <= 0x0B5B
+        || (codePoint >= 0x0B34 && codePoint <= 0x0B35)
+        || (codePoint >= 0x0B3A && codePoint <= 0x0B3B)
+        || (codePoint >= 0x0B44 && codePoint <= 0x0B46)
+        || (codePoint >= 0x0B49 && codePoint <= 0x0B4A)
+        || (codePoint >= 0x0B4E && codePoint <= 0x0B55)
+        || (codePoint >= 0x0B58 && codePoint <= 0x0B5B)
         || codePoint == 0x0B5E
-        || codePoint >= 0x0B62 && codePoint <= 0x0B65
-        || codePoint >= 0x0B71 && codePoint <= 0x0B81
+        || (codePoint >= 0x0B62 && codePoint <= 0x0B65)
+        || (codePoint >= 0x0B71 && codePoint <= 0x0B81)
         || codePoint == 0x0B84
-        || codePoint >= 0x0B8B && codePoint <= 0x0B8D
+        || (codePoint >= 0x0B8B && codePoint <= 0x0B8D)
         || codePoint == 0x0B91
-        || codePoint >= 0x0B96 && codePoint <= 0x0B98
+        || (codePoint >= 0x0B96 && codePoint <= 0x0B98)
         || codePoint == 0x0B9B
         || codePoint == 0x0B9D
-        || codePoint >= 0x0BA0 && codePoint <= 0x0BA2
-        || codePoint >= 0x0BA5 && codePoint <= 0x0BA7
-        || codePoint >= 0x0BAB && codePoint <= 0x0BAD
+        || (codePoint >= 0x0BA0 && codePoint <= 0x0BA2)
+        || (codePoint >= 0x0BA5 && codePoint <= 0x0BA7)
+        || (codePoint >= 0x0BAB && codePoint <= 0x0BAD)
         || codePoint == 0x0BB6
-        || codePoint >= 0x0BBA && codePoint <= 0x0BBD
-        || codePoint >= 0x0BC3 && codePoint <= 0x0BC5
+        || (codePoint >= 0x0BBA && codePoint <= 0x0BBD)
+        || (codePoint >= 0x0BC3 && codePoint <= 0x0BC5)
         || codePoint == 0x0BC9
-        || codePoint >= 0x0BCE && codePoint <= 0x0BD6
-        || codePoint >= 0x0BD8 && codePoint <= 0x0BE6
-        || codePoint >= 0x0BF3 && codePoint <= 0x0C00
+        || (codePoint >= 0x0BCE && codePoint <= 0x0BD6)
+        || (codePoint >= 0x0BD8 && codePoint <= 0x0BE6)
+        || (codePoint >= 0x0BF3 && codePoint <= 0x0C00)
         || codePoint == 0x0C04
         || codePoint == 0x0C0D
         || codePoint == 0x0C11
         || codePoint == 0x0C29
         || codePoint == 0x0C34
-        || codePoint >= 0x0C3A && codePoint <= 0x0C3D
+        || (codePoint >= 0x0C3A && codePoint <= 0x0C3D)
         || codePoint == 0x0C45
         || codePoint == 0x0C49
-        || codePoint >= 0x0C4E && codePoint <= 0x0C54
-        || codePoint >= 0x0C57 && codePoint <= 0x0C5F
-        || codePoint >= 0x0C62 && codePoint <= 0x0C65
-        || codePoint >= 0x0C70 && codePoint <= 0x0C81
+        || (codePoint >= 0x0C4E && codePoint <= 0x0C54)
+        || (codePoint >= 0x0C57 && codePoint <= 0x0C5F)
+        || (codePoint >= 0x0C62 && codePoint <= 0x0C65)
+        || (codePoint >= 0x0C70 && codePoint <= 0x0C81)
         || codePoint == 0x0C84
         || codePoint == 0x0C8D
         || codePoint == 0x0C91
         || codePoint == 0x0CA9
         || codePoint == 0x0CB4
-        || codePoint >= 0x0CBA && codePoint <= 0x0CBD
+        || (codePoint >= 0x0CBA && codePoint <= 0x0CBD)
         || codePoint == 0x0CC5
         || codePoint == 0x0CC9
-        || codePoint >= 0x0CCE && codePoint <= 0x0CD4
-        || codePoint >= 0x0CD7 && codePoint <= 0x0CDD
+        || (codePoint >= 0x0CCE && codePoint <= 0x0CD4)
+        || (codePoint >= 0x0CD7 && codePoint <= 0x0CDD)
         || codePoint == 0x0CDF
-        || codePoint >= 0x0CE2 && codePoint <= 0x0CE5
-        || codePoint >= 0x0CF0 && codePoint <= 0x0D01
+        || (codePoint >= 0x0CE2 && codePoint <= 0x0CE5)
+        || (codePoint >= 0x0CF0 && codePoint <= 0x0D01)
         || codePoint == 0x0D04
         || codePoint == 0x0D0D
         || codePoint == 0x0D11
         || codePoint == 0x0D29
-        || codePoint >= 0x0D3A && codePoint <= 0x0D3D
-        || codePoint >= 0x0D44 && codePoint <= 0x0D45
+        || (codePoint >= 0x0D3A && codePoint <= 0x0D3D)
+        || (codePoint >= 0x0D44 && codePoint <= 0x0D45)
         || codePoint == 0x0D49
-        || codePoint >= 0x0D4E && codePoint <= 0x0D56
-        || codePoint >= 0x0D58 && codePoint <= 0x0D5F
-        || codePoint >= 0x0D62 && codePoint <= 0x0D65
-        || codePoint >= 0x0D70 && codePoint <= 0x0D81
+        || (codePoint >= 0x0D4E && codePoint <= 0x0D56)
+        || (codePoint >= 0x0D58 && codePoint <= 0x0D5F)
+        || (codePoint >= 0x0D62 && codePoint <= 0x0D65)
+        || (codePoint >= 0x0D70 && codePoint <= 0x0D81)
         || codePoint == 0x0D84
-        || codePoint >= 0x0D97 && codePoint <= 0x0D99
+        || (codePoint >= 0x0D97 && codePoint <= 0x0D99)
         || codePoint == 0x0DB2
         || codePoint == 0x0DBC
-        || codePoint >= 0x0DBE && codePoint <= 0x0DBF
-        || codePoint >= 0x0DC7 && codePoint <= 0x0DC9
-        || codePoint >= 0x0DCB && codePoint <= 0x0DCE
+        || (codePoint >= 0x0DBE && codePoint <= 0x0DBF)
+        || (codePoint >= 0x0DC7 && codePoint <= 0x0DC9)
+        || (codePoint >= 0x0DCB && codePoint <= 0x0DCE)
         || codePoint == 0x0DD5
         || codePoint == 0x0DD7
-        || codePoint >= 0x0DE0 && codePoint <= 0x0DF1
-        || codePoint >= 0x0DF5 && codePoint <= 0x0E00
-        || codePoint >= 0x0E3B && codePoint <= 0x0E3E
-        || codePoint >= 0x0E5C && codePoint <= 0x0E80
+        || (codePoint >= 0x0DE0 && codePoint <= 0x0DF1)
+        || (codePoint >= 0x0DF5 && codePoint <= 0x0E00)
+        || (codePoint >= 0x0E3B && codePoint <= 0x0E3E)
+        || (codePoint >= 0x0E5C && codePoint <= 0x0E80)
         || codePoint == 0x0E83
-        || codePoint >= 0x0E85 && codePoint <= 0x0E86
+        || (codePoint >= 0x0E85 && codePoint <= 0x0E86)
         || codePoint == 0x0E89
-        || codePoint >= 0x0E8B && codePoint <= 0x0E8C
-        || codePoint >= 0x0E8E && codePoint <= 0x0E93
+        || (codePoint >= 0x0E8B && codePoint <= 0x0E8C)
+        || (codePoint >= 0x0E8E && codePoint <= 0x0E93)
         || codePoint == 0x0E98
         || codePoint == 0x0EA0
         || codePoint == 0x0EA4
         || codePoint == 0x0EA6
-        || codePoint >= 0x0EA8 && codePoint <= 0x0EA9
+        || (codePoint >= 0x0EA8 && codePoint <= 0x0EA9)
         || codePoint == 0x0EAC
         || codePoint == 0x0EBA
-        || codePoint >= 0x0EBE && codePoint <= 0x0EBF
+        || (codePoint >= 0x0EBE && codePoint <= 0x0EBF)
         || codePoint == 0x0EC5
         || codePoint == 0x0EC7
-        || codePoint >= 0x0ECE && codePoint <= 0x0ECF
-        || codePoint >= 0x0EDA && codePoint <= 0x0EDB
-        || codePoint >= 0x0EDE && codePoint <= 0x0EFF
+        || (codePoint >= 0x0ECE && codePoint <= 0x0ECF)
+        || (codePoint >= 0x0EDA && codePoint <= 0x0EDB)
+        || (codePoint >= 0x0EDE && codePoint <= 0x0EFF)
         || codePoint == 0x0F48
-        || codePoint >= 0x0F6B && codePoint <= 0x0F70
-        || codePoint >= 0x0F8C && codePoint <= 0x0F8F
+        || (codePoint >= 0x0F6B && codePoint <= 0x0F70)
+        || (codePoint >= 0x0F8C && codePoint <= 0x0F8F)
         || codePoint == 0x0F98
         || codePoint == 0x0FBD
-        || codePoint >= 0x0FCD && codePoint <= 0x0FCE
-        || codePoint >= 0x0FD0 && codePoint <= 0x0FFF
+        || (codePoint >= 0x0FCD && codePoint <= 0x0FCE)
+        || (codePoint >= 0x0FD0 && codePoint <= 0x0FFF)
         || codePoint == 0x1022
         || codePoint == 0x1028
         || codePoint == 0x102B
-        || codePoint >= 0x1033 && codePoint <= 0x1035
-        || codePoint >= 0x103A && codePoint <= 0x103F
-        || codePoint >= 0x105A && codePoint <= 0x109F
-        || codePoint >= 0x10C6 && codePoint <= 0x10CF
-        || codePoint >= 0x10F9 && codePoint <= 0x10FA
-        || codePoint >= 0x10FC && codePoint <= 0x10FF
-        || codePoint >= 0x115A && codePoint <= 0x115E
-        || codePoint >= 0x11A3 && codePoint <= 0x11A7
-        || codePoint >= 0x11FA && codePoint <= 0x11FF
+        || (codePoint >= 0x1033 && codePoint <= 0x1035)
+        || (codePoint >= 0x103A && codePoint <= 0x103F)
+        || (codePoint >= 0x105A && codePoint <= 0x109F)
+        || (codePoint >= 0x10C6 && codePoint <= 0x10CF)
+        || (codePoint >= 0x10F9 && codePoint <= 0x10FA)
+        || (codePoint >= 0x10FC && codePoint <= 0x10FF)
+        || (codePoint >= 0x115A && codePoint <= 0x115E)
+        || (codePoint >= 0x11A3 && codePoint <= 0x11A7)
+        || (codePoint >= 0x11FA && codePoint <= 0x11FF)
         || codePoint == 0x1207
         || codePoint == 0x1247
         || codePoint == 0x1249
-        || codePoint >= 0x124E && codePoint <= 0x124F
+        || (codePoint >= 0x124E && codePoint <= 0x124F)
         || codePoint == 0x1257
         || codePoint == 0x1259
-        || codePoint >= 0x125E && codePoint <= 0x125F
+        || (codePoint >= 0x125E && codePoint <= 0x125F)
         || codePoint == 0x1287
         || codePoint == 0x1289
-        || codePoint >= 0x128E && codePoint <= 0x128F
+        || (codePoint >= 0x128E && codePoint <= 0x128F)
         || codePoint == 0x12AF
         || codePoint == 0x12B1
-        || codePoint >= 0x12B6 && codePoint <= 0x12B7
+        || (codePoint >= 0x12B6 && codePoint <= 0x12B7)
         || codePoint == 0x12BF
         || codePoint == 0x12C1
-        || codePoint >= 0x12C6 && codePoint <= 0x12C7
+        || (codePoint >= 0x12C6 && codePoint <= 0x12C7)
         || codePoint == 0x12CF
         || codePoint == 0x12D7
         || codePoint == 0x12EF
         || codePoint == 0x130F
         || codePoint == 0x1311
-        || codePoint >= 0x1316 && codePoint <= 0x1317
+        || (codePoint >= 0x1316 && codePoint <= 0x1317)
         || codePoint == 0x131F
         || codePoint == 0x1347
-        || codePoint >= 0x135B && codePoint <= 0x1360
-        || codePoint >= 0x137D && codePoint <= 0x139F
-        || codePoint >= 0x13F5 && codePoint <= 0x1400
-        || codePoint >= 0x1677 && codePoint <= 0x167F
-        || codePoint >= 0x169D && codePoint <= 0x169F
-        || codePoint >= 0x16F1 && codePoint <= 0x16FF
+        || (codePoint >= 0x135B && codePoint <= 0x1360)
+        || (codePoint >= 0x137D && codePoint <= 0x139F)
+        || (codePoint >= 0x13F5 && codePoint <= 0x1400)
+        || (codePoint >= 0x1677 && codePoint <= 0x167F)
+        || (codePoint >= 0x169D && codePoint <= 0x169F)
+        || (codePoint >= 0x16F1 && codePoint <= 0x16FF)
         || codePoint == 0x170D
-        || codePoint >= 0x1715 && codePoint <= 0x171F
-        || codePoint >= 0x1737 && codePoint <= 0x173F
-        || codePoint >= 0x1754 && codePoint <= 0x175F
+        || (codePoint >= 0x1715 && codePoint <= 0x171F)
+        || (codePoint >= 0x1737 && codePoint <= 0x173F)
+        || (codePoint >= 0x1754 && codePoint <= 0x175F)
         || codePoint == 0x176D
         || codePoint == 0x1771
-        || codePoint >= 0x1774 && codePoint <= 0x177F
-        || codePoint >= 0x17DD && codePoint <= 0x17DF
-        || codePoint >= 0x17EA && codePoint <= 0x17FF
+        || (codePoint >= 0x1774 && codePoint <= 0x177F)
+        || (codePoint >= 0x17DD && codePoint <= 0x17DF)
+        || (codePoint >= 0x17EA && codePoint <= 0x17FF)
         || codePoint == 0x180F
-        || codePoint >= 0x181A && codePoint <= 0x181F
-        || codePoint >= 0x1878 && codePoint <= 0x187F
-        || codePoint >= 0x18AA && codePoint <= 0x1DFF
-        || codePoint >= 0x1E9C && codePoint <= 0x1E9F
-        || codePoint >= 0x1EFA && codePoint <= 0x1EFF
-        || codePoint >= 0x1F16 && codePoint <= 0x1F17
-        || codePoint >= 0x1F1E && codePoint <= 0x1F1F
-        || codePoint >= 0x1F46 && codePoint <= 0x1F47
-        || codePoint >= 0x1F4E && codePoint <= 0x1F4F
+        || (codePoint >= 0x181A && codePoint <= 0x181F)
+        || (codePoint >= 0x1878 && codePoint <= 0x187F)
+        || (codePoint >= 0x18AA && codePoint <= 0x1DFF)
+        || (codePoint >= 0x1E9C && codePoint <= 0x1E9F)
+        || (codePoint >= 0x1EFA && codePoint <= 0x1EFF)
+        || (codePoint >= 0x1F16 && codePoint <= 0x1F17)
+        || (codePoint >= 0x1F1E && codePoint <= 0x1F1F)
+        || (codePoint >= 0x1F46 && codePoint <= 0x1F47)
+        || (codePoint >= 0x1F4E && codePoint <= 0x1F4F)
         || codePoint == 0x1F58
         || codePoint == 0x1F5A
         || codePoint == 0x1F5C
         || codePoint == 0x1F5E
-        || codePoint >= 0x1F7E && codePoint <= 0x1F7F
+        || (codePoint >= 0x1F7E && codePoint <= 0x1F7F)
         || codePoint == 0x1FB5
         || codePoint == 0x1FC5
-        || codePoint >= 0x1FD4 && codePoint <= 0x1FD5
+        || (codePoint >= 0x1FD4 && codePoint <= 0x1FD5)
         || codePoint == 0x1FDC
-        || codePoint >= 0x1FF0 && codePoint <= 0x1FF1
+        || (codePoint >= 0x1FF0 && codePoint <= 0x1FF1)
         || codePoint == 0x1FF5
         || codePoint == 0x1FFF
-        || codePoint >= 0x2053 && codePoint <= 0x2056
-        || codePoint >= 0x2058 && codePoint <= 0x205E
-        || codePoint >= 0x2064 && codePoint <= 0x2069
-        || codePoint >= 0x2072 && codePoint <= 0x2073
-        || codePoint >= 0x208F && codePoint <= 0x209F
-        || codePoint >= 0x20B2 && codePoint <= 0x20CF
-        || codePoint >= 0x20EB && codePoint <= 0x20FF
-        || codePoint >= 0x213B && codePoint <= 0x213C
-        || codePoint >= 0x214C && codePoint <= 0x2152
-        || codePoint >= 0x2184 && codePoint <= 0x218F
-        || codePoint >= 0x23CF && codePoint <= 0x23FF
-        || codePoint >= 0x2427 && codePoint <= 0x243F
-        || codePoint >= 0x244B && codePoint <= 0x245F
+        || (codePoint >= 0x2053 && codePoint <= 0x2056)
+        || (codePoint >= 0x2058 && codePoint <= 0x205E)
+        || (codePoint >= 0x2064 && codePoint <= 0x2069)
+        || (codePoint >= 0x2072 && codePoint <= 0x2073)
+        || (codePoint >= 0x208F && codePoint <= 0x209F)
+        || (codePoint >= 0x20B2 && codePoint <= 0x20CF)
+        || (codePoint >= 0x20EB && codePoint <= 0x20FF)
+        || (codePoint >= 0x213B && codePoint <= 0x213C)
+        || (codePoint >= 0x214C && codePoint <= 0x2152)
+        || (codePoint >= 0x2184 && codePoint <= 0x218F)
+        || (codePoint >= 0x23CF && codePoint <= 0x23FF)
+        || (codePoint >= 0x2427 && codePoint <= 0x243F)
+        || (codePoint >= 0x244B && codePoint <= 0x245F)
         || codePoint == 0x24FF
-        || codePoint >= 0x2614 && codePoint <= 0x2615
+        || (codePoint >= 0x2614 && codePoint <= 0x2615)
         || codePoint == 0x2618
-        || codePoint >= 0x267E && codePoint <= 0x267F
-        || codePoint >= 0x268A && codePoint <= 0x2700
+        || (codePoint >= 0x267E && codePoint <= 0x267F)
+        || (codePoint >= 0x268A && codePoint <= 0x2700)
         || codePoint == 0x2705
-        || codePoint >= 0x270A && codePoint <= 0x270B
+        || (codePoint >= 0x270A && codePoint <= 0x270B)
         || codePoint == 0x2728
         || codePoint == 0x274C
         || codePoint == 0x274E
-        || codePoint >= 0x2753 && codePoint <= 0x2755
+        || (codePoint >= 0x2753 && codePoint <= 0x2755)
         || codePoint == 0x2757
-        || codePoint >= 0x275F && codePoint <= 0x2760
-        || codePoint >= 0x2795 && codePoint <= 0x2797
+        || (codePoint >= 0x275F && codePoint <= 0x2760)
+        || (codePoint >= 0x2795 && codePoint <= 0x2797)
         || codePoint == 0x27B0
-        || codePoint >= 0x27BF && codePoint <= 0x27CF
-        || codePoint >= 0x27EC && codePoint <= 0x27EF
-        || codePoint >= 0x2B00 && codePoint <= 0x2E7F
+        || (codePoint >= 0x27BF && codePoint <= 0x27CF)
+        || (codePoint >= 0x27EC && codePoint <= 0x27EF)
+        || (codePoint >= 0x2B00 && codePoint <= 0x2E7F)
         || codePoint == 0x2E9A
-        || codePoint >= 0x2EF4 && codePoint <= 0x2EFF
-        || codePoint >= 0x2FD6 && codePoint <= 0x2FEF
-        || codePoint >= 0x2FFC && codePoint <= 0x2FFF
+        || (codePoint >= 0x2EF4 && codePoint <= 0x2EFF)
+        || (codePoint >= 0x2FD6 && codePoint <= 0x2FEF)
+        || (codePoint >= 0x2FFC && codePoint <= 0x2FFF)
         || codePoint == 0x3040
-        || codePoint >= 0x3097 && codePoint <= 0x3098
-        || codePoint >= 0x3100 && codePoint <= 0x3104
-        || codePoint >= 0x312D && codePoint <= 0x3130
+        || (codePoint >= 0x3097 && codePoint <= 0x3098)
+        || (codePoint >= 0x3100 && codePoint <= 0x3104)
+        || (codePoint >= 0x312D && codePoint <= 0x3130)
         || codePoint == 0x318F
-        || codePoint >= 0x31B8 && codePoint <= 0x31EF
-        || codePoint >= 0x321D && codePoint <= 0x321F
-        || codePoint >= 0x3244 && codePoint <= 0x3250
-        || codePoint >= 0x327C && codePoint <= 0x327E
-        || codePoint >= 0x32CC && codePoint <= 0x32CF
+        || (codePoint >= 0x31B8 && codePoint <= 0x31EF)
+        || (codePoint >= 0x321D && codePoint <= 0x321F)
+        || (codePoint >= 0x3244 && codePoint <= 0x3250)
+        || (codePoint >= 0x327C && codePoint <= 0x327E)
+        || (codePoint >= 0x32CC && codePoint <= 0x32CF)
         || codePoint == 0x32FF
-        || codePoint >= 0x3377 && codePoint <= 0x337A
-        || codePoint >= 0x33DE && codePoint <= 0x33DF
+        || (codePoint >= 0x3377 && codePoint <= 0x337A)
+        || (codePoint >= 0x33DE && codePoint <= 0x33DF)
         || codePoint == 0x33FF
-        || codePoint >= 0x4DB6 && codePoint <= 0x4DFF
-        || codePoint >= 0x9FA6 && codePoint <= 0x9FFF
-        || codePoint >= 0xA48D && codePoint <= 0xA48F
-        || codePoint >= 0xA4C7 && codePoint <= 0xABFF
-        || codePoint >= 0xD7A4 && codePoint <= 0xD7FF
-        || codePoint >= 0xFA2E && codePoint <= 0xFA2F
-        || codePoint >= 0xFA6B && codePoint <= 0xFAFF
-        || codePoint >= 0xFB07 && codePoint <= 0xFB12
-        || codePoint >= 0xFB18 && codePoint <= 0xFB1C
+        || (codePoint >= 0x4DB6 && codePoint <= 0x4DFF)
+        || (codePoint >= 0x9FA6 && codePoint <= 0x9FFF)
+        || (codePoint >= 0xA48D && codePoint <= 0xA48F)
+        || (codePoint >= 0xA4C7 && codePoint <= 0xABFF)
+        || (codePoint >= 0xD7A4 && codePoint <= 0xD7FF)
+        || (codePoint >= 0xFA2E && codePoint <= 0xFA2F)
+        || (codePoint >= 0xFA6B && codePoint <= 0xFAFF)
+        || (codePoint >= 0xFB07 && codePoint <= 0xFB12)
+        || (codePoint >= 0xFB18 && codePoint <= 0xFB1C)
         || codePoint == 0xFB37
         || codePoint == 0xFB3D
         || codePoint == 0xFB3F
         || codePoint == 0xFB42
         || codePoint == 0xFB45
-        || codePoint >= 0xFBB2 && codePoint <= 0xFBD2
-        || codePoint >= 0xFD40 && codePoint <= 0xFD4F
-        || codePoint >= 0xFD90 && codePoint <= 0xFD91
-        || codePoint >= 0xFDC8 && codePoint <= 0xFDCF
-        || codePoint >= 0xFDFD && codePoint <= 0xFDFF
-        || codePoint >= 0xFE10 && codePoint <= 0xFE1F
-        || codePoint >= 0xFE24 && codePoint <= 0xFE2F
-        || codePoint >= 0xFE47 && codePoint <= 0xFE48
+        || (codePoint >= 0xFBB2 && codePoint <= 0xFBD2)
+        || (codePoint >= 0xFD40 && codePoint <= 0xFD4F)
+        || (codePoint >= 0xFD90 && codePoint <= 0xFD91)
+        || (codePoint >= 0xFDC8 && codePoint <= 0xFDCF)
+        || (codePoint >= 0xFDFD && codePoint <= 0xFDFF)
+        || (codePoint >= 0xFE10 && codePoint <= 0xFE1F)
+        || (codePoint >= 0xFE24 && codePoint <= 0xFE2F)
+        || (codePoint >= 0xFE47 && codePoint <= 0xFE48)
         || codePoint == 0xFE53
         || codePoint == 0xFE67
-        || codePoint >= 0xFE6C && codePoint <= 0xFE6F
+        || (codePoint >= 0xFE6C && codePoint <= 0xFE6F)
         || codePoint == 0xFE75
-        || codePoint >= 0xFEFD && codePoint <= 0xFEFE
+        || (codePoint >= 0xFEFD && codePoint <= 0xFEFE)
         || codePoint == 0xFF00
-        || codePoint >= 0xFFBF && codePoint <= 0xFFC1
-        || codePoint >= 0xFFC8 && codePoint <= 0xFFC9
-        || codePoint >= 0xFFD0 && codePoint <= 0xFFD1
-        || codePoint >= 0xFFD8 && codePoint <= 0xFFD9
-        || codePoint >= 0xFFDD && codePoint <= 0xFFDF
+        || (codePoint >= 0xFFBF && codePoint <= 0xFFC1)
+        || (codePoint >= 0xFFC8 && codePoint <= 0xFFC9)
+        || (codePoint >= 0xFFD0 && codePoint <= 0xFFD1)
+        || (codePoint >= 0xFFD8 && codePoint <= 0xFFD9)
+        || (codePoint >= 0xFFDD && codePoint <= 0xFFDF)
         || codePoint == 0xFFE7
-        || codePoint >= 0xFFEF && codePoint <= 0xFFF8
-        || codePoint >= 0x10000 && codePoint <= 0x102FF
+        || (codePoint >= 0xFFEF && codePoint <= 0xFFF8)
+        || (codePoint >= 0x10000 && codePoint <= 0x102FF)
         || codePoint == 0x1031F
-        || codePoint >= 0x10324 && codePoint <= 0x1032F
-        || codePoint >= 0x1034B && codePoint <= 0x103FF
-        || codePoint >= 0x10426 && codePoint <= 0x10427
-        || codePoint >= 0x1044E && codePoint <= 0x1CFFF
-        || codePoint >= 0x1D0F6 && codePoint <= 0x1D0FF
-        || codePoint >= 0x1D127 && codePoint <= 0x1D129
-        || codePoint >= 0x1D1DE && codePoint <= 0x1D3FF
+        || (codePoint >= 0x10324 && codePoint <= 0x1032F)
+        || (codePoint >= 0x1034B && codePoint <= 0x103FF)
+        || (codePoint >= 0x10426 && codePoint <= 0x10427)
+        || (codePoint >= 0x1044E && codePoint <= 0x1CFFF)
+        || (codePoint >= 0x1D0F6 && codePoint <= 0x1D0FF)
+        || (codePoint >= 0x1D127 && codePoint <= 0x1D129)
+        || (codePoint >= 0x1D1DE && codePoint <= 0x1D3FF)
         || codePoint == 0x1D455
         || codePoint == 0x1D49D
-        || codePoint >= 0x1D4A0 && codePoint <= 0x1D4A1
-        || codePoint >= 0x1D4A3 && codePoint <= 0x1D4A4
-        || codePoint >= 0x1D4A7 && codePoint <= 0x1D4A8
+        || (codePoint >= 0x1D4A0 && codePoint <= 0x1D4A1)
+        || (codePoint >= 0x1D4A3 && codePoint <= 0x1D4A4)
+        || (codePoint >= 0x1D4A7 && codePoint <= 0x1D4A8)
         || codePoint == 0x1D4AD
         || codePoint == 0x1D4BA
         || codePoint == 0x1D4BC
         || codePoint == 0x1D4C1
         || codePoint == 0x1D4C4
         || codePoint == 0x1D506
-        || codePoint >= 0x1D50B && codePoint <= 0x1D50C
+        || (codePoint >= 0x1D50B && codePoint <= 0x1D50C)
         || codePoint == 0x1D515
         || codePoint == 0x1D51D
         || codePoint == 0x1D53A
         || codePoint == 0x1D53F
         || codePoint == 0x1D545
-        || codePoint >= 0x1D547 && codePoint <= 0x1D549
+        || (codePoint >= 0x1D547 && codePoint <= 0x1D549)
         || codePoint == 0x1D551
-        || codePoint >= 0x1D6A4 && codePoint <= 0x1D6A7
-        || codePoint >= 0x1D7CA && codePoint <= 0x1D7CD
-        || codePoint >= 0x1D800 && codePoint <= 0x1FFFD
-        || codePoint >= 0x2A6D7 && codePoint <= 0x2F7FF
-        || codePoint >= 0x2FA1E && codePoint <= 0x2FFFD
-        || codePoint >= 0x30000 && codePoint <= 0x3FFFD
-        || codePoint >= 0x40000 && codePoint <= 0x4FFFD
-        || codePoint >= 0x50000 && codePoint <= 0x5FFFD
-        || codePoint >= 0x60000 && codePoint <= 0x6FFFD
-        || codePoint >= 0x70000 && codePoint <= 0x7FFFD
-        || codePoint >= 0x80000 && codePoint <= 0x8FFFD
-        || codePoint >= 0x90000 && codePoint <= 0x9FFFD
-        || codePoint >= 0xA0000 && codePoint <= 0xAFFFD
-        || codePoint >= 0xB0000 && codePoint <= 0xBFFFD
-        || codePoint >= 0xC0000 && codePoint <= 0xCFFFD
-        || codePoint >= 0xD0000 && codePoint <= 0xDFFFD
+        || (codePoint >= 0x1D6A4 && codePoint <= 0x1D6A7)
+        || (codePoint >= 0x1D7CA && codePoint <= 0x1D7CD)
+        || (codePoint >= 0x1D800 && codePoint <= 0x1FFFD)
+        || (codePoint >= 0x2A6D7 && codePoint <= 0x2F7FF)
+        || (codePoint >= 0x2FA1E && codePoint <= 0x2FFFD)
+        || (codePoint >= 0x30000 && codePoint <= 0x3FFFD)
+        || (codePoint >= 0x40000 && codePoint <= 0x4FFFD)
+        || (codePoint >= 0x50000 && codePoint <= 0x5FFFD)
+        || (codePoint >= 0x60000 && codePoint <= 0x6FFFD)
+        || (codePoint >= 0x70000 && codePoint <= 0x7FFFD)
+        || (codePoint >= 0x80000 && codePoint <= 0x8FFFD)
+        || (codePoint >= 0x90000 && codePoint <= 0x9FFFD)
+        || (codePoint >= 0xA0000 && codePoint <= 0xAFFFD)
+        || (codePoint >= 0xB0000 && codePoint <= 0xBFFFD)
+        || (codePoint >= 0xC0000 && codePoint <= 0xCFFFD)
+        || (codePoint >= 0xD0000 && codePoint <= 0xDFFFD)
         || codePoint == 0xE0000
-        || codePoint >= 0xE0002 && codePoint <= 0xE001F
-        || codePoint >= 0xE0080 && codePoint <= 0xEFFFD
+        || (codePoint >= 0xE0002 && codePoint <= 0xE001F)
+        || (codePoint >= 0xE0080 && codePoint <= 0xEFFFD)
 
       ;
   }
@@ -4960,7 +4960,7 @@ public final class Tables {
    * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.2.1">RFC 3454, Appendix C.2.1</a>
    */
   public static boolean prohibitionAsciiControl(int codePoint) {
-    return codePoint >= 0x0000 && codePoint <= 0x001F
+    return (codePoint >= 0x0000 && codePoint <= 0x001F)
         || codePoint == 0x007F
 
       ;
@@ -4974,7 +4974,7 @@ public final class Tables {
    * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.2.2">RFC 3454, Appendix C.2.2</a>
    */
   public static boolean prohibitionNonAsciiControl(int codePoint) {
-    return codePoint >= 0x0080 && codePoint <= 0x009F
+    return (codePoint >= 0x0080 && codePoint <= 0x009F)
         || codePoint == 0x06DD
         || codePoint == 0x070F
         || codePoint == 0x180E
@@ -4986,10 +4986,10 @@ public final class Tables {
         || codePoint == 0x2061
         || codePoint == 0x2062
         || codePoint == 0x2063
-        || codePoint >= 0x206A && codePoint <= 0x206F
+        || (codePoint >= 0x206A && codePoint <= 0x206F)
         || codePoint == 0xFEFF
-        || codePoint >= 0xFFF9 && codePoint <= 0xFFFC
-        || codePoint >= 0x1D173 && codePoint <= 0x1D17A
+        || (codePoint >= 0xFFF9 && codePoint <= 0xFFFC)
+        || (codePoint >= 0x1D173 && codePoint <= 0x1D17A)
 
       ;
   }
@@ -5002,9 +5002,9 @@ public final class Tables {
    * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.3">RFC 3454, Appendix C.3</a>
    */
   public static boolean prohibitionPrivateUse(int codePoint) {
-    return codePoint >= 0xE000 && codePoint <= 0xF8FF
-        || codePoint >= 0xF0000 && codePoint <= 0xFFFFD
-        || codePoint >= 0x100000 && codePoint <= 0x10FFFD
+    return (codePoint >= 0xE000 && codePoint <= 0xF8FF)
+        || (codePoint >= 0xF0000 && codePoint <= 0xFFFFD)
+        || (codePoint >= 0x100000 && codePoint <= 0x10FFFD)
 
       ;
   }
@@ -5017,24 +5017,24 @@ public final class Tables {
    * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.4">RFC 3454, Appendix C.4</a>
    */
   public static boolean prohibitionNonCharacterCodePoints(int codePoint) {
-    return codePoint >= 0xFDD0 && codePoint <= 0xFDEF
-        || codePoint >= 0xFFFE && codePoint <= 0xFFFF
-        || codePoint >= 0x1FFFE && codePoint <= 0x1FFFF
-        || codePoint >= 0x2FFFE && codePoint <= 0x2FFFF
-        || codePoint >= 0x3FFFE && codePoint <= 0x3FFFF
-        || codePoint >= 0x4FFFE && codePoint <= 0x4FFFF
-        || codePoint >= 0x5FFFE && codePoint <= 0x5FFFF
-        || codePoint >= 0x6FFFE && codePoint <= 0x6FFFF
-        || codePoint >= 0x7FFFE && codePoint <= 0x7FFFF
-        || codePoint >= 0x8FFFE && codePoint <= 0x8FFFF
-        || codePoint >= 0x9FFFE && codePoint <= 0x9FFFF
-        || codePoint >= 0xAFFFE && codePoint <= 0xAFFFF
-        || codePoint >= 0xBFFFE && codePoint <= 0xBFFFF
-        || codePoint >= 0xCFFFE && codePoint <= 0xCFFFF
-        || codePoint >= 0xDFFFE && codePoint <= 0xDFFFF
-        || codePoint >= 0xEFFFE && codePoint <= 0xEFFFF
-        || codePoint >= 0xFFFFE && codePoint <= 0xFFFFF
-        || codePoint >= 0x10FFFE && codePoint <= 0x10FFFF
+    return (codePoint >= 0xFDD0 && codePoint <= 0xFDEF)
+        || (codePoint >= 0xFFFE && codePoint <= 0xFFFF)
+        || (codePoint >= 0x1FFFE && codePoint <= 0x1FFFF)
+        || (codePoint >= 0x2FFFE && codePoint <= 0x2FFFF)
+        || (codePoint >= 0x3FFFE && codePoint <= 0x3FFFF)
+        || (codePoint >= 0x4FFFE && codePoint <= 0x4FFFF)
+        || (codePoint >= 0x5FFFE && codePoint <= 0x5FFFF)
+        || (codePoint >= 0x6FFFE && codePoint <= 0x6FFFF)
+        || (codePoint >= 0x7FFFE && codePoint <= 0x7FFFF)
+        || (codePoint >= 0x8FFFE && codePoint <= 0x8FFFF)
+        || (codePoint >= 0x9FFFE && codePoint <= 0x9FFFF)
+        || (codePoint >= 0xAFFFE && codePoint <= 0xAFFFF)
+        || (codePoint >= 0xBFFFE && codePoint <= 0xBFFFF)
+        || (codePoint >= 0xCFFFE && codePoint <= 0xCFFFF)
+        || (codePoint >= 0xDFFFE && codePoint <= 0xDFFFF)
+        || (codePoint >= 0xEFFFE && codePoint <= 0xEFFFF)
+        || (codePoint >= 0xFFFFE && codePoint <= 0xFFFFF)
+        || (codePoint >= 0x10FFFE && codePoint <= 0x10FFFF)
 
       ;
   }
@@ -5047,7 +5047,7 @@ public final class Tables {
    * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.5">RFC 3454, Appendix C.5</a>
    */
   public static boolean prohibitionSurrogateCodes(int codePoint) {
-    return codePoint >= 0xD800 && codePoint <= 0xDFFF
+    return (codePoint >= 0xD800 && codePoint <= 0xDFFF)
 
       ;
   }
@@ -5079,7 +5079,7 @@ public final class Tables {
    * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-C.7">RFC 3454, Appendix C.7</a>
    */
   public static boolean prohibitionInappropriateCanonicalRepresentation(int codePoint) {
-    return codePoint >= 0x2FF0 && codePoint <= 0x2FFB
+    return (codePoint >= 0x2FF0 && codePoint <= 0x2FFB)
 
       ;
   }
@@ -5121,7 +5121,7 @@ public final class Tables {
    */
   public static boolean prohibitionTaggingCharacters(int codePoint) {
     return codePoint == 0xE0001
-        || codePoint >= 0xE0020 && codePoint <= 0xE007F
+        || (codePoint >= 0xE0020 && codePoint <= 0xE007F)
 
       ;
   }
@@ -5138,37 +5138,37 @@ public final class Tables {
     return codePoint == 0x05BE
         || codePoint == 0x05C0
         || codePoint == 0x05C3
-        || codePoint >= 0x05D0 && codePoint <= 0x05EA
-        || codePoint >= 0x05F0 && codePoint <= 0x05F4
+        || (codePoint >= 0x05D0 && codePoint <= 0x05EA)
+        || (codePoint >= 0x05F0 && codePoint <= 0x05F4)
         || codePoint == 0x061B
         || codePoint == 0x061F
-        || codePoint >= 0x0621 && codePoint <= 0x063A
-        || codePoint >= 0x0640 && codePoint <= 0x064A
-        || codePoint >= 0x066D && codePoint <= 0x066F
-        || codePoint >= 0x0671 && codePoint <= 0x06D5
+        || (codePoint >= 0x0621 && codePoint <= 0x063A)
+        || (codePoint >= 0x0640 && codePoint <= 0x064A)
+        || (codePoint >= 0x066D && codePoint <= 0x066F)
+        || (codePoint >= 0x0671 && codePoint <= 0x06D5)
         || codePoint == 0x06DD
-        || codePoint >= 0x06E5 && codePoint <= 0x06E6
-        || codePoint >= 0x06FA && codePoint <= 0x06FE
-        || codePoint >= 0x0700 && codePoint <= 0x070D
+        || (codePoint >= 0x06E5 && codePoint <= 0x06E6)
+        || (codePoint >= 0x06FA && codePoint <= 0x06FE)
+        || (codePoint >= 0x0700 && codePoint <= 0x070D)
         || codePoint == 0x0710
-        || codePoint >= 0x0712 && codePoint <= 0x072C
-        || codePoint >= 0x0780 && codePoint <= 0x07A5
+        || (codePoint >= 0x0712 && codePoint <= 0x072C)
+        || (codePoint >= 0x0780 && codePoint <= 0x07A5)
         || codePoint == 0x07B1
         || codePoint == 0x200F
         || codePoint == 0xFB1D
-        || codePoint >= 0xFB1F && codePoint <= 0xFB28
-        || codePoint >= 0xFB2A && codePoint <= 0xFB36
-        || codePoint >= 0xFB38 && codePoint <= 0xFB3C
+        || (codePoint >= 0xFB1F && codePoint <= 0xFB28)
+        || (codePoint >= 0xFB2A && codePoint <= 0xFB36)
+        || (codePoint >= 0xFB38 && codePoint <= 0xFB3C)
         || codePoint == 0xFB3E
-        || codePoint >= 0xFB40 && codePoint <= 0xFB41
-        || codePoint >= 0xFB43 && codePoint <= 0xFB44
-        || codePoint >= 0xFB46 && codePoint <= 0xFBB1
-        || codePoint >= 0xFBD3 && codePoint <= 0xFD3D
-        || codePoint >= 0xFD50 && codePoint <= 0xFD8F
-        || codePoint >= 0xFD92 && codePoint <= 0xFDC7
-        || codePoint >= 0xFDF0 && codePoint <= 0xFDFC
-        || codePoint >= 0xFE70 && codePoint <= 0xFE74
-        || codePoint >= 0xFE76 && codePoint <= 0xFEFC
+        || (codePoint >= 0xFB40 && codePoint <= 0xFB41)
+        || (codePoint >= 0xFB43 && codePoint <= 0xFB44)
+        || (codePoint >= 0xFB46 && codePoint <= 0xFBB1)
+        || (codePoint >= 0xFBD3 && codePoint <= 0xFD3D)
+        || (codePoint >= 0xFD50 && codePoint <= 0xFD8F)
+        || (codePoint >= 0xFD92 && codePoint <= 0xFDC7)
+        || (codePoint >= 0xFDF0 && codePoint <= 0xFDFC)
+        || (codePoint >= 0xFE70 && codePoint <= 0xFE74)
+        || (codePoint >= 0xFE76 && codePoint <= 0xFEFC)
 
       ;
   }
@@ -5182,366 +5182,366 @@ public final class Tables {
    * @see <a href="https://tools.ietf.org/html/rfc3454#appendix-D.2">RFC 3454, Appendix D.2</a>
    */
   public static boolean bidirectionalPropertyL(int codePoint) {
-    return codePoint >= 0x0041 && codePoint <= 0x005A
-        || codePoint >= 0x0061 && codePoint <= 0x007A
+    return (codePoint >= 0x0041 && codePoint <= 0x005A)
+        || (codePoint >= 0x0061 && codePoint <= 0x007A)
         || codePoint == 0x00AA
         || codePoint == 0x00B5
         || codePoint == 0x00BA
-        || codePoint >= 0x00C0 && codePoint <= 0x00D6
-        || codePoint >= 0x00D8 && codePoint <= 0x00F6
-        || codePoint >= 0x00F8 && codePoint <= 0x0220
-        || codePoint >= 0x0222 && codePoint <= 0x0233
-        || codePoint >= 0x0250 && codePoint <= 0x02AD
-        || codePoint >= 0x02B0 && codePoint <= 0x02B8
-        || codePoint >= 0x02BB && codePoint <= 0x02C1
-        || codePoint >= 0x02D0 && codePoint <= 0x02D1
-        || codePoint >= 0x02E0 && codePoint <= 0x02E4
+        || (codePoint >= 0x00C0 && codePoint <= 0x00D6)
+        || (codePoint >= 0x00D8 && codePoint <= 0x00F6)
+        || (codePoint >= 0x00F8 && codePoint <= 0x0220)
+        || (codePoint >= 0x0222 && codePoint <= 0x0233)
+        || (codePoint >= 0x0250 && codePoint <= 0x02AD)
+        || (codePoint >= 0x02B0 && codePoint <= 0x02B8)
+        || (codePoint >= 0x02BB && codePoint <= 0x02C1)
+        || (codePoint >= 0x02D0 && codePoint <= 0x02D1)
+        || (codePoint >= 0x02E0 && codePoint <= 0x02E4)
         || codePoint == 0x02EE
         || codePoint == 0x037A
         || codePoint == 0x0386
-        || codePoint >= 0x0388 && codePoint <= 0x038A
+        || (codePoint >= 0x0388 && codePoint <= 0x038A)
         || codePoint == 0x038C
-        || codePoint >= 0x038E && codePoint <= 0x03A1
-        || codePoint >= 0x03A3 && codePoint <= 0x03CE
-        || codePoint >= 0x03D0 && codePoint <= 0x03F5
-        || codePoint >= 0x0400 && codePoint <= 0x0482
-        || codePoint >= 0x048A && codePoint <= 0x04CE
-        || codePoint >= 0x04D0 && codePoint <= 0x04F5
-        || codePoint >= 0x04F8 && codePoint <= 0x04F9
-        || codePoint >= 0x0500 && codePoint <= 0x050F
-        || codePoint >= 0x0531 && codePoint <= 0x0556
-        || codePoint >= 0x0559 && codePoint <= 0x055F
-        || codePoint >= 0x0561 && codePoint <= 0x0587
+        || (codePoint >= 0x038E && codePoint <= 0x03A1)
+        || (codePoint >= 0x03A3 && codePoint <= 0x03CE)
+        || (codePoint >= 0x03D0 && codePoint <= 0x03F5)
+        || (codePoint >= 0x0400 && codePoint <= 0x0482)
+        || (codePoint >= 0x048A && codePoint <= 0x04CE)
+        || (codePoint >= 0x04D0 && codePoint <= 0x04F5)
+        || (codePoint >= 0x04F8 && codePoint <= 0x04F9)
+        || (codePoint >= 0x0500 && codePoint <= 0x050F)
+        || (codePoint >= 0x0531 && codePoint <= 0x0556)
+        || (codePoint >= 0x0559 && codePoint <= 0x055F)
+        || (codePoint >= 0x0561 && codePoint <= 0x0587)
         || codePoint == 0x0589
         || codePoint == 0x0903
-        || codePoint >= 0x0905 && codePoint <= 0x0939
-        || codePoint >= 0x093D && codePoint <= 0x0940
-        || codePoint >= 0x0949 && codePoint <= 0x094C
+        || (codePoint >= 0x0905 && codePoint <= 0x0939)
+        || (codePoint >= 0x093D && codePoint <= 0x0940)
+        || (codePoint >= 0x0949 && codePoint <= 0x094C)
         || codePoint == 0x0950
-        || codePoint >= 0x0958 && codePoint <= 0x0961
-        || codePoint >= 0x0964 && codePoint <= 0x0970
-        || codePoint >= 0x0982 && codePoint <= 0x0983
-        || codePoint >= 0x0985 && codePoint <= 0x098C
-        || codePoint >= 0x098F && codePoint <= 0x0990
-        || codePoint >= 0x0993 && codePoint <= 0x09A8
-        || codePoint >= 0x09AA && codePoint <= 0x09B0
+        || (codePoint >= 0x0958 && codePoint <= 0x0961)
+        || (codePoint >= 0x0964 && codePoint <= 0x0970)
+        || (codePoint >= 0x0982 && codePoint <= 0x0983)
+        || (codePoint >= 0x0985 && codePoint <= 0x098C)
+        || (codePoint >= 0x098F && codePoint <= 0x0990)
+        || (codePoint >= 0x0993 && codePoint <= 0x09A8)
+        || (codePoint >= 0x09AA && codePoint <= 0x09B0)
         || codePoint == 0x09B2
-        || codePoint >= 0x09B6 && codePoint <= 0x09B9
-        || codePoint >= 0x09BE && codePoint <= 0x09C0
-        || codePoint >= 0x09C7 && codePoint <= 0x09C8
-        || codePoint >= 0x09CB && codePoint <= 0x09CC
+        || (codePoint >= 0x09B6 && codePoint <= 0x09B9)
+        || (codePoint >= 0x09BE && codePoint <= 0x09C0)
+        || (codePoint >= 0x09C7 && codePoint <= 0x09C8)
+        || (codePoint >= 0x09CB && codePoint <= 0x09CC)
         || codePoint == 0x09D7
-        || codePoint >= 0x09DC && codePoint <= 0x09DD
-        || codePoint >= 0x09DF && codePoint <= 0x09E1
-        || codePoint >= 0x09E6 && codePoint <= 0x09F1
-        || codePoint >= 0x09F4 && codePoint <= 0x09FA
-        || codePoint >= 0x0A05 && codePoint <= 0x0A0A
-        || codePoint >= 0x0A0F && codePoint <= 0x0A10
-        || codePoint >= 0x0A13 && codePoint <= 0x0A28
-        || codePoint >= 0x0A2A && codePoint <= 0x0A30
-        || codePoint >= 0x0A32 && codePoint <= 0x0A33
-        || codePoint >= 0x0A35 && codePoint <= 0x0A36
-        || codePoint >= 0x0A38 && codePoint <= 0x0A39
-        || codePoint >= 0x0A3E && codePoint <= 0x0A40
-        || codePoint >= 0x0A59 && codePoint <= 0x0A5C
+        || (codePoint >= 0x09DC && codePoint <= 0x09DD)
+        || (codePoint >= 0x09DF && codePoint <= 0x09E1)
+        || (codePoint >= 0x09E6 && codePoint <= 0x09F1)
+        || (codePoint >= 0x09F4 && codePoint <= 0x09FA)
+        || (codePoint >= 0x0A05 && codePoint <= 0x0A0A)
+        || (codePoint >= 0x0A0F && codePoint <= 0x0A10)
+        || (codePoint >= 0x0A13 && codePoint <= 0x0A28)
+        || (codePoint >= 0x0A2A && codePoint <= 0x0A30)
+        || (codePoint >= 0x0A32 && codePoint <= 0x0A33)
+        || (codePoint >= 0x0A35 && codePoint <= 0x0A36)
+        || (codePoint >= 0x0A38 && codePoint <= 0x0A39)
+        || (codePoint >= 0x0A3E && codePoint <= 0x0A40)
+        || (codePoint >= 0x0A59 && codePoint <= 0x0A5C)
         || codePoint == 0x0A5E
-        || codePoint >= 0x0A66 && codePoint <= 0x0A6F
-        || codePoint >= 0x0A72 && codePoint <= 0x0A74
+        || (codePoint >= 0x0A66 && codePoint <= 0x0A6F)
+        || (codePoint >= 0x0A72 && codePoint <= 0x0A74)
         || codePoint == 0x0A83
-        || codePoint >= 0x0A85 && codePoint <= 0x0A8B
+        || (codePoint >= 0x0A85 && codePoint <= 0x0A8B)
         || codePoint == 0x0A8D
-        || codePoint >= 0x0A8F && codePoint <= 0x0A91
-        || codePoint >= 0x0A93 && codePoint <= 0x0AA8
-        || codePoint >= 0x0AAA && codePoint <= 0x0AB0
-        || codePoint >= 0x0AB2 && codePoint <= 0x0AB3
-        || codePoint >= 0x0AB5 && codePoint <= 0x0AB9
-        || codePoint >= 0x0ABD && codePoint <= 0x0AC0
+        || (codePoint >= 0x0A8F && codePoint <= 0x0A91)
+        || (codePoint >= 0x0A93 && codePoint <= 0x0AA8)
+        || (codePoint >= 0x0AAA && codePoint <= 0x0AB0)
+        || (codePoint >= 0x0AB2 && codePoint <= 0x0AB3)
+        || (codePoint >= 0x0AB5 && codePoint <= 0x0AB9)
+        || (codePoint >= 0x0ABD && codePoint <= 0x0AC0)
         || codePoint == 0x0AC9
-        || codePoint >= 0x0ACB && codePoint <= 0x0ACC
+        || (codePoint >= 0x0ACB && codePoint <= 0x0ACC)
         || codePoint == 0x0AD0
         || codePoint == 0x0AE0
-        || codePoint >= 0x0AE6 && codePoint <= 0x0AEF
-        || codePoint >= 0x0B02 && codePoint <= 0x0B03
-        || codePoint >= 0x0B05 && codePoint <= 0x0B0C
-        || codePoint >= 0x0B0F && codePoint <= 0x0B10
-        || codePoint >= 0x0B13 && codePoint <= 0x0B28
-        || codePoint >= 0x0B2A && codePoint <= 0x0B30
-        || codePoint >= 0x0B32 && codePoint <= 0x0B33
-        || codePoint >= 0x0B36 && codePoint <= 0x0B39
-        || codePoint >= 0x0B3D && codePoint <= 0x0B3E
+        || (codePoint >= 0x0AE6 && codePoint <= 0x0AEF)
+        || (codePoint >= 0x0B02 && codePoint <= 0x0B03)
+        || (codePoint >= 0x0B05 && codePoint <= 0x0B0C)
+        || (codePoint >= 0x0B0F && codePoint <= 0x0B10)
+        || (codePoint >= 0x0B13 && codePoint <= 0x0B28)
+        || (codePoint >= 0x0B2A && codePoint <= 0x0B30)
+        || (codePoint >= 0x0B32 && codePoint <= 0x0B33)
+        || (codePoint >= 0x0B36 && codePoint <= 0x0B39)
+        || (codePoint >= 0x0B3D && codePoint <= 0x0B3E)
         || codePoint == 0x0B40
-        || codePoint >= 0x0B47 && codePoint <= 0x0B48
-        || codePoint >= 0x0B4B && codePoint <= 0x0B4C
+        || (codePoint >= 0x0B47 && codePoint <= 0x0B48)
+        || (codePoint >= 0x0B4B && codePoint <= 0x0B4C)
         || codePoint == 0x0B57
-        || codePoint >= 0x0B5C && codePoint <= 0x0B5D
-        || codePoint >= 0x0B5F && codePoint <= 0x0B61
-        || codePoint >= 0x0B66 && codePoint <= 0x0B70
+        || (codePoint >= 0x0B5C && codePoint <= 0x0B5D)
+        || (codePoint >= 0x0B5F && codePoint <= 0x0B61)
+        || (codePoint >= 0x0B66 && codePoint <= 0x0B70)
         || codePoint == 0x0B83
-        || codePoint >= 0x0B85 && codePoint <= 0x0B8A
-        || codePoint >= 0x0B8E && codePoint <= 0x0B90
-        || codePoint >= 0x0B92 && codePoint <= 0x0B95
-        || codePoint >= 0x0B99 && codePoint <= 0x0B9A
+        || (codePoint >= 0x0B85 && codePoint <= 0x0B8A)
+        || (codePoint >= 0x0B8E && codePoint <= 0x0B90)
+        || (codePoint >= 0x0B92 && codePoint <= 0x0B95)
+        || (codePoint >= 0x0B99 && codePoint <= 0x0B9A)
         || codePoint == 0x0B9C
-        || codePoint >= 0x0B9E && codePoint <= 0x0B9F
-        || codePoint >= 0x0BA3 && codePoint <= 0x0BA4
-        || codePoint >= 0x0BA8 && codePoint <= 0x0BAA
-        || codePoint >= 0x0BAE && codePoint <= 0x0BB5
-        || codePoint >= 0x0BB7 && codePoint <= 0x0BB9
-        || codePoint >= 0x0BBE && codePoint <= 0x0BBF
-        || codePoint >= 0x0BC1 && codePoint <= 0x0BC2
-        || codePoint >= 0x0BC6 && codePoint <= 0x0BC8
-        || codePoint >= 0x0BCA && codePoint <= 0x0BCC
+        || (codePoint >= 0x0B9E && codePoint <= 0x0B9F)
+        || (codePoint >= 0x0BA3 && codePoint <= 0x0BA4)
+        || (codePoint >= 0x0BA8 && codePoint <= 0x0BAA)
+        || (codePoint >= 0x0BAE && codePoint <= 0x0BB5)
+        || (codePoint >= 0x0BB7 && codePoint <= 0x0BB9)
+        || (codePoint >= 0x0BBE && codePoint <= 0x0BBF)
+        || (codePoint >= 0x0BC1 && codePoint <= 0x0BC2)
+        || (codePoint >= 0x0BC6 && codePoint <= 0x0BC8)
+        || (codePoint >= 0x0BCA && codePoint <= 0x0BCC)
         || codePoint == 0x0BD7
-        || codePoint >= 0x0BE7 && codePoint <= 0x0BF2
-        || codePoint >= 0x0C01 && codePoint <= 0x0C03
-        || codePoint >= 0x0C05 && codePoint <= 0x0C0C
-        || codePoint >= 0x0C0E && codePoint <= 0x0C10
-        || codePoint >= 0x0C12 && codePoint <= 0x0C28
-        || codePoint >= 0x0C2A && codePoint <= 0x0C33
-        || codePoint >= 0x0C35 && codePoint <= 0x0C39
-        || codePoint >= 0x0C41 && codePoint <= 0x0C44
-        || codePoint >= 0x0C60 && codePoint <= 0x0C61
-        || codePoint >= 0x0C66 && codePoint <= 0x0C6F
-        || codePoint >= 0x0C82 && codePoint <= 0x0C83
-        || codePoint >= 0x0C85 && codePoint <= 0x0C8C
-        || codePoint >= 0x0C8E && codePoint <= 0x0C90
-        || codePoint >= 0x0C92 && codePoint <= 0x0CA8
-        || codePoint >= 0x0CAA && codePoint <= 0x0CB3
-        || codePoint >= 0x0CB5 && codePoint <= 0x0CB9
+        || (codePoint >= 0x0BE7 && codePoint <= 0x0BF2)
+        || (codePoint >= 0x0C01 && codePoint <= 0x0C03)
+        || (codePoint >= 0x0C05 && codePoint <= 0x0C0C)
+        || (codePoint >= 0x0C0E && codePoint <= 0x0C10)
+        || (codePoint >= 0x0C12 && codePoint <= 0x0C28)
+        || (codePoint >= 0x0C2A && codePoint <= 0x0C33)
+        || (codePoint >= 0x0C35 && codePoint <= 0x0C39)
+        || (codePoint >= 0x0C41 && codePoint <= 0x0C44)
+        || (codePoint >= 0x0C60 && codePoint <= 0x0C61)
+        || (codePoint >= 0x0C66 && codePoint <= 0x0C6F)
+        || (codePoint >= 0x0C82 && codePoint <= 0x0C83)
+        || (codePoint >= 0x0C85 && codePoint <= 0x0C8C)
+        || (codePoint >= 0x0C8E && codePoint <= 0x0C90)
+        || (codePoint >= 0x0C92 && codePoint <= 0x0CA8)
+        || (codePoint >= 0x0CAA && codePoint <= 0x0CB3)
+        || (codePoint >= 0x0CB5 && codePoint <= 0x0CB9)
         || codePoint == 0x0CBE
-        || codePoint >= 0x0CC0 && codePoint <= 0x0CC4
-        || codePoint >= 0x0CC7 && codePoint <= 0x0CC8
-        || codePoint >= 0x0CCA && codePoint <= 0x0CCB
-        || codePoint >= 0x0CD5 && codePoint <= 0x0CD6
+        || (codePoint >= 0x0CC0 && codePoint <= 0x0CC4)
+        || (codePoint >= 0x0CC7 && codePoint <= 0x0CC8)
+        || (codePoint >= 0x0CCA && codePoint <= 0x0CCB)
+        || (codePoint >= 0x0CD5 && codePoint <= 0x0CD6)
         || codePoint == 0x0CDE
-        || codePoint >= 0x0CE0 && codePoint <= 0x0CE1
-        || codePoint >= 0x0CE6 && codePoint <= 0x0CEF
-        || codePoint >= 0x0D02 && codePoint <= 0x0D03
-        || codePoint >= 0x0D05 && codePoint <= 0x0D0C
-        || codePoint >= 0x0D0E && codePoint <= 0x0D10
-        || codePoint >= 0x0D12 && codePoint <= 0x0D28
-        || codePoint >= 0x0D2A && codePoint <= 0x0D39
-        || codePoint >= 0x0D3E && codePoint <= 0x0D40
-        || codePoint >= 0x0D46 && codePoint <= 0x0D48
-        || codePoint >= 0x0D4A && codePoint <= 0x0D4C
+        || (codePoint >= 0x0CE0 && codePoint <= 0x0CE1)
+        || (codePoint >= 0x0CE6 && codePoint <= 0x0CEF)
+        || (codePoint >= 0x0D02 && codePoint <= 0x0D03)
+        || (codePoint >= 0x0D05 && codePoint <= 0x0D0C)
+        || (codePoint >= 0x0D0E && codePoint <= 0x0D10)
+        || (codePoint >= 0x0D12 && codePoint <= 0x0D28)
+        || (codePoint >= 0x0D2A && codePoint <= 0x0D39)
+        || (codePoint >= 0x0D3E && codePoint <= 0x0D40)
+        || (codePoint >= 0x0D46 && codePoint <= 0x0D48)
+        || (codePoint >= 0x0D4A && codePoint <= 0x0D4C)
         || codePoint == 0x0D57
-        || codePoint >= 0x0D60 && codePoint <= 0x0D61
-        || codePoint >= 0x0D66 && codePoint <= 0x0D6F
-        || codePoint >= 0x0D82 && codePoint <= 0x0D83
-        || codePoint >= 0x0D85 && codePoint <= 0x0D96
-        || codePoint >= 0x0D9A && codePoint <= 0x0DB1
-        || codePoint >= 0x0DB3 && codePoint <= 0x0DBB
+        || (codePoint >= 0x0D60 && codePoint <= 0x0D61)
+        || (codePoint >= 0x0D66 && codePoint <= 0x0D6F)
+        || (codePoint >= 0x0D82 && codePoint <= 0x0D83)
+        || (codePoint >= 0x0D85 && codePoint <= 0x0D96)
+        || (codePoint >= 0x0D9A && codePoint <= 0x0DB1)
+        || (codePoint >= 0x0DB3 && codePoint <= 0x0DBB)
         || codePoint == 0x0DBD
-        || codePoint >= 0x0DC0 && codePoint <= 0x0DC6
-        || codePoint >= 0x0DCF && codePoint <= 0x0DD1
-        || codePoint >= 0x0DD8 && codePoint <= 0x0DDF
-        || codePoint >= 0x0DF2 && codePoint <= 0x0DF4
-        || codePoint >= 0x0E01 && codePoint <= 0x0E30
-        || codePoint >= 0x0E32 && codePoint <= 0x0E33
-        || codePoint >= 0x0E40 && codePoint <= 0x0E46
-        || codePoint >= 0x0E4F && codePoint <= 0x0E5B
-        || codePoint >= 0x0E81 && codePoint <= 0x0E82
+        || (codePoint >= 0x0DC0 && codePoint <= 0x0DC6)
+        || (codePoint >= 0x0DCF && codePoint <= 0x0DD1)
+        || (codePoint >= 0x0DD8 && codePoint <= 0x0DDF)
+        || (codePoint >= 0x0DF2 && codePoint <= 0x0DF4)
+        || (codePoint >= 0x0E01 && codePoint <= 0x0E30)
+        || (codePoint >= 0x0E32 && codePoint <= 0x0E33)
+        || (codePoint >= 0x0E40 && codePoint <= 0x0E46)
+        || (codePoint >= 0x0E4F && codePoint <= 0x0E5B)
+        || (codePoint >= 0x0E81 && codePoint <= 0x0E82)
         || codePoint == 0x0E84
-        || codePoint >= 0x0E87 && codePoint <= 0x0E88
+        || (codePoint >= 0x0E87 && codePoint <= 0x0E88)
         || codePoint == 0x0E8A
         || codePoint == 0x0E8D
-        || codePoint >= 0x0E94 && codePoint <= 0x0E97
-        || codePoint >= 0x0E99 && codePoint <= 0x0E9F
-        || codePoint >= 0x0EA1 && codePoint <= 0x0EA3
+        || (codePoint >= 0x0E94 && codePoint <= 0x0E97)
+        || (codePoint >= 0x0E99 && codePoint <= 0x0E9F)
+        || (codePoint >= 0x0EA1 && codePoint <= 0x0EA3)
         || codePoint == 0x0EA5
         || codePoint == 0x0EA7
-        || codePoint >= 0x0EAA && codePoint <= 0x0EAB
-        || codePoint >= 0x0EAD && codePoint <= 0x0EB0
-        || codePoint >= 0x0EB2 && codePoint <= 0x0EB3
+        || (codePoint >= 0x0EAA && codePoint <= 0x0EAB)
+        || (codePoint >= 0x0EAD && codePoint <= 0x0EB0)
+        || (codePoint >= 0x0EB2 && codePoint <= 0x0EB3)
         || codePoint == 0x0EBD
-        || codePoint >= 0x0EC0 && codePoint <= 0x0EC4
+        || (codePoint >= 0x0EC0 && codePoint <= 0x0EC4)
         || codePoint == 0x0EC6
-        || codePoint >= 0x0ED0 && codePoint <= 0x0ED9
-        || codePoint >= 0x0EDC && codePoint <= 0x0EDD
-        || codePoint >= 0x0F00 && codePoint <= 0x0F17
-        || codePoint >= 0x0F1A && codePoint <= 0x0F34
+        || (codePoint >= 0x0ED0 && codePoint <= 0x0ED9)
+        || (codePoint >= 0x0EDC && codePoint <= 0x0EDD)
+        || (codePoint >= 0x0F00 && codePoint <= 0x0F17)
+        || (codePoint >= 0x0F1A && codePoint <= 0x0F34)
         || codePoint == 0x0F36
         || codePoint == 0x0F38
-        || codePoint >= 0x0F3E && codePoint <= 0x0F47
-        || codePoint >= 0x0F49 && codePoint <= 0x0F6A
+        || (codePoint >= 0x0F3E && codePoint <= 0x0F47)
+        || (codePoint >= 0x0F49 && codePoint <= 0x0F6A)
         || codePoint == 0x0F7F
         || codePoint == 0x0F85
-        || codePoint >= 0x0F88 && codePoint <= 0x0F8B
-        || codePoint >= 0x0FBE && codePoint <= 0x0FC5
-        || codePoint >= 0x0FC7 && codePoint <= 0x0FCC
+        || (codePoint >= 0x0F88 && codePoint <= 0x0F8B)
+        || (codePoint >= 0x0FBE && codePoint <= 0x0FC5)
+        || (codePoint >= 0x0FC7 && codePoint <= 0x0FCC)
         || codePoint == 0x0FCF
-        || codePoint >= 0x1000 && codePoint <= 0x1021
-        || codePoint >= 0x1023 && codePoint <= 0x1027
-        || codePoint >= 0x1029 && codePoint <= 0x102A
+        || (codePoint >= 0x1000 && codePoint <= 0x1021)
+        || (codePoint >= 0x1023 && codePoint <= 0x1027)
+        || (codePoint >= 0x1029 && codePoint <= 0x102A)
         || codePoint == 0x102C
         || codePoint == 0x1031
         || codePoint == 0x1038
-        || codePoint >= 0x1040 && codePoint <= 0x1057
-        || codePoint >= 0x10A0 && codePoint <= 0x10C5
-        || codePoint >= 0x10D0 && codePoint <= 0x10F8
+        || (codePoint >= 0x1040 && codePoint <= 0x1057)
+        || (codePoint >= 0x10A0 && codePoint <= 0x10C5)
+        || (codePoint >= 0x10D0 && codePoint <= 0x10F8)
         || codePoint == 0x10FB
-        || codePoint >= 0x1100 && codePoint <= 0x1159
-        || codePoint >= 0x115F && codePoint <= 0x11A2
-        || codePoint >= 0x11A8 && codePoint <= 0x11F9
-        || codePoint >= 0x1200 && codePoint <= 0x1206
-        || codePoint >= 0x1208 && codePoint <= 0x1246
+        || (codePoint >= 0x1100 && codePoint <= 0x1159)
+        || (codePoint >= 0x115F && codePoint <= 0x11A2)
+        || (codePoint >= 0x11A8 && codePoint <= 0x11F9)
+        || (codePoint >= 0x1200 && codePoint <= 0x1206)
+        || (codePoint >= 0x1208 && codePoint <= 0x1246)
         || codePoint == 0x1248
-        || codePoint >= 0x124A && codePoint <= 0x124D
-        || codePoint >= 0x1250 && codePoint <= 0x1256
+        || (codePoint >= 0x124A && codePoint <= 0x124D)
+        || (codePoint >= 0x1250 && codePoint <= 0x1256)
         || codePoint == 0x1258
-        || codePoint >= 0x125A && codePoint <= 0x125D
-        || codePoint >= 0x1260 && codePoint <= 0x1286
+        || (codePoint >= 0x125A && codePoint <= 0x125D)
+        || (codePoint >= 0x1260 && codePoint <= 0x1286)
         || codePoint == 0x1288
-        || codePoint >= 0x128A && codePoint <= 0x128D
-        || codePoint >= 0x1290 && codePoint <= 0x12AE
+        || (codePoint >= 0x128A && codePoint <= 0x128D)
+        || (codePoint >= 0x1290 && codePoint <= 0x12AE)
         || codePoint == 0x12B0
-        || codePoint >= 0x12B2 && codePoint <= 0x12B5
-        || codePoint >= 0x12B8 && codePoint <= 0x12BE
+        || (codePoint >= 0x12B2 && codePoint <= 0x12B5)
+        || (codePoint >= 0x12B8 && codePoint <= 0x12BE)
         || codePoint == 0x12C0
-        || codePoint >= 0x12C2 && codePoint <= 0x12C5
-        || codePoint >= 0x12C8 && codePoint <= 0x12CE
-        || codePoint >= 0x12D0 && codePoint <= 0x12D6
-        || codePoint >= 0x12D8 && codePoint <= 0x12EE
-        || codePoint >= 0x12F0 && codePoint <= 0x130E
+        || (codePoint >= 0x12C2 && codePoint <= 0x12C5)
+        || (codePoint >= 0x12C8 && codePoint <= 0x12CE)
+        || (codePoint >= 0x12D0 && codePoint <= 0x12D6)
+        || (codePoint >= 0x12D8 && codePoint <= 0x12EE)
+        || (codePoint >= 0x12F0 && codePoint <= 0x130E)
         || codePoint == 0x1310
-        || codePoint >= 0x1312 && codePoint <= 0x1315
-        || codePoint >= 0x1318 && codePoint <= 0x131E
-        || codePoint >= 0x1320 && codePoint <= 0x1346
-        || codePoint >= 0x1348 && codePoint <= 0x135A
-        || codePoint >= 0x1361 && codePoint <= 0x137C
-        || codePoint >= 0x13A0 && codePoint <= 0x13F4
-        || codePoint >= 0x1401 && codePoint <= 0x1676
-        || codePoint >= 0x1681 && codePoint <= 0x169A
-        || codePoint >= 0x16A0 && codePoint <= 0x16F0
-        || codePoint >= 0x1700 && codePoint <= 0x170C
-        || codePoint >= 0x170E && codePoint <= 0x1711
-        || codePoint >= 0x1720 && codePoint <= 0x1731
-        || codePoint >= 0x1735 && codePoint <= 0x1736
-        || codePoint >= 0x1740 && codePoint <= 0x1751
-        || codePoint >= 0x1760 && codePoint <= 0x176C
-        || codePoint >= 0x176E && codePoint <= 0x1770
-        || codePoint >= 0x1780 && codePoint <= 0x17B6
-        || codePoint >= 0x17BE && codePoint <= 0x17C5
-        || codePoint >= 0x17C7 && codePoint <= 0x17C8
-        || codePoint >= 0x17D4 && codePoint <= 0x17DA
+        || (codePoint >= 0x1312 && codePoint <= 0x1315)
+        || (codePoint >= 0x1318 && codePoint <= 0x131E)
+        || (codePoint >= 0x1320 && codePoint <= 0x1346)
+        || (codePoint >= 0x1348 && codePoint <= 0x135A)
+        || (codePoint >= 0x1361 && codePoint <= 0x137C)
+        || (codePoint >= 0x13A0 && codePoint <= 0x13F4)
+        || (codePoint >= 0x1401 && codePoint <= 0x1676)
+        || (codePoint >= 0x1681 && codePoint <= 0x169A)
+        || (codePoint >= 0x16A0 && codePoint <= 0x16F0)
+        || (codePoint >= 0x1700 && codePoint <= 0x170C)
+        || (codePoint >= 0x170E && codePoint <= 0x1711)
+        || (codePoint >= 0x1720 && codePoint <= 0x1731)
+        || (codePoint >= 0x1735 && codePoint <= 0x1736)
+        || (codePoint >= 0x1740 && codePoint <= 0x1751)
+        || (codePoint >= 0x1760 && codePoint <= 0x176C)
+        || (codePoint >= 0x176E && codePoint <= 0x1770)
+        || (codePoint >= 0x1780 && codePoint <= 0x17B6)
+        || (codePoint >= 0x17BE && codePoint <= 0x17C5)
+        || (codePoint >= 0x17C7 && codePoint <= 0x17C8)
+        || (codePoint >= 0x17D4 && codePoint <= 0x17DA)
         || codePoint == 0x17DC
-        || codePoint >= 0x17E0 && codePoint <= 0x17E9
-        || codePoint >= 0x1810 && codePoint <= 0x1819
-        || codePoint >= 0x1820 && codePoint <= 0x1877
-        || codePoint >= 0x1880 && codePoint <= 0x18A8
-        || codePoint >= 0x1E00 && codePoint <= 0x1E9B
-        || codePoint >= 0x1EA0 && codePoint <= 0x1EF9
-        || codePoint >= 0x1F00 && codePoint <= 0x1F15
-        || codePoint >= 0x1F18 && codePoint <= 0x1F1D
-        || codePoint >= 0x1F20 && codePoint <= 0x1F45
-        || codePoint >= 0x1F48 && codePoint <= 0x1F4D
-        || codePoint >= 0x1F50 && codePoint <= 0x1F57
+        || (codePoint >= 0x17E0 && codePoint <= 0x17E9)
+        || (codePoint >= 0x1810 && codePoint <= 0x1819)
+        || (codePoint >= 0x1820 && codePoint <= 0x1877)
+        || (codePoint >= 0x1880 && codePoint <= 0x18A8)
+        || (codePoint >= 0x1E00 && codePoint <= 0x1E9B)
+        || (codePoint >= 0x1EA0 && codePoint <= 0x1EF9)
+        || (codePoint >= 0x1F00 && codePoint <= 0x1F15)
+        || (codePoint >= 0x1F18 && codePoint <= 0x1F1D)
+        || (codePoint >= 0x1F20 && codePoint <= 0x1F45)
+        || (codePoint >= 0x1F48 && codePoint <= 0x1F4D)
+        || (codePoint >= 0x1F50 && codePoint <= 0x1F57)
         || codePoint == 0x1F59
         || codePoint == 0x1F5B
         || codePoint == 0x1F5D
-        || codePoint >= 0x1F5F && codePoint <= 0x1F7D
-        || codePoint >= 0x1F80 && codePoint <= 0x1FB4
-        || codePoint >= 0x1FB6 && codePoint <= 0x1FBC
+        || (codePoint >= 0x1F5F && codePoint <= 0x1F7D)
+        || (codePoint >= 0x1F80 && codePoint <= 0x1FB4)
+        || (codePoint >= 0x1FB6 && codePoint <= 0x1FBC)
         || codePoint == 0x1FBE
-        || codePoint >= 0x1FC2 && codePoint <= 0x1FC4
-        || codePoint >= 0x1FC6 && codePoint <= 0x1FCC
-        || codePoint >= 0x1FD0 && codePoint <= 0x1FD3
-        || codePoint >= 0x1FD6 && codePoint <= 0x1FDB
-        || codePoint >= 0x1FE0 && codePoint <= 0x1FEC
-        || codePoint >= 0x1FF2 && codePoint <= 0x1FF4
-        || codePoint >= 0x1FF6 && codePoint <= 0x1FFC
+        || (codePoint >= 0x1FC2 && codePoint <= 0x1FC4)
+        || (codePoint >= 0x1FC6 && codePoint <= 0x1FCC)
+        || (codePoint >= 0x1FD0 && codePoint <= 0x1FD3)
+        || (codePoint >= 0x1FD6 && codePoint <= 0x1FDB)
+        || (codePoint >= 0x1FE0 && codePoint <= 0x1FEC)
+        || (codePoint >= 0x1FF2 && codePoint <= 0x1FF4)
+        || (codePoint >= 0x1FF6 && codePoint <= 0x1FFC)
         || codePoint == 0x200E
         || codePoint == 0x2071
         || codePoint == 0x207F
         || codePoint == 0x2102
         || codePoint == 0x2107
-        || codePoint >= 0x210A && codePoint <= 0x2113
+        || (codePoint >= 0x210A && codePoint <= 0x2113)
         || codePoint == 0x2115
-        || codePoint >= 0x2119 && codePoint <= 0x211D
+        || (codePoint >= 0x2119 && codePoint <= 0x211D)
         || codePoint == 0x2124
         || codePoint == 0x2126
         || codePoint == 0x2128
-        || codePoint >= 0x212A && codePoint <= 0x212D
-        || codePoint >= 0x212F && codePoint <= 0x2131
-        || codePoint >= 0x2133 && codePoint <= 0x2139
-        || codePoint >= 0x213D && codePoint <= 0x213F
-        || codePoint >= 0x2145 && codePoint <= 0x2149
-        || codePoint >= 0x2160 && codePoint <= 0x2183
-        || codePoint >= 0x2336 && codePoint <= 0x237A
+        || (codePoint >= 0x212A && codePoint <= 0x212D)
+        || (codePoint >= 0x212F && codePoint <= 0x2131)
+        || (codePoint >= 0x2133 && codePoint <= 0x2139)
+        || (codePoint >= 0x213D && codePoint <= 0x213F)
+        || (codePoint >= 0x2145 && codePoint <= 0x2149)
+        || (codePoint >= 0x2160 && codePoint <= 0x2183)
+        || (codePoint >= 0x2336 && codePoint <= 0x237A)
         || codePoint == 0x2395
-        || codePoint >= 0x249C && codePoint <= 0x24E9
-        || codePoint >= 0x3005 && codePoint <= 0x3007
-        || codePoint >= 0x3021 && codePoint <= 0x3029
-        || codePoint >= 0x3031 && codePoint <= 0x3035
-        || codePoint >= 0x3038 && codePoint <= 0x303C
-        || codePoint >= 0x3041 && codePoint <= 0x3096
-        || codePoint >= 0x309D && codePoint <= 0x309F
-        || codePoint >= 0x30A1 && codePoint <= 0x30FA
-        || codePoint >= 0x30FC && codePoint <= 0x30FF
-        || codePoint >= 0x3105 && codePoint <= 0x312C
-        || codePoint >= 0x3131 && codePoint <= 0x318E
-        || codePoint >= 0x3190 && codePoint <= 0x31B7
-        || codePoint >= 0x31F0 && codePoint <= 0x321C
-        || codePoint >= 0x3220 && codePoint <= 0x3243
-        || codePoint >= 0x3260 && codePoint <= 0x327B
-        || codePoint >= 0x327F && codePoint <= 0x32B0
-        || codePoint >= 0x32C0 && codePoint <= 0x32CB
-        || codePoint >= 0x32D0 && codePoint <= 0x32FE
-        || codePoint >= 0x3300 && codePoint <= 0x3376
-        || codePoint >= 0x337B && codePoint <= 0x33DD
-        || codePoint >= 0x33E0 && codePoint <= 0x33FE
-        || codePoint >= 0x3400 && codePoint <= 0x4DB5
-        || codePoint >= 0x4E00 && codePoint <= 0x9FA5
-        || codePoint >= 0xA000 && codePoint <= 0xA48C
-        || codePoint >= 0xAC00 && codePoint <= 0xD7A3
-        || codePoint >= 0xD800 && codePoint <= 0xFA2D
-        || codePoint >= 0xFA30 && codePoint <= 0xFA6A
-        || codePoint >= 0xFB00 && codePoint <= 0xFB06
-        || codePoint >= 0xFB13 && codePoint <= 0xFB17
-        || codePoint >= 0xFF21 && codePoint <= 0xFF3A
-        || codePoint >= 0xFF41 && codePoint <= 0xFF5A
-        || codePoint >= 0xFF66 && codePoint <= 0xFFBE
-        || codePoint >= 0xFFC2 && codePoint <= 0xFFC7
-        || codePoint >= 0xFFCA && codePoint <= 0xFFCF
-        || codePoint >= 0xFFD2 && codePoint <= 0xFFD7
-        || codePoint >= 0xFFDA && codePoint <= 0xFFDC
-        || codePoint >= 0x10300 && codePoint <= 0x1031E
-        || codePoint >= 0x10320 && codePoint <= 0x10323
-        || codePoint >= 0x10330 && codePoint <= 0x1034A
-        || codePoint >= 0x10400 && codePoint <= 0x10425
-        || codePoint >= 0x10428 && codePoint <= 0x1044D
-        || codePoint >= 0x1D000 && codePoint <= 0x1D0F5
-        || codePoint >= 0x1D100 && codePoint <= 0x1D126
-        || codePoint >= 0x1D12A && codePoint <= 0x1D166
-        || codePoint >= 0x1D16A && codePoint <= 0x1D172
-        || codePoint >= 0x1D183 && codePoint <= 0x1D184
-        || codePoint >= 0x1D18C && codePoint <= 0x1D1A9
-        || codePoint >= 0x1D1AE && codePoint <= 0x1D1DD
-        || codePoint >= 0x1D400 && codePoint <= 0x1D454
-        || codePoint >= 0x1D456 && codePoint <= 0x1D49C
-        || codePoint >= 0x1D49E && codePoint <= 0x1D49F
+        || (codePoint >= 0x249C && codePoint <= 0x24E9)
+        || (codePoint >= 0x3005 && codePoint <= 0x3007)
+        || (codePoint >= 0x3021 && codePoint <= 0x3029)
+        || (codePoint >= 0x3031 && codePoint <= 0x3035)
+        || (codePoint >= 0x3038 && codePoint <= 0x303C)
+        || (codePoint >= 0x3041 && codePoint <= 0x3096)
+        || (codePoint >= 0x309D && codePoint <= 0x309F)
+        || (codePoint >= 0x30A1 && codePoint <= 0x30FA)
+        || (codePoint >= 0x30FC && codePoint <= 0x30FF)
+        || (codePoint >= 0x3105 && codePoint <= 0x312C)
+        || (codePoint >= 0x3131 && codePoint <= 0x318E)
+        || (codePoint >= 0x3190 && codePoint <= 0x31B7)
+        || (codePoint >= 0x31F0 && codePoint <= 0x321C)
+        || (codePoint >= 0x3220 && codePoint <= 0x3243)
+        || (codePoint >= 0x3260 && codePoint <= 0x327B)
+        || (codePoint >= 0x327F && codePoint <= 0x32B0)
+        || (codePoint >= 0x32C0 && codePoint <= 0x32CB)
+        || (codePoint >= 0x32D0 && codePoint <= 0x32FE)
+        || (codePoint >= 0x3300 && codePoint <= 0x3376)
+        || (codePoint >= 0x337B && codePoint <= 0x33DD)
+        || (codePoint >= 0x33E0 && codePoint <= 0x33FE)
+        || (codePoint >= 0x3400 && codePoint <= 0x4DB5)
+        || (codePoint >= 0x4E00 && codePoint <= 0x9FA5)
+        || (codePoint >= 0xA000 && codePoint <= 0xA48C)
+        || (codePoint >= 0xAC00 && codePoint <= 0xD7A3)
+        || (codePoint >= 0xD800 && codePoint <= 0xFA2D)
+        || (codePoint >= 0xFA30 && codePoint <= 0xFA6A)
+        || (codePoint >= 0xFB00 && codePoint <= 0xFB06)
+        || (codePoint >= 0xFB13 && codePoint <= 0xFB17)
+        || (codePoint >= 0xFF21 && codePoint <= 0xFF3A)
+        || (codePoint >= 0xFF41 && codePoint <= 0xFF5A)
+        || (codePoint >= 0xFF66 && codePoint <= 0xFFBE)
+        || (codePoint >= 0xFFC2 && codePoint <= 0xFFC7)
+        || (codePoint >= 0xFFCA && codePoint <= 0xFFCF)
+        || (codePoint >= 0xFFD2 && codePoint <= 0xFFD7)
+        || (codePoint >= 0xFFDA && codePoint <= 0xFFDC)
+        || (codePoint >= 0x10300 && codePoint <= 0x1031E)
+        || (codePoint >= 0x10320 && codePoint <= 0x10323)
+        || (codePoint >= 0x10330 && codePoint <= 0x1034A)
+        || (codePoint >= 0x10400 && codePoint <= 0x10425)
+        || (codePoint >= 0x10428 && codePoint <= 0x1044D)
+        || (codePoint >= 0x1D000 && codePoint <= 0x1D0F5)
+        || (codePoint >= 0x1D100 && codePoint <= 0x1D126)
+        || (codePoint >= 0x1D12A && codePoint <= 0x1D166)
+        || (codePoint >= 0x1D16A && codePoint <= 0x1D172)
+        || (codePoint >= 0x1D183 && codePoint <= 0x1D184)
+        || (codePoint >= 0x1D18C && codePoint <= 0x1D1A9)
+        || (codePoint >= 0x1D1AE && codePoint <= 0x1D1DD)
+        || (codePoint >= 0x1D400 && codePoint <= 0x1D454)
+        || (codePoint >= 0x1D456 && codePoint <= 0x1D49C)
+        || (codePoint >= 0x1D49E && codePoint <= 0x1D49F)
         || codePoint == 0x1D4A2
-        || codePoint >= 0x1D4A5 && codePoint <= 0x1D4A6
-        || codePoint >= 0x1D4A9 && codePoint <= 0x1D4AC
-        || codePoint >= 0x1D4AE && codePoint <= 0x1D4B9
+        || (codePoint >= 0x1D4A5 && codePoint <= 0x1D4A6)
+        || (codePoint >= 0x1D4A9 && codePoint <= 0x1D4AC)
+        || (codePoint >= 0x1D4AE && codePoint <= 0x1D4B9)
         || codePoint == 0x1D4BB
-        || codePoint >= 0x1D4BD && codePoint <= 0x1D4C0
-        || codePoint >= 0x1D4C2 && codePoint <= 0x1D4C3
-        || codePoint >= 0x1D4C5 && codePoint <= 0x1D505
-        || codePoint >= 0x1D507 && codePoint <= 0x1D50A
-        || codePoint >= 0x1D50D && codePoint <= 0x1D514
-        || codePoint >= 0x1D516 && codePoint <= 0x1D51C
-        || codePoint >= 0x1D51E && codePoint <= 0x1D539
-        || codePoint >= 0x1D53B && codePoint <= 0x1D53E
-        || codePoint >= 0x1D540 && codePoint <= 0x1D544
+        || (codePoint >= 0x1D4BD && codePoint <= 0x1D4C0)
+        || (codePoint >= 0x1D4C2 && codePoint <= 0x1D4C3)
+        || (codePoint >= 0x1D4C5 && codePoint <= 0x1D505)
+        || (codePoint >= 0x1D507 && codePoint <= 0x1D50A)
+        || (codePoint >= 0x1D50D && codePoint <= 0x1D514)
+        || (codePoint >= 0x1D516 && codePoint <= 0x1D51C)
+        || (codePoint >= 0x1D51E && codePoint <= 0x1D539)
+        || (codePoint >= 0x1D53B && codePoint <= 0x1D53E)
+        || (codePoint >= 0x1D540 && codePoint <= 0x1D544)
         || codePoint == 0x1D546
-        || codePoint >= 0x1D54A && codePoint <= 0x1D550
-        || codePoint >= 0x1D552 && codePoint <= 0x1D6A3
-        || codePoint >= 0x1D6A8 && codePoint <= 0x1D7C9
-        || codePoint >= 0x20000 && codePoint <= 0x2A6D6
-        || codePoint >= 0x2F800 && codePoint <= 0x2FA1D
-        || codePoint >= 0xF0000 && codePoint <= 0xFFFFD
-        || codePoint >= 0x100000 && codePoint <= 0x10FFFD
+        || (codePoint >= 0x1D54A && codePoint <= 0x1D550)
+        || (codePoint >= 0x1D552 && codePoint <= 0x1D6A3)
+        || (codePoint >= 0x1D6A8 && codePoint <= 0x1D7C9)
+        || (codePoint >= 0x20000 && codePoint <= 0x2A6D6)
+        || (codePoint >= 0x2F800 && codePoint <= 0x2FA1D)
+        || (codePoint >= 0xF0000 && codePoint <= 0xFFFFD)
+        || (codePoint >= 0x100000 && codePoint <= 0x10FFFD)
 
       ;
   }
