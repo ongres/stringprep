@@ -273,12 +273,11 @@
       <property name="target" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF, VARIABLE_DEF" />
     </module>
     <module name="JavadocMethod">
-      <property name="scope" value="public" />
+      <property name="accessModifiers" value="public"/>
       <property name="allowMissingParamTags" value="false" />
       <property name="allowMissingReturnTag" value="false" />
       <property name="allowedAnnotations" value="Override, Test" />
       <property name="validateThrows" value="true"/>
-      <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF" />
     </module>
     <module name="MissingJavadocMethod">
       <property name="scope" value="public" />

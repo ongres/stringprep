@@ -5,13 +5,13 @@
 
 package com.ongres.saslprep;
 
+import java.util.EnumSet;
+import java.util.Set;
+
 import com.ongres.stringprep.Option;
 import com.ongres.stringprep.Profile;
 import com.ongres.stringprep.ProfileName;
 import com.ongres.stringprep.Tables;
-
-import java.util.EnumSet;
-import java.util.Set;
 
 /**
  * SASLprep: Stringprep Profile for User Names and Passwords.

@@ -37,11 +37,6 @@
       <email>matteom@ongres.com</email>
     </developer>
     <developer>
-      <id>com.ongres.begona</id>
-      <name>Begoña Pérez Martín</name>
-      <email>begonapm@ongres.com</email>
-    </developer>
-    <developer>
       <id>com.ongres.jorsol</id>
       <name>Jorge Solórzano</name>
       <email>jorsol@ongres.com</email>
@@ -94,21 +89,22 @@
     <enforcer-plugin.version>3.0.0-M3</enforcer-plugin.version>
     <install-plugin.version>3.0.0-M1</install-plugin.version>
     <gpg-plugin.version>1.6</gpg-plugin.version>
-    <jacoco-plugin.verson>0.8.6</jacoco-plugin.verson>
+    <jacoco-plugin.verson>0.8.7</jacoco-plugin.verson>
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
     <flatten-maven-plugin.version>1.2.7</flatten-maven-plugin.version>
     <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
-    <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
+    <git-commit-id-plugin.version>4.0.4</git-commit-id-plugin.version>
     <reproducible-build-maven-plugin.version>0.13</reproducible-build-maven-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
-    <checkstyle.version>8.41</checkstyle.version>
+    <checkstyle.version>8.42</checkstyle.version>
     <checkstyle-plugin.version>3.1.2</checkstyle-plugin.version>
-    <spotbugs.version>4.2.2</spotbugs.version>
-    <spotbugs-plugin.version>4.2.0</spotbugs-plugin.version>
+    <spotbugs.version>4.2.3</spotbugs.version>
+    <spotbugs-plugin.version>4.2.3</spotbugs-plugin.version>
     <findsecbugs.version>1.11.0</findsecbugs.version>
-    <pmd.version>6.32.0</pmd.version>
+    <pmd.version>6.34.0</pmd.version>
     <pmd-plugin.version>3.14.0</pmd-plugin.version>
-    <sonar-plugin.version>3.8.0.2131</sonar-plugin.version>
+    <sonar-plugin.version>3.9.0.2155</sonar-plugin.version>
+    <forbiddenapis.version>3.1</forbiddenapis.version>
     <checks.location>${project.basedir}/checks</checks.location>
     <checkstyle.config.location>${checks.location}/checkstyle.xml</checkstyle.config.location>
     <checkstyle.suppressions.location>${checks.location}/checkstyle-suppressions.xml</checkstyle.suppressions.location>
@@ -149,9 +145,6 @@
             <showWarnings>true</showWarnings>
             <parameters>true</parameters>
             <useIncrementalCompilation>false</useIncrementalCompilation>
-            <compilerArgs>
-              <arg>-Xlint:all</arg>
-            </compilerArgs>
           </configuration>
           <executions>
             <execution>
@@ -217,6 +210,7 @@
             <doclint>none</doclint>
             <quiet>true</quiet>
             <includeDependencySources>true</includeDependencySources>
+            <validateLinks>true</validateLinks>
             <notimestamp>true</notimestamp>
             <tags>
               <tag>
@@ -436,6 +430,72 @@
       <id>check</id>
       <build>
         <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${compiler-plugin.version}</version>
+            <configuration>
+              <fork>true</fork>
+              <compilerArgs>
+                <arg>-Xlint:all</arg>
+                <arg>-XDcompilePolicy=simple</arg>
+                <arg>-Xplugin:ErrorProne</arg>
+                <!-- Required on JDK 16 due to JEP 396 -->
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+                <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+                <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+              </compilerArgs>
+              <annotationProcessorPaths>
+                <path>
+                  <groupId>com.google.errorprone</groupId>
+                  <artifactId>error_prone_core</artifactId>
+                  <version>2.6.0</version>
+                </path>
+              </annotationProcessorPaths>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>de.thetaphi</groupId>
+            <artifactId>forbiddenapis</artifactId>
+            <version>${forbiddenapis.version}</version>
+            <configuration>
+              <!--
+                if the used Java version is too new,
+                don't fail, just do nothing:
+              -->
+              <failOnUnsupportedJava>false</failOnUnsupportedJava>
+              <bundledSignatures>
+                <!--
+                  This will automatically choose the right
+                  signatures based on 'maven.compiler.target':
+                -->
+                <bundledSignature>jdk-unsafe</bundledSignature>
+                <bundledSignature>jdk-deprecated</bundledSignature>
+                <bundledSignature>jdk-internal</bundledSignature>
+                <!-- disallow undocumented classes like sun.misc.Unsafe: -->
+                <bundledSignature>jdk-non-portable</bundledSignature>
+                <!-- don't allow unsafe reflective access: -->
+                <bundledSignature>jdk-reflection</bundledSignature>
+                <!-- don't allow System.out or System.err: -->
+                <bundledSignature>jdk-system-out</bundledSignature>
+              </bundledSignatures>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>check</goal>
+                  <goal>testCheck</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jdeps-plugin</artifactId>
