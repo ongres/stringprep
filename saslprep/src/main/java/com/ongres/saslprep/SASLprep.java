@@ -5,12 +5,13 @@
 
 package com.ongres.saslprep;
 
-import java.util.EnumSet;
-import java.util.Set;
-
 import com.ongres.stringprep.Option;
 import com.ongres.stringprep.Profile;
+import com.ongres.stringprep.ProfileName;
 import com.ongres.stringprep.Tables;
+
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * SASLprep: Stringprep Profile for User Names and Passwords.
@@ -21,6 +22,7 @@ import com.ongres.stringprep.Tables;
  * preparing internationalized user names and passwords for comparison. For simplicity and
  * implementation ease, a single algorithm is defined for both user names and passwords.
  */
+@ProfileName("SASLprep")
 public final class SASLprep implements Profile {
 
   private final EnumSet<Option> saslprepProfile;
@@ -58,7 +60,7 @@ public final class SASLprep implements Profile {
    * {@inheritDoc}
    */
   @Override
-  public String prepareQuery(CharSequence string) {
+  public String prepareQuery(String string) {
     return Profile.super.prepareQuery(string);
   }
 
@@ -66,7 +68,7 @@ public final class SASLprep implements Profile {
    * {@inheritDoc}
    */
   @Override
-  public String prepareStored(CharSequence string) {
+  public String prepareStored(String string) {
     return Profile.super.prepareStored(string);
   }
 

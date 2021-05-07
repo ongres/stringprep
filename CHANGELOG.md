@@ -3,11 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### :bug: Bug Fixes
-- `Stringprep.getProvider` was not working in the module path.
+- `Stringprep::getProvider` was not working in the module path.
 
 ### :building_construction: Improvements
 - The Java modules profiles `com.ongres.saslprep` and `com.ongres.nameprep` have implied readability with `com.ongres.stringprep`.
 - Exports the packages of the profiles in the module declaration to allow creating instances without the ServiceLoader lookup.
+- Introduce the annotation `@ProfileName` to declare the name of the profile used for ServiceLoader lookup.
 
 ## [2.0] - 2021-02-01
 ### :boom: Breaking changes

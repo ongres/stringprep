@@ -39,8 +39,8 @@ public interface Profile {
    * @return The prepared String.
    * @throws IllegalArgumentException if there is a prohibited output.
    */
-  default String prepareQuery(CharSequence string) {
-    return new Stringprep(this, false).prepare(string.toString());
+  default String prepareQuery(String string) {
+    return new Stringprep(this, false).prepare(string);
   }
 
   /**
@@ -55,8 +55,8 @@ public interface Profile {
    * @return The prepared String.
    * @throws IllegalArgumentException if there is a prohibited output.
    */
-  default String prepareStored(CharSequence string) {
-    return new Stringprep(this, true).prepare(string.toString());
+  default String prepareStored(String string) {
+    return new Stringprep(this, true).prepare(string);
   }
 
   /**

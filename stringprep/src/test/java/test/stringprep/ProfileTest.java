@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.EnumSet;
+import java.util.Locale;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -122,7 +123,7 @@ class ProfileTest {
   void testNonAsciiSpaces(int codePoint) {
     Profile profile = () -> EnumSet.of(Option.FORBID_NON_ASCII_SPACES);
     String character = String.valueOf(Character.toChars(codePoint));
-    String characterHex = String.format("0x%4X", codePoint).replace(' ', '0');
+    String characterHex = String.format(Locale.ROOT, "0x%4X", codePoint).replace(' ', '0');
     String example = "I" + character + "X";
     IllegalArgumentException storedIllegal =
         assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example));

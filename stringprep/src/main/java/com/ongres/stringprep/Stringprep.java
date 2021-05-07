@@ -7,9 +7,9 @@ package com.ongres.stringprep;
 
 import java.text.Normalizer;
 import java.util.EnumSet;
-import java.util.Iterator;
+import java.util.Locale;
 import java.util.Objects;
-import java.util.ServiceLoader;
+import java.util.function.IntPredicate;
 
 /**
  * Java implementation of StringPrep (RFC 3454).
@@ -87,14 +87,8 @@ public final class Stringprep {
    */
   public static Profile getProvider(String profileName) {
     Objects.requireNonNull(profileName, "The profile name must not be null");
-    Iterator<Profile> profiles = ServiceLoader.load(Profile.class).iterator();
-    while (profiles.hasNext()) {
-      Profile profile = profiles.next();
-      if (profile.getClass().getSimpleName().equals(profileName)) {
-        return profile;
-      }
-    }
-    throw new IllegalArgumentException("No provider found for: " + profileName);
+    return StringprepLocator.getProfile(profileName)
+        .orElseThrow(() -> new IllegalArgumentException("No provider found for: " + profileName));
   }
 
   /**
@@ -162,9 +156,9 @@ public final class Stringprep {
       // error.
       if (checkBidi) {
         // 1) The characters in section 5.8 MUST be prohibited.
-        if (Tables.prohibitionChangeDisplayProperties(codePoint)) {
-          throw prohibitedCharater("Prohibited control character", codePoint);
-        }
+        checkProhibited(true, Tables::prohibitionChangeDisplayProperties,
+            codePoint, "Prohibited control character");
+
         if (Tables.bidirectionalPropertyRorAL(codePoint)) {
           containsRandAlCat = true;
         }
@@ -225,58 +219,50 @@ public final class Stringprep {
   }
 
   private void prohibitedOutput(int codePoint) {
-    if (forbidAdditionalCharacters && profile.prohibitedAdditionalCharacters(codePoint)) {
-      // - Any additional characters that are prohibited as output specific to
-      // the profile
-      throw prohibitedCharater("Prohibited code point", codePoint);
-    }
-    if (forbidAsciiSpaces && Tables.prohibitionAsciiSpace(codePoint)) {
-      throw prohibitedCharater("Prohibited ASCII space", codePoint);
-    }
-    if (forbidNonAsciiSpaces && Tables.prohibitionNonAsciiSpace(codePoint)) {
-      throw prohibitedCharater("Prohibited non-ASCII space", codePoint);
-    }
-    if (forbidAsciiControl && Tables.prohibitionAsciiControl(codePoint)) {
-      throw prohibitedCharater("Prohibited ASCII control", codePoint);
-    }
-    if (forbidNonAsciiControl && Tables.prohibitionNonAsciiControl(codePoint)) {
-      throw prohibitedCharater("Prohibited non-ASCII control", codePoint);
-    }
-    if (forbidPrivateUse && Tables.prohibitionPrivateUse(codePoint)) {
-      throw prohibitedCharater("Prohibited private use character", codePoint);
-    }
-    if (forbidNonCharacter && Tables.prohibitionNonCharacterCodePoints(codePoint)) {
-      throw prohibitedCharater("Prohibited non-character code point", codePoint);
-    }
-    if (forbidSurrogate && Tables.prohibitionSurrogateCodes(codePoint)) {
-      throw prohibitedCharater("Prohibited surrogate code point", codePoint);
-    }
-    if (forbidInappropriatePlainText && Tables.prohibitionInappropriatePlainText(codePoint)) {
-      throw prohibitedCharater("Prohibited plain text code point", codePoint);
-    }
-    if (forbidInappropriateCanonRep
-        && Tables.prohibitionInappropriateCanonicalRepresentation(codePoint)) {
-      throw prohibitedCharater("Prohibited non-canonical code point", codePoint);
-    }
-    if (forbidChangeDisplayDeprecated && Tables.prohibitionChangeDisplayProperties(codePoint)) {
-      throw prohibitedCharater("Prohibited control character", codePoint);
-    }
-    if (forbidTagging && Tables.prohibitionTaggingCharacters(codePoint)) {
-      throw prohibitedCharater("Prohibited tagging character", codePoint);
-    }
-    if (forbidUnassigned && Tables.unassignedCodePoints(codePoint)) {
-      // All code points not assigned in the character repertoire named in a
-      // stringprep profile are called "unassigned code points". Stored
-      // strings using the profile MUST NOT contain any unassigned code
-      // points. Queries for matching strings MAY contain unassigned code
-      // points.
-      throw prohibitedCharater("Unassigned code point", codePoint);
-    }
+    // - Any additional characters that are prohibited as output specific to
+    // the profile
+    checkProhibited(forbidAdditionalCharacters, profile::prohibitedAdditionalCharacters,
+        codePoint, "Prohibited code point");
+
+    checkProhibited(forbidAsciiSpaces, Tables::prohibitionAsciiSpace,
+        codePoint, "Prohibited ASCII space");
+    checkProhibited(forbidNonAsciiSpaces, Tables::prohibitionNonAsciiSpace,
+        codePoint, "Prohibited non-ASCII space");
+    checkProhibited(forbidAsciiControl, Tables::prohibitionAsciiControl,
+        codePoint, "Prohibited ASCII control");
+    checkProhibited(forbidNonAsciiControl, Tables::prohibitionNonAsciiControl,
+        codePoint, "Prohibited non-ASCII control");
+    checkProhibited(forbidPrivateUse, Tables::prohibitionPrivateUse,
+        codePoint, "Prohibited private use character");
+    checkProhibited(forbidNonCharacter, Tables::prohibitionNonCharacterCodePoints,
+        codePoint, "Prohibited non-character code point");
+    checkProhibited(forbidSurrogate, Tables::prohibitionSurrogateCodes,
+        codePoint, "Prohibited surrogate code point");
+    checkProhibited(forbidInappropriatePlainText, Tables::prohibitionInappropriatePlainText,
+        codePoint, "Prohibited plain text code point");
+    checkProhibited(forbidInappropriateCanonRep,
+        Tables::prohibitionInappropriateCanonicalRepresentation,
+        codePoint, "Prohibited non-canonical code point");
+    checkProhibited(forbidChangeDisplayDeprecated, Tables::prohibitionChangeDisplayProperties,
+        codePoint, "Prohibited control character");
+    checkProhibited(forbidTagging, Tables::prohibitionTaggingCharacters,
+        codePoint, "Prohibited tagging character");
+
+    // All code points not assigned in the character repertoire named in a
+    // stringprep profile are called "unassigned code points". Stored
+    // strings using the profile MUST NOT contain any unassigned code
+    // points. Queries for matching strings MAY contain unassigned code
+    // points.
+    checkProhibited(forbidUnassigned, Tables::unassignedCodePoints,
+        codePoint, "Unassigned code point");
   }
 
-  private static IllegalArgumentException prohibitedCharater(String msg, int cp) {
-    String codePointHex = String.format("0x%4X", cp).replace(' ', '0');
-    return new IllegalArgumentException(String.format("%s \"%s\"", msg, codePointHex));
+  private static void checkProhibited(boolean forbid, IntPredicate tableCheck, int codePoint,
+      String msg) {
+    if (forbid && tableCheck.test(codePoint)) {
+      throw new IllegalArgumentException(
+          String.format(Locale.ROOT, "%s \"0x%04X\"", msg, codePoint));
+    }
   }
 
 }

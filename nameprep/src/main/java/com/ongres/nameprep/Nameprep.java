@@ -10,6 +10,7 @@ import java.util.Set;
 
 import com.ongres.stringprep.Option;
 import com.ongres.stringprep.Profile;
+import com.ongres.stringprep.ProfileName;
 
 /**
  * Nameprep: A Stringprep Profile for Internationalized Domain Names (IDN).
@@ -19,6 +20,7 @@ import com.ongres.stringprep.Profile;
  * strings correct. It is a profile of stringprep. These processing rules are only intended for
  * internationalized domain names, not for arbitrary text.
  */
+@ProfileName("Nameprep")
 public final class Nameprep implements Profile {
 
   private final EnumSet<Option> nameprepProfile;
@@ -55,7 +57,7 @@ public final class Nameprep implements Profile {
    * {@inheritDoc}
    */
   @Override
-  public String prepareQuery(CharSequence string) {
+  public String prepareQuery(String string) {
     return Profile.super.prepareQuery(string);
   }
 
@@ -63,7 +65,7 @@ public final class Nameprep implements Profile {
    * {@inheritDoc}
    */
   @Override
-  public String prepareStored(CharSequence string) {
+  public String prepareStored(String string) {
     return Profile.super.prepareStored(string);
   }
 
