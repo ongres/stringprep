@@ -40,11 +40,12 @@ codegen:
 tests:
   stage: test
   script:
-    - ./mvnw $MAVEN_CLI_OPTS verify
+    - ./mvnw $MAVEN_CLI_OPTS verify -P it
   artifacts:
     reports:
       junit:
         - "*/target/surefire-reports/TEST-*.xml"
+        - "*/target/junit-platform/TEST-*.xml"
 
 sonarcloud-check:
   stage: check
