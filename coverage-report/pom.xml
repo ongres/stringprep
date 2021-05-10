@@ -9,7 +9,7 @@
     <version>2.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>jacoco-report-aggregator</artifactId>
+  <artifactId>coverage-report-aggregator</artifactId>
   <packaging>pom</packaging>
 
   <name>JaCoCo Report Aggregator</name>

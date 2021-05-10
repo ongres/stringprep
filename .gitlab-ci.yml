@@ -45,7 +45,7 @@ tests:
     reports:
       junit:
         - "*/target/surefire-reports/TEST-*.xml"
-        - "*/target/junit-platform/TEST-*.xml"
+        - "**/target/junit-platform/TEST-*.xml"
 
 sonarcloud-check:
   stage: check

@@ -419,11 +419,11 @@
       <id>coverage</id>
       <properties>
         <sonar.organization>ongresinc</sonar.organization>
-        <aggregate.report.xml>jacoco-report/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.xml>
+        <aggregate.report.xml>coverage-report/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.xml>
         <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/${aggregate.report.xml}</sonar.coverage.jacoco.xmlReportPaths>
       </properties>
       <modules>
-        <module>jacoco-report</module>
+        <module>coverage-report</module>
       </modules>
       <build>
         <plugins>
