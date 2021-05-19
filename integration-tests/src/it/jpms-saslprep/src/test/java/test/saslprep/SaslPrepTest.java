@@ -59,4 +59,10 @@ class SaslPrepTest {
     assertEquals("IX IX", profile.prepareQuery(example1));
   }
 
+  @Test
+  void accessPublic() {
+    assertEquals("com.ongres.stringprep", Stringprep.class.getModule().getName());
+    assertEquals("com.ongres.saslprep", SASLprep.class.getModule().getName());
+  }
+
 }

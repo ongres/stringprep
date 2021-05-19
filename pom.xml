@@ -79,7 +79,7 @@
     <java.version>8</java.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
     <!-- Dependency versions -->
-    <junit5.version>5.7.1</junit5.version>
+    <junit5.version>5.7.2</junit5.version>
     <!-- Plugins versions -->
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <jar-plugin.version>3.2.0</jar-plugin.version>
@@ -674,7 +674,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
+            <version>3.0.1</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>

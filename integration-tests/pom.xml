@@ -8,11 +8,14 @@
     <version>2.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>jpms-it</artifactId>
-  <name>JPMS - Integration tests</name>
+  <artifactId>itests</artifactId>
+  <packaging>pom</packaging>
+
+  <name>Integration tests</name>
 
   <properties>
-    <maven.resources.skip>true</maven.resources.skip>
+    <sonar.skip>true</sonar.skip>
+    <checks.location>${project.parent.basedir}/checks</checks.location>
   </properties>
 
   <dependencies>
@@ -35,13 +38,6 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <skipIfEmpty>true</skipIfEmpty>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-invoker-plugin</artifactId>

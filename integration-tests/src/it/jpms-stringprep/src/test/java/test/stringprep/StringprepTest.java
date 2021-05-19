@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.ongres.stringprep.Stringprep;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.provider.NullSource;
@@ -26,6 +27,11 @@ class StringprepTest {
   @ValueSource(strings = {"", "SASLprep", "Nameprep", "Resourceprep"})
   void providerNotFound(String provider) {
     assertThrows(IllegalArgumentException.class, () -> Stringprep.getProvider(provider));
+  }
+
+  @Test
+  void accessPublic() {
+    assertEquals("com.ongres.stringprep", Stringprep.class.getModule().getName());
   }
 
 }
