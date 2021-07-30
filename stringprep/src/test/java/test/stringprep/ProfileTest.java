@@ -198,21 +198,19 @@ class ProfileTest {
     }
   }
 
-  @Test
-  void testProhibitionSpaces() {
+  @ParameterizedTest
+  @ValueSource(ints = {0x0020, 0x00A0, 0x1680, 0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005,
+      0x2006, 0x2007, 0x2008, 0x2009, 0x200A, 0x200B, 0x202F, 0x205F, 0x3000})
+  void testProhibitionSpaces(int cp) {
     Profile profile =
         () -> EnumSet.of(Option.FORBID_ASCII_SPACES, Option.FORBID_NON_ASCII_SPACES);
-    IntStream unassigned = IntStream.rangeClosed(Character.MIN_CODE_POINT, Character.MAX_CODE_POINT)
-        .filter(c -> Character.getType(c) == Character.SPACE_SEPARATOR);
 
-    for (int cp : unassigned.toArray()) {
-      String chars = new String(Character.toChars(cp));
-      String example = "abc" + chars + "def";
-      assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
-          () -> "Character: " + chars + ", CodePoint: " + cp);
-      assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
-          () -> "Character: " + chars + ", CodePoint: " + cp);
-    }
+    String chars = new String(Character.toChars(cp));
+    String example = "abc" + chars + "def";
+    assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
+        () -> "Character: " + chars + ", CodePoint: " + cp);
+    assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
+        () -> "Character: " + chars + ", CodePoint: " + cp);
   }
 
   @ParameterizedTest
