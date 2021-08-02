@@ -15,6 +15,7 @@
   <rule ref="category/java/codestyle.xml/TooManyStaticImports" />
 
   <rule ref="category/java/design.xml">
+    <exclude name="CognitiveComplexity" />
     <exclude name="CyclomaticComplexity" />
     <exclude name="LawOfDemeter" />
     <exclude name="LoosePackageCoupling" />

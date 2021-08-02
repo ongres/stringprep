@@ -76,35 +76,36 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>8</java.version>
-    <maven.compiler.release>${java.version}</maven.compiler.release>
+    <base.java.version>8</base.java.version>
+    <maven.compiler.source>${base.java.version}</maven.compiler.source>
+    <maven.compiler.target>${base.java.version}</maven.compiler.target>
     <!-- Dependency versions -->
     <junit5.version>5.7.2</junit5.version>
     <!-- Plugins versions -->
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <jar-plugin.version>3.2.0</jar-plugin.version>
     <source-plugin.version>3.2.1</source-plugin.version>
-    <javadoc-plugin.version>3.2.0</javadoc-plugin.version>
+    <javadoc-plugin.version>3.3.0</javadoc-plugin.version>
     <clean-plugin.version>3.1.0</clean-plugin.version>
     <resources-plugin.version>3.2.0</resources-plugin.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
-    <enforcer-plugin.version>3.0.0-M3</enforcer-plugin.version>
+    <enforcer-plugin.version>3.0.0</enforcer-plugin.version>
     <install-plugin.version>3.0.0-M1</install-plugin.version>
     <invoker-plugin.version>3.2.2</invoker-plugin.version>
-    <gpg-plugin.version>1.6</gpg-plugin.version>
+    <gpg-plugin.version>3.0.1</gpg-plugin.version>
     <jacoco-plugin.verson>0.8.7</jacoco-plugin.verson>
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
     <flatten-maven-plugin.version>1.2.7</flatten-maven-plugin.version>
     <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
-    <git-commit-id-plugin.version>4.0.4</git-commit-id-plugin.version>
+    <git-commit-id-plugin.version>5.0.0</git-commit-id-plugin.version>
     <reproducible-build-maven-plugin.version>0.13</reproducible-build-maven-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
-    <checkstyle.version>8.42</checkstyle.version>
+    <checkstyle.version>8.45</checkstyle.version>
     <checkstyle-plugin.version>3.1.2</checkstyle-plugin.version>
-    <spotbugs.version>4.2.3</spotbugs.version>
-    <spotbugs-plugin.version>4.2.3</spotbugs-plugin.version>
+    <spotbugs.version>4.3.0</spotbugs.version>
+    <spotbugs-plugin.version>4.3.0</spotbugs-plugin.version>
     <findsecbugs.version>1.11.0</findsecbugs.version>
-    <pmd.version>6.34.0</pmd.version>
+    <pmd.version>6.37.0</pmd.version>
     <pmd-plugin.version>3.14.0</pmd-plugin.version>
     <sonar-plugin.version>3.9.0.2155</sonar-plugin.version>
     <forbiddenapis.version>3.1</forbiddenapis.version>
@@ -151,8 +152,8 @@
           </configuration>
           <executions>
             <execution>
-              <id>compile-java9</id>
-              <phase>compile</phase>
+              <id>java9</id>
+              <phase>none</phase>
               <goals>
                 <goal>compile</goal>
               </goals>
@@ -209,7 +210,6 @@
             </execution>
           </executions>
           <configuration>
-            <release>${java.version}</release>
             <doclint>none</doclint>
             <quiet>true</quiet>
             <includeDependencySources>true</includeDependencySources>
@@ -286,7 +286,7 @@
               <configuration>
                 <rules>
                   <requireMavenVersion>
-                    <version>[3.6.3,)</version>
+                    <version>[3.8.1,)</version>
                   </requireMavenVersion>
                   <requireJavaVersion>
                     <version>[11,)</version>
@@ -351,8 +351,8 @@
           </configuration>
         </plugin>
         <plugin>
-          <groupId>pl.project13.maven</groupId>
-          <artifactId>git-commit-id-plugin</artifactId>
+          <groupId>io.github.git-commit-id</groupId>
+          <artifactId>git-commit-id-maven-plugin</artifactId>
           <version>${git-commit-id-plugin.version}</version>
           <executions>
             <execution>
@@ -389,6 +389,11 @@
               </configuration>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>${gpg-plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -449,7 +454,7 @@
               <compilerArgs>
                 <arg>-Xlint:all</arg>
                 <arg>-XDcompilePolicy=simple</arg>
-                <arg>-Xplugin:ErrorProne</arg>
+                <arg>-Xplugin:ErrorProne -XepAllErrorsAsWarnings -XepDisableWarningsInGeneratedCode</arg>
                 <!-- Required on JDK 16 due to JEP 396 -->
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
@@ -466,7 +471,7 @@
                 <path>
                   <groupId>com.google.errorprone</groupId>
                   <artifactId>error_prone_core</artifactId>
-                  <version>2.6.0</version>
+                  <version>2.8.0</version>
                 </path>
               </annotationProcessorPaths>
             </configuration>
@@ -632,8 +637,8 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>pl.project13.maven</groupId>
-            <artifactId>git-commit-id-plugin</artifactId>
+            <groupId>io.github.git-commit-id</groupId>
+            <artifactId>git-commit-id-maven-plugin</artifactId>
           </plugin>
           <plugin>
             <groupId>io.github.zlika</groupId>
@@ -674,7 +679,6 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>3.0.1</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -688,5 +692,30 @@
         </plugins>
       </build>
     </profile>
+
+    <profile>
+      <id>compile-java9</id>
+      <activation>
+        <jdk>[9,)</jdk>
+      </activation>
+      <properties>
+        <maven.compiler.release>${base.java.version}</maven.compiler.release>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>java9</id>
+                <phase>compile</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
+
 </project>
