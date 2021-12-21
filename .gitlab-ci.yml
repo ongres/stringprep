@@ -1,11 +1,11 @@
-image: docker.io/azul/zulu-openjdk:11
+image: eclipse-temurin:17
 
 variables:
   # This will suppress any download for dependencies and plugins or upload messages which would clutter the console log.
   # `showDateTime` will show the passed time in milliseconds. You need to specify `--batch-mode` to make this work.
   MAVEN_OPTS: |
-    -Dhttps.protocols=TLSv1.2
-    -Djdk.tls.client.protocols=TLSv1.2
+    -Dhttps.protocols=TLSv1.3,TLSv1.2
+    -Djdk.tls.client.protocols=TLSv1.3,TLSv1.2
     -Dorg.slf4j.simpleLogger.showDateTime=true
     -Djava.awt.headless=true
     -Xss4m
@@ -13,7 +13,6 @@ variables:
     --batch-mode
     --strict-checksums
     --errors
-    --fail-at-end
     --show-version
     --no-transfer-progress
     -DinstallAtEnd=true
@@ -63,7 +62,7 @@ tests:
         - azul/zulu-openjdk:11
         - azul/zulu-openjdk:13
         - azul/zulu-openjdk:15
-        - openjdk:17-slim
+        - azul/zulu-openjdk:17
         - openjdk:18-slim
   image: $JDK_IMAGE
   script:
