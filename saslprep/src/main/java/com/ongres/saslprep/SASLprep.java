@@ -53,26 +53,6 @@ public final class SASLprep implements Profile {
     return saslprepProfile.clone();
   }
 
-  @Override
-  public char[] prepareQuery(char[] string) {
-    return Profile.super.prepareQuery(string);
-  }
-
-  @Override
-  public String prepareQuery(String string) {
-    return Profile.super.prepareQuery(string);
-  }
-
-  @Override
-  public char[] prepareStored(char[] string) {
-    return Profile.super.prepareStored(string);
-  }
-
-  @Override
-  public String prepareStored(String string) {
-    return Profile.super.prepareStored(string);
-  }
-
   /**
    * Non-ASCII space characters that can be mapped to SPACE (U+0020).
    */
