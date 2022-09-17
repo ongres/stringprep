@@ -5,6 +5,7 @@
 
 package test.stringprep;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -20,6 +21,7 @@ import com.ongres.stringprep.Stringprep;
 import com.ongres.stringprep.Tables;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class ProfileTest {
@@ -33,36 +35,29 @@ class ProfileTest {
   @Test
   void testAllOptions() {
     Profile profile = () -> EnumSet.allOf(Option.class);
-    String example1 = "A\u00ADDⅨ";
-    assertEquals("adix", profile.prepareStored(example1));
-    assertEquals("adix", profile.prepareQuery(example1));
+    char[] example1 = "A\u00ADDⅨ".toCharArray();
+    assertArrayEquals("adix".toCharArray(), profile.prepareStored(example1));
+    assertArrayEquals("adix".toCharArray(), profile.prepareQuery(example1));
   }
 
   @Test
   void testNoneOptions() {
     Profile profile = () -> EnumSet.noneOf(Option.class);
-    String example1 = "A\u00AD\u200A\u0BBCZ";
-    assertEquals(example1, profile.prepareQuery(example1));
+    char[] example1 = "A\u00AD\u200A\u0BBCZ".toCharArray();
+    assertArrayEquals(example1, profile.prepareQuery(example1));
     IllegalArgumentException storedIllegal =
         assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example1));
     assertEquals("Unassigned code point \"0x0BBC\"", storedIllegal.getMessage());
   }
 
-  @Test
-  void testNormKcOptions() {
+  @ParameterizedTest
+  @CsvSource(value = {"℻,FAX", "⑳,20", "㎓,GHz", "A\u00ADD ⑳,AD 20"})
+  void testNormKcOptions(String value, String expected) {
     Profile profile = () -> EnumSet.of(Option.NORMALIZE_KC, Option.MAP_TO_NOTHING);
-    String example1 = "℻";
-    assertEquals("FAX", profile.prepareStored(example1));
-    assertEquals("FAX", profile.prepareQuery(example1));
-    String example2 = "⑳";
-    assertEquals("20", profile.prepareStored(example2));
-    assertEquals("20", profile.prepareQuery(example2));
-    String example3 = "㎓";
-    assertEquals("GHz", profile.prepareStored(example3));
-    assertEquals("GHz", profile.prepareQuery(example3));
-    String example4 = "A\u00ADD ⑳";
-    assertEquals("AD 20", profile.prepareStored(example4));
-    assertEquals("AD 20", profile.prepareQuery(example4));
+    char[] valueChars = value.toCharArray();
+    char[] expectedChars = expected.toCharArray();
+    assertArrayEquals(expectedChars, profile.prepareStored(valueChars));
+    assertArrayEquals(expectedChars, profile.prepareQuery(valueChars));
   }
 
   @Test
@@ -78,7 +73,7 @@ class ProfileTest {
         return codePoint >= 'a' && codePoint <= 'c';
       }
     };
-    String example1 = "xAbcydefz";
+    char[] example1 = "xAbcydefz".toCharArray();
     IllegalArgumentException storedIllegal =
         assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example1));
     assertEquals("Prohibited code point \"0x0062\"", storedIllegal.getMessage());
@@ -90,9 +85,9 @@ class ProfileTest {
   @Test
   void testEmptyAdditionalMappingOptions() {
     Profile profile = () -> EnumSet.of(Option.ADDITIONAL_MAPPING);
-    String example = "ab";
-    assertEquals(example, profile.prepareStored(example));
-    assertEquals(example, profile.prepareQuery(example));
+    char[] example = "ab".toCharArray();
+    assertArrayEquals(example, profile.prepareStored(example));
+    assertArrayEquals(example, profile.prepareQuery(example));
   }
 
   @Test
@@ -112,9 +107,9 @@ class ProfileTest {
         }
       }
     };
-    String example1 = "xabcydefz";
-    assertEquals("xabcyabcabcabcz", profile.prepareStored(example1));
-    assertEquals("xabcyabcabcabcz", profile.prepareQuery(example1));
+    char[] example1 = "xabcydefz".toCharArray();
+    assertArrayEquals("xabcyabcabcabcz".toCharArray(), profile.prepareStored(example1));
+    assertArrayEquals("xabcyabcabcabcz".toCharArray(), profile.prepareQuery(example1));
   }
 
   @ParameterizedTest
@@ -124,7 +119,7 @@ class ProfileTest {
     Profile profile = () -> EnumSet.of(Option.FORBID_NON_ASCII_SPACES);
     String character = String.valueOf(Character.toChars(codePoint));
     String characterHex = String.format(Locale.ROOT, "0x%4X", codePoint).replace(' ', '0');
-    String example = "I" + character + "X";
+    char[] example = ("I" + character + "X").toCharArray();
     IllegalArgumentException storedIllegal =
         assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example));
     assertEquals("Prohibited non-ASCII space \"" + characterHex + "\"", storedIllegal.getMessage());
@@ -141,7 +136,7 @@ class ProfileTest {
 
     for (int cp : unassigned.toArray()) {
       String chars = new String(Character.toChars(cp));
-      String example = "abc" + chars + "def";
+      char[] example = ("abc" + chars + "def").toCharArray();
       assertDoesNotThrow(() -> profile.prepareQuery(example),
           () -> "Character: " + chars + ", CodePoint: " + cp);
       assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
@@ -157,7 +152,7 @@ class ProfileTest {
 
     for (int cp : unassigned.toArray()) {
       String chars = new String(Character.toChars(cp));
-      String example = "abc" + chars + "def";
+      char[] example = ("abc" + chars + "def").toCharArray();
       assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
           () -> "Character: " + chars + ", CodePoint: " + cp);
       assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
@@ -173,7 +168,7 @@ class ProfileTest {
 
     for (int cp : unassigned.toArray()) {
       String chars = new String(Character.toChars(cp));
-      String example = "abc" + chars + "def";
+      char[] example = ("abc" + chars + "def").toCharArray();
       assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
           () -> "Character: " + chars + ", CodePoint: " + cp);
       assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
@@ -190,7 +185,7 @@ class ProfileTest {
 
     for (int cp : unassigned.toArray()) {
       String chars = new String(Character.toChars(cp));
-      String example = "abc" + chars + "def";
+      char[] example = ("abc" + chars + "def").toCharArray();
       assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
           () -> "Character: " + chars + ", CodePoint: " + cp);
       assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
@@ -206,7 +201,7 @@ class ProfileTest {
         () -> EnumSet.of(Option.FORBID_ASCII_SPACES, Option.FORBID_NON_ASCII_SPACES);
 
     String chars = new String(Character.toChars(cp));
-    String example = "abc" + chars + "def";
+    char[] example = ("abc" + chars + "def").toCharArray();
     assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
         () -> "Character: " + chars + ", CodePoint: " + cp);
     assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
@@ -220,7 +215,7 @@ class ProfileTest {
     Profile profile = () -> EnumSet.of(Option.CHECK_BIDI);
 
     String chars = new String(Character.toChars(cp));
-    String example = "abc" + chars + "def";
+    char[] example = ("abc" + chars + "def").toCharArray();
     assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
         () -> "Character: " + chars + ", CodePoint: " + cp);
     assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
@@ -234,7 +229,7 @@ class ProfileTest {
     Profile profile = () -> EnumSet.of(Option.FORBID_CHANGE_DISPLAY_AND_DEPRECATED);
 
     String chars = new String(Character.toChars(cp));
-    String example = "abc" + chars + "def";
+    char[] example = ("abc" + chars + "def").toCharArray();
     assertThrows(IllegalArgumentException.class, () -> profile.prepareQuery(example),
         () -> "Character: " + chars + ", CodePoint: " + cp);
     assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),

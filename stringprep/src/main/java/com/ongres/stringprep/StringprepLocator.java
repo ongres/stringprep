@@ -5,7 +5,6 @@
 
 package com.ongres.stringprep;
 
-import java.util.Optional;
 import java.util.ServiceLoader;
 
 final class StringprepLocator {
@@ -14,14 +13,15 @@ final class StringprepLocator {
     throw new IllegalStateException("Utility class");
   }
 
-  static Optional<Profile> getProfile(String profileName) {
+  static Profile getProfile(String profileName) {
     for (Profile profile : ServiceLoader.load(Profile.class)) {
-      final ProfileName annotation = profile.getClass().getDeclaredAnnotation(ProfileName.class);
-      if (annotation != null && annotation.value().equals(profileName)) {
-        return Optional.of(profile);
+      ProfileName annotation = profile.getClass().getDeclaredAnnotation(ProfileName.class);
+      if (annotation != null && annotation.value().equals(profileName) ||
+          profile.getClass().getSimpleName().equals(profileName)) {
+        return profile;
       }
     }
-    return Optional.empty();
+    return null;
   }
 
 }
