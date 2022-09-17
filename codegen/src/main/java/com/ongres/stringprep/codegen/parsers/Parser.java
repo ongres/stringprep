@@ -14,70 +14,70 @@ import java.util.Map;
 public class Parser {
 
   public List<List<String>> getUnassignedCodePoints() {
-    return ParserUnicodeRepertoires.parseUnassignedCodePoints();
+    return ParserUnicodeRepertoires.getUnassignedCodePoints();
   }
 
   public List<String> getMapToNothing() {
-    return ParserMappingTables.parseMapToNothing();
+    return ParserMappingTables.getMapToNothing();
   }
 
   public Map<String, List<String>> getMapUsedWithNfkc() {
-    return ParserMappingTables.parseMapUsedWithNfkc();
+    return ParserMappingTables.getMapUsedWithNfkc();
   }
 
   public Map<String, List<String>> getMapUsedWithNoNormalization() {
-    return ParserMappingTables.parseMapUsedWithNoNormalization();
+    return ParserMappingTables.getMapUsedWithNoNormalization();
   }
 
   public List<String> getAsciiSpace() {
-    return ParserProhibitionTables.parseAsciiSpace();
+    return ParserProhibitionTables.getAsciiSpace();
   }
 
   public List<String> getNonAsciiSpace() {
-    return ParserProhibitionTables.parseNonAsciiSpace();
+    return ParserProhibitionTables.getNonAsciiSpace();
   }
 
   public List<List<String>> getAsciiControl() {
-    return ParserProhibitionTables.parseAsciiControl();
+    return ParserProhibitionTables.getAsciiControl();
   }
 
   public List<List<String>> getNonAsciiControl() {
-    return ParserProhibitionTables.parseNonAsciiControl();
+    return ParserProhibitionTables.getNonAsciiControl();
   }
 
   public List<List<String>> getPrivateUse() {
-    return ParserProhibitionTables.parsePrivateUse();
+    return ParserProhibitionTables.getPrivateUse();
   }
 
   public List<List<String>> getNonCharacterCodePoints() {
-    return ParserProhibitionTables.parseNonCharacterCodePoints();
+    return ParserProhibitionTables.getNonCharacterCodePoints();
   }
 
   public List<List<String>> getSurrogateCodes() {
-    return ParserProhibitionTables.parseSurrogateCodes();
+    return ParserProhibitionTables.getSurrogateCodes();
   }
 
   public List<List<String>> getInappropriatePlainText() {
-    return ParserProhibitionTables.parseInappropriatePlainText();
+    return ParserProhibitionTables.getInappropriatePlainText();
   }
 
   public List<List<String>> getInappropriateCanonicalRepresentation() {
-    return ParserProhibitionTables.parseInappropriateCanonicalRepresentation();
+    return ParserProhibitionTables.getInappropriateCanonicalRepresentation();
   }
 
   public List<List<String>> getChangeDisplayProperties() {
-    return ParserProhibitionTables.parseChangeDisplayProperties();
+    return ParserProhibitionTables.getChangeDisplayProperties();
   }
 
   public List<List<String>> getTaggingCharacters() {
-    return ParserProhibitionTables.parseTaggingCharacters();
+    return ParserProhibitionTables.getTaggingCharacters();
   }
 
   public List<List<String>> getPropertyRorAL() {
-    return ParserBidirectionalTables.parseBidirectionalPropertyRorAL();
+    return ParserBidirectionalTables.getBidirectionalPropertyRorAL();
   }
 
   public List<List<String>> getPropertyL() {
-    return ParserBidirectionalTables.parseBidirectionalPropertyL();
+    return ParserBidirectionalTables.getBidirectionalPropertyL();
   }
 }

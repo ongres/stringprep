@@ -10,6 +10,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -25,7 +26,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 public final class GeneratorCode {
 
   private GeneratorCode() {
-    // ignore
+    throw new AssertionError();
   }
 
   /**
@@ -35,6 +36,11 @@ public final class GeneratorCode {
    * @throws IOException if a RFC file can't be read
    */
   public static void main(String[] args) throws IOException {
+    Path sourceDirectory = Paths.get(System.getProperty("sourceDirectory")).normalize();
+    if (!Files.isDirectory(sourceDirectory)) {
+      throw new NotDirectoryException(sourceDirectory.toString());
+    }
+
     VelocityEngine velocityEngine = new VelocityEngine();
     velocityEngine.setProperty(RuntimeConstants.RESOURCE_LOADERS,
         RuntimeConstants.RESOURCE_LOADER_CLASS);
@@ -46,10 +52,9 @@ public final class GeneratorCode {
     VelocityContext ctx = new VelocityContext();
     ctx.put("parser", new Parser());
 
-    Path path = Paths.get(args[0], "/com/ongres/stringprep/Tables.java");
+    Path path = sourceDirectory.resolve("com/ongres/stringprep/Tables.java");
     Files.deleteIfExists(path);
-    try (Writer writer = new OutputStreamWriter(
-        Files.newOutputStream(path), StandardCharsets.UTF_8)) {
+    try (Writer writer = new OutputStreamWriter(Files.newOutputStream(path), StandardCharsets.UTF_8)) {
       template.merge(ctx, writer);
     }
   }

@@ -7,13 +7,13 @@ package com.ongres.stringprep.codegen.parsers;
 
 import java.util.List;
 
-class ParserUnicodeRepertoires {
+final class ParserUnicodeRepertoires {
 
   private ParserUnicodeRepertoires() {
     throw new AssertionError();
   }
 
-  public static List<List<String>> parseUnassignedCodePoints() {
-    return new ParserUtil().parseToListArrayInt("/rfcs/a1.txt");
+  public static List<List<String>> getUnassignedCodePoints() {
+    return ParserUtil.parseToListArrayInt("/rfcs/a1.txt");
   }
 }
