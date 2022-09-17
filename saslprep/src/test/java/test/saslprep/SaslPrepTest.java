@@ -27,6 +27,7 @@ class SaslPrepTest {
   void service() {
     assertThrows(NullPointerException.class, () -> Stringprep.getProvider(null));
     Profile service = assertDoesNotThrow(() -> Stringprep.getProvider("SASLprep"));
+    assertEquals(saslPrep.profile(), service.profile());
     assertEquals(EnumSet.of(
         Option.ADDITIONAL_MAPPING, // [StringPrep, C.1.2]
         Option.MAP_TO_NOTHING, // [StringPrep, B.1]
@@ -88,7 +89,7 @@ class SaslPrepTest {
     String example11 = "I\u00ADX \u2168";
     assertEquals("IX IX", saslPrep.prepareStored(example11));
 
-    assertThrows(NullPointerException.class, () -> saslPrep.prepareStored(null));
+    assertThrows(NullPointerException.class, () -> saslPrep.prepareStored((String) null));
 
   }
 

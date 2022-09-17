@@ -48,25 +48,26 @@ public final class SASLprep implements Profile {
         Option.CHECK_BIDI); // Bidirectional Characters
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public Set<Option> profile() {
     return saslprepProfile.clone();
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  @Override
+  public char[] prepareQuery(char[] string) {
+    return Profile.super.prepareQuery(string);
+  }
+
   @Override
   public String prepareQuery(String string) {
     return Profile.super.prepareQuery(string);
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  @Override
+  public char[] prepareStored(char[] string) {
+    return Profile.super.prepareStored(string);
+  }
+
   @Override
   public String prepareStored(String string) {
     return Profile.super.prepareStored(string);

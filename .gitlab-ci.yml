@@ -63,7 +63,7 @@ tests:
         - azul/zulu-openjdk:13
         - azul/zulu-openjdk:15
         - azul/zulu-openjdk:17
-        - openjdk:18-slim
+        - openjdk:20-ea-slim
   image: $JDK_IMAGE
   script:
     - ./mvnw $MAVEN_CLI_OPTS verify -P it -Denforcer.skip=true

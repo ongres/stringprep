@@ -5,6 +5,7 @@
 
 package com.ongres.stringprep;
 
+import java.nio.CharBuffer;
 import java.text.Normalizer;
 import java.util.EnumSet;
 import java.util.Locale;
@@ -87,8 +88,11 @@ public final class Stringprep {
    */
   public static Profile getProvider(String profileName) {
     Objects.requireNonNull(profileName, "The profile name must not be null");
-    return StringprepLocator.getProfile(profileName)
-        .orElseThrow(() -> new IllegalArgumentException("No provider found for: " + profileName));
+    Profile profile = StringprepLocator.getProfile(profileName);
+    if (profile == null) {
+      throw new IllegalArgumentException("No provider found for: " + profileName);
+    }
+    return profile;
   }
 
   /**
@@ -119,31 +123,32 @@ public final class Stringprep {
    *         profile used.
    * @throws NullPointerException if {@code string} is {@code null}.
    */
-  String prepare(String string) {
+  char[] prepare(final char[] string) {
     Objects.requireNonNull(string, "The string to prepare must not be null");
-
-    if (string.length() == 0) {
+    if (string.length == 0) {
       return string;
     }
 
+    char[] value = string.clone();
+
     // 1) Map -- For each character in the input, check if it has a mapping
     // and, if so, replace it with its mapping.
-    string = map(string);
+    value = map(value);
 
     // 2) Normalize -- Possibly normalize the result of step 1 using Unicode
     // normalization.
     if (normalizeKc) {
-      string = Normalizer.normalize(string, Normalizer.Form.NFKC);
+      value = Normalizer.normalize(CharBuffer.wrap(value), Normalizer.Form.NFKC).toCharArray();
     }
 
-    boolean firstRandAlCat = Tables.bidirectionalPropertyRorAL(string.codePointAt(0));
+    boolean firstRandAlCat = Tables.bidirectionalPropertyRorAL(Character.codePointAt(value, 0));
     boolean lastRandAlCat =
-        Tables.bidirectionalPropertyRorAL(string.codePointAt(string.length() - 1));
+        Tables.bidirectionalPropertyRorAL(Character.codePointAt(value, value.length - 1));
     boolean containsRandAlCat = false;
     boolean containsLcat = false;
     int codePoint;
-    for (int i = 0; i < string.length(); i += Character.charCount(codePoint)) {
-      codePoint = string.codePointAt(i);
+    for (int i = 0; i < value.length; i += Character.charCount(codePoint)) {
+      codePoint = Character.codePointAt(value, i);
 
       // 3) Prohibit -- Check for any characters that are not allowed in the
       // output. If any are found, return an error.
@@ -180,13 +185,13 @@ public final class Stringprep {
       }
     }
 
-    return string;
+    return value;
   }
 
-  private String map(String string) {
-    StringBuilder mapping = new StringBuilder(string.length());
-    for (int codePoint, i = 0; i < string.length(); i += Character.charCount(codePoint)) {
-      codePoint = string.codePointAt(i);
+  private char[] map(char[] string) {
+    final StringBuilder mapping = new StringBuilder(string.length);
+    for (int codePoint, i = 0; i < string.length; i += Character.charCount(codePoint)) {
+      codePoint = Character.codePointAt(string, i);
 
       if (mapToNothing && Tables.mapToNothing(codePoint)) { // NOPMD
         // The following characters are simply deleted from the input (that is,
@@ -215,7 +220,9 @@ public final class Stringprep {
       }
     }
 
-    return mapping.toString();
+    char[] arr = new char[mapping.length()];
+    mapping.getChars(0, mapping.length(), arr, 0);
+    return arr;
   }
 
   private void prohibitedOutput(int codePoint) {

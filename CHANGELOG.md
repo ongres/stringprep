@@ -3,7 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### :bug: Bug Fixes
-- `Stringprep::getProvider` was not working in the module path.
+- `Stringprep::getProvider` was not working on the module path.
+
+### :sparkles: New features
+- The Profile interface now has overloaded methods with `char[]` versions.
 
 ### :building_construction: Improvements
 - The Java modules profiles `com.ongres.saslprep` and `com.ongres.nameprep` have implied readability with `com.ongres.stringprep`.
