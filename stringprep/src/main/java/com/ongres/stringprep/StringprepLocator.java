@@ -16,8 +16,7 @@ final class StringprepLocator {
   static Profile getProfile(String profileName) {
     for (Profile profile : ServiceLoader.load(Profile.class)) {
       ProfileName annotation = profile.getClass().getDeclaredAnnotation(ProfileName.class);
-      if (annotation != null && annotation.value().equals(profileName) ||
-          profile.getClass().getSimpleName().equals(profileName)) {
+      if (annotation != null && annotation.value().equals(profileName)) {
         return profile;
       }
     }

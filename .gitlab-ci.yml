@@ -100,7 +100,7 @@ static-checks:
     - job: build
       artifacts: true
   script:
-    - ./mvnw $MAVEN_CLI_OPTS verify -P check -DskipTests
+    - ./mvnw $MAVEN_CLI_OPTS verify -P checks -DskipTests
   cache:
     # inherit all global cache settings
     <<: *global_cache
