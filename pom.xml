@@ -45,9 +45,6 @@
       <modules>
         <module>coverage-report</module>
       </modules>
-      <properties>
-        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/${aggregate.report.xml}</sonar.coverage.jacoco.xmlReportPaths>
-      </properties>
     </profile>
   </profiles>
 

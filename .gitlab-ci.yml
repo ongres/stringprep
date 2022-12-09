@@ -88,7 +88,11 @@ sonarcloud-check:
     GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
     SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
   script:
-    - ./mvnw $MAVEN_CLI_OPTS verify sonar:sonar -Dsonar.qualitygate.wait=true -P coverage
+    - |
+      ./mvnw -X $MAVEN_CLI_OPTS verify sonar:sonar \
+      -Dsonar.qualitygate.wait=true -Dsonar.organization=ongresinc \
+      -Dsonar.coverage.jacoco.xmlReportPaths="${CI_PROJECT_DIR}/coverage-report/target/site/jacoco-aggregate/jacoco.xml" \
+      -P coverage
   only:
     - merge_requests
     - develop

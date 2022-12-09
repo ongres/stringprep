@@ -595,15 +595,6 @@
     </profile>
 
     <profile>
-      <id>coverage</id>
-      <properties>
-        <sonar.organization>ongresinc</sonar.organization>
-        <aggregate.report.xml>coverage-report/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.xml>
-        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../${aggregate.report.xml}</sonar.coverage.jacoco.xmlReportPaths>
-      </properties>
-    </profile>
-
-    <profile>
       <id>release</id>
       <build>
         <plugins>

@@ -14,9 +14,7 @@
   <description>Preparation of Internationalized Strings ("stringprep")</description>
 
   <properties>
-    <skipNexusStagingDeployMojo>false</skipNexusStagingDeployMojo>
     <checks.location>${project.basedir}/../checks</checks.location>
-    <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../${aggregate.report.xml}</sonar.coverage.jacoco.xmlReportPaths>
   </properties>
 
   <profiles>
