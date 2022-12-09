@@ -10,7 +10,7 @@ import java.util.ServiceLoader;
 final class StringprepLocator {
 
   private StringprepLocator() {
-    throw new IllegalStateException("Utility class");
+    // Internal utility class
   }
 
   static Profile getProfile(String profileName) {

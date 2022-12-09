@@ -42,21 +42,21 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>report-aggregate</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>report-aggregate</goal>
-            </goals>
-          </execution>
-        </executions>
         <configuration>
           <excludes>
             <exclude>com/ongres/stringprep/Tables*</exclude>
             <exclude>META-INF/versions/**</exclude>
           </excludes>
         </configuration>
+        <executions>
+          <execution>
+            <id>report-aggregate</id>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+            <phase>verify</phase>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
