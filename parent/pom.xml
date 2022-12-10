@@ -86,6 +86,7 @@
     <install-plugin.version>3.1.0</install-plugin.version>
     <deploy-plugin.version>3.0.0</deploy-plugin.version>
     <invoker-plugin.version>3.3.0</invoker-plugin.version>
+    <artifact-plugin.version>3.3.0</artifact-plugin.version>
     <sign-maven-plugin.version>1.0.1</sign-maven-plugin.version>
     <jacoco-plugin.verson>0.8.8</jacoco-plugin.verson>
     <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
@@ -358,7 +359,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-artifact-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>${artifact-plugin.version}</version>
           <executions>
             <execution>
               <goals>
@@ -367,7 +368,6 @@
               <configuration>
                 <detectSkip>false</detectSkip>
                 <reproducible>true</reproducible>
-                <ignoreJavadoc>false</ignoreJavadoc>
               </configuration>
             </execution>
           </executions>
@@ -415,12 +415,7 @@
                 <path>
                   <groupId>com.google.errorprone</groupId>
                   <artifactId>error_prone_core</artifactId>
-                  <version>2.15.0</version>
-                </path>
-                <path>
-                  <groupId>org.immutables</groupId>
-                  <artifactId>value-processor</artifactId>
-                  <version>2.9.1</version>
+                  <version>2.16</version>
                 </path>
               </annotationProcessorPaths>
             </configuration>
