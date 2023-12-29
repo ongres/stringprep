@@ -73,34 +73,35 @@
     <maven.compiler.target>${base.java.version}</maven.compiler.target>
     <project.build.outputTimestamp>2022-02-01T19:02:33Z</project.build.outputTimestamp>
     <!-- Dependency versions -->
-    <junit5.version>5.9.1</junit5.version>
+    <junit5.version>5.10.1</junit5.version>
     <!-- Plugins versions -->
-    <compiler-plugin.version>3.10.1</compiler-plugin.version>
+    <compiler-plugin.version>3.12.1</compiler-plugin.version>
     <jar-plugin.version>3.3.0</jar-plugin.version>
-    <source-plugin.version>3.2.1</source-plugin.version>
-    <javadoc-plugin.version>3.4.1</javadoc-plugin.version>
-    <clean-plugin.version>3.2.0</clean-plugin.version>
-    <resources-plugin.version>3.3.0</resources-plugin.version>
-    <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
-    <enforcer-plugin.version>3.1.0</enforcer-plugin.version>
-    <install-plugin.version>3.1.0</install-plugin.version>
-    <deploy-plugin.version>3.0.0</deploy-plugin.version>
+    <source-plugin.version>3.3.0</source-plugin.version>
+    <javadoc-plugin.version>3.6.3</javadoc-plugin.version>
+    <clean-plugin.version>3.3.2</clean-plugin.version>
+    <resources-plugin.version>3.3.1</resources-plugin.version>
+    <surefire-plugin.version>3.2.3</surefire-plugin.version>
+    <failsafe-plugin.version>3.2.3</failsafe-plugin.version>
+    <enforcer-plugin.version>3.4.1</enforcer-plugin.version>
+    <install-plugin.version>3.1.1</install-plugin.version>
+    <deploy-plugin.version>3.1.1</deploy-plugin.version>
     <invoker-plugin.version>3.3.0</invoker-plugin.version>
     <sign-maven-plugin.version>1.0.1</sign-maven-plugin.version>
-    <jacoco-plugin.verson>0.8.8</jacoco-plugin.verson>
+    <jacoco-plugin.verson>0.8.11</jacoco-plugin.verson>
     <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
-    <flatten-maven-plugin.version>1.3.0</flatten-maven-plugin.version>
+    <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
     <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
-    <checkstyle.version>10.4</checkstyle.version>
-    <checkstyle-plugin.version>3.2.0</checkstyle-plugin.version>
-    <spotbugs.version>4.7.3</spotbugs.version>
-    <spotbugs-plugin.version>4.7.3.0</spotbugs-plugin.version>
+    <checkstyle.version>10.12.6</checkstyle.version>
+    <checkstyle-plugin.version>3.3.1</checkstyle-plugin.version>
+    <spotbugs.version>4.8.3</spotbugs.version>
+    <spotbugs-plugin.version>4.8.2.0</spotbugs-plugin.version>
     <findsecbugs.version>1.12.0</findsecbugs.version>
-    <pmd.version>6.51.0</pmd.version>
-    <pmd-plugin.version>3.19.0</pmd-plugin.version>
-    <sonar-plugin.version>3.9.1.2184</sonar-plugin.version>
-    <forbiddenapis.version>3.4</forbiddenapis.version>
+    <pmd.version>6.55.0</pmd.version>
+    <pmd-plugin.version>3.21.2</pmd-plugin.version>
+    <sonar-plugin.version>3.10.0.2594</sonar-plugin.version>
+    <forbiddenapis.version>3.6</forbiddenapis.version>
     <checks.location>${project.basedir}/../checks</checks.location>
     <checkstyle.config.location>${checks.location}/checkstyle.xml</checkstyle.config.location>
     <checkstyle.suppressions.location>${checks.location}/checkstyle-suppressions.xml</checkstyle.suppressions.location>
@@ -140,7 +141,7 @@
             <showDeprecation>true</showDeprecation>
             <showWarnings>true</showWarnings>
             <parameters>true</parameters>
-            <useIncrementalCompilation>false</useIncrementalCompilation>
+            <useIncrementalCompilation>true</useIncrementalCompilation>
           </configuration>
           <executions>
             <execution>
@@ -166,7 +167,6 @@
           <configuration>
             <skipIfEmpty>true</skipIfEmpty>
             <archive>
-              <index>true</index>
               <manifest>
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               </manifest>
@@ -195,7 +195,7 @@
           <version>${javadoc-plugin.version}</version>
           <configuration>
             <doclint>none</doclint>
-            <quiet>true</quiet>
+            <quiet>false</quiet>
             <includeDependencySources>true</includeDependencySources>
             <validateLinks>true</validateLinks>
             <tags>
@@ -235,6 +235,27 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${surefire-plugin.version}</version>
         </plugin>
+        <!-- Rerun unittests with the multirelease jar, cannot be done with exploded directory of
+        classes  -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${failsafe-plugin.version}</version>
+          <configuration>
+            <includes>
+              <include>**/*Test.java</include>
+              <include>**/*IT.java</include>
+            </includes>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
@@ -266,10 +287,10 @@
               <configuration>
                 <rules>
                   <requireMavenVersion>
-                    <version>[3.8.6,)</version>
+                    <version>[3.8.8,)</version>
                   </requireMavenVersion>
                   <requireJavaVersion>
-                    <version>[9,)</version>
+                    <version>[8,)</version>
                   </requireJavaVersion>
                 </rules>
               </configuration>
@@ -358,7 +379,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-artifact-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>3.4.1</version>
           <executions>
             <execution>
               <goals>
@@ -372,12 +393,28 @@
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>org.cyclonedx</groupId>
+          <artifactId>cyclonedx-maven-plugin</artifactId>
+          <version>2.7.10</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>makeAggregateBom</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
@@ -396,7 +433,7 @@
               <fork>true</fork>
               <showWarnings>true</showWarnings>
               <compilerArgs>
-                <arg>-Xlint:all</arg>
+                <arg>-Xlint:all,-options</arg>
                 <arg>-XDcompilePolicy=simple</arg>
                 <arg>-Xplugin:ErrorProne -XepAllErrorsAsWarnings -XepDisableWarningsInGeneratedCode</arg>
                 <!-- Required on JDK 16+ due to JEP 396 -->
@@ -415,12 +452,7 @@
                 <path>
                   <groupId>com.google.errorprone</groupId>
                   <artifactId>error_prone_core</artifactId>
-                  <version>2.15.0</version>
-                </path>
-                <path>
-                  <groupId>org.immutables</groupId>
-                  <artifactId>value-processor</artifactId>
-                  <version>2.9.1</version>
+                  <version>2.24.0</version>
                 </path>
               </annotationProcessorPaths>
             </configuration>
@@ -580,7 +612,7 @@
           <plugin>
             <groupId>com.github.ekryd.sortpom</groupId>
             <artifactId>sortpom-maven-plugin</artifactId>
-            <version>3.2.0</version>
+            <version>3.3.0</version>
             <executions>
               <execution>
                 <goals>
@@ -621,6 +653,10 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-artifact-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.cyclonedx</groupId>
+            <artifactId>cyclonedx-maven-plugin</artifactId>
           </plugin>
         </plugins>
       </build>

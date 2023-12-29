@@ -26,7 +26,6 @@
 
   <rule ref="category/java/errorprone.xml">
     <exclude name="AvoidLiteralsInIfCondition" />
-    <exclude name="BeanMembersShouldSerialize" />
     <exclude name="DataflowAnomalyAnalysis" />
     <exclude name="CloseResource" />
   </rule>
