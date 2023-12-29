@@ -1,4 +1,4 @@
-image: eclipse-temurin:17
+image: eclipse-temurin:21
 
 variables:
   # This will suppress any download for dependencies and plugins or upload messages which would clutter the console log.
@@ -60,10 +60,9 @@ tests:
       - JDK_IMAGE:
         - azul/zulu-openjdk:8
         - azul/zulu-openjdk:11
-        - azul/zulu-openjdk:13
-        - azul/zulu-openjdk:15
         - azul/zulu-openjdk:17
-        - openjdk:20-ea-slim
+        - azul/zulu-openjdk:21
+        - openjdk:22-ea-slim
   image: $JDK_IMAGE
   script:
     - ./mvnw $MAVEN_CLI_OPTS verify -P it -Denforcer.skip=true
