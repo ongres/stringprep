@@ -94,6 +94,7 @@
     <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
     <cyclonedx-plugin.version>2.8.0</cyclonedx-plugin.version>
     <sortpom-plugin.version>3.4.1</sortpom-plugin.version>
+    <artifact-plugin.version>3.4.1</artifact-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
     <checkstyle.version>10.15.0</checkstyle.version>
     <checkstyle-plugin.version>3.3.1</checkstyle-plugin.version>
@@ -383,7 +384,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-artifact-plugin</artifactId>
-          <version>3.4.1</version>
+          <version>${artifact-plugin.version}</version>
           <executions>
             <execution>
               <goals>
