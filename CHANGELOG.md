@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [2.1] - 2024-04-01
 ### :bug: Bug Fixes
 - `Stringprep::getProvider` was not working on the module path.
 
@@ -13,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - Exports the packages of the profiles in the module declaration to allow creating instances without the ServiceLoader lookup.
 - Introduce the annotation `@ProfileName` to declare the name of the profile used for ServiceLoader lookup.
 - Now the released jars are reproducible.
+- Publish CycloneDX SBOM.
 
 ## [2.0] - 2021-02-01
 ### :boom: Breaking changes
