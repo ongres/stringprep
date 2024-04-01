@@ -33,5 +33,6 @@ All notable changes to this project will be documented in this file.
 - Refactor of the `stringprep` implementation to make it extensible and modular, now this implemenation is considered feature-complete.
 - Change the module `saslprep` to implement the stringprep `Profile` interface.
 
-[Unreleased]: https://gitlab.com/ongresinc/stringprep/-/compare/2.0...main
+[Unreleased]: https://gitlab.com/ongresinc/stringprep/-/compare/2.1...main
 [2.0]: https://gitlab.com/ongresinc/stringprep/-/compare/1.1...2.0
+[2.1]: https://gitlab.com/ongresinc/stringprep/-/compare/2.0...2.1
