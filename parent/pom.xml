@@ -87,11 +87,13 @@
     <install-plugin.version>3.1.1</install-plugin.version>
     <deploy-plugin.version>3.1.1</deploy-plugin.version>
     <invoker-plugin.version>3.6.1</invoker-plugin.version>
-    <sign-maven-plugin.version>1.1.0</sign-maven-plugin.version>
+    <gpg-plugin.version>3.2.2</gpg-plugin.version>
     <jacoco-plugin.verson>0.8.11</jacoco-plugin.verson>
     <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
     <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
     <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
+    <cyclonedx-plugin.version>2.8.0</cyclonedx-plugin.version>
+    <sortpom-plugin.version>3.4.1</sortpom-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
     <checkstyle.version>10.15.0</checkstyle.version>
     <checkstyle-plugin.version>3.3.1</checkstyle-plugin.version>
@@ -345,14 +347,16 @@
           </executions>
         </plugin>
         <plugin>
-          <groupId>org.simplify4u.plugins</groupId>
-          <artifactId>sign-maven-plugin</artifactId>
-          <version>${sign-maven-plugin.version}</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>${gpg-plugin.version}</version>
           <executions>
             <execution>
+              <id>sign-artifacts</id>
               <goals>
                 <goal>sign</goal>
               </goals>
+              <phase>verify</phase>
             </execution>
           </executions>
         </plugin>
@@ -396,7 +400,7 @@
         <plugin>
           <groupId>org.cyclonedx</groupId>
           <artifactId>cyclonedx-maven-plugin</artifactId>
-          <version>2.7.10</version>
+          <version>${cyclonedx-plugin.version}</version>
           <executions>
             <execution>
               <goals>
@@ -532,7 +536,6 @@
               <execution>
                 <goals>
                   <goal>jdkinternals</goal>
-                  <goal>test-jdkinternals</goal>
                 </goals>
               </execution>
             </executions>
@@ -641,7 +644,7 @@
           <plugin>
             <groupId>com.github.ekryd.sortpom</groupId>
             <artifactId>sortpom-maven-plugin</artifactId>
-            <version>3.4.1</version>
+            <version>${sortpom-plugin.version}</version>
             <executions>
               <execution>
                 <goals>
@@ -672,8 +675,8 @@
             <artifactId>maven-javadoc-plugin</artifactId>
           </plugin>
           <plugin>
-            <groupId>org.simplify4u.plugins</groupId>
-            <artifactId>sign-maven-plugin</artifactId>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
           </plugin>
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
