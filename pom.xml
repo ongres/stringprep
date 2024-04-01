@@ -32,14 +32,6 @@
         <module>codegen</module>
       </modules>
     </profile>
-
-    <profile>
-      <id>it</id>
-      <modules>
-        <module>integration-tests</module>
-      </modules>
-    </profile>
-
     <profile>
       <id>coverage</id>
       <modules>

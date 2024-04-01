@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.ongres.stringprep.it</groupId>
-  <artifactId>jpms-nameprep</artifactId>
-  <name>JPMS Nameprep</name>
+  <artifactId>jpms-stringprep</artifactId>
+  <name>JPMS Stringprep</name>
   <version>2.1-SNAPSHOT</version>
 
   <properties>
@@ -19,13 +19,13 @@
   <dependencies>
     <dependency>
       <groupId>com.ongres.stringprep</groupId>
-      <artifactId>nameprep</artifactId>
+      <artifactId>stringprep</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>5.10.1</version>
+      <version>5.10.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -35,7 +35,7 @@
       <plugins>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.12.1</version>
+          <version>3.13.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
