@@ -84,7 +84,6 @@
     <surefire-plugin.version>3.2.5</surefire-plugin.version>
     <failsafe-plugin.version>3.2.5</failsafe-plugin.version>
     <enforcer-plugin.version>3.4.1</enforcer-plugin.version>
-    <release-plugin.version>3.0.1</release-plugin.version>
     <install-plugin.version>3.1.1</install-plugin.version>
     <deploy-plugin.version>3.1.1</deploy-plugin.version>
     <invoker-plugin.version>3.6.1</invoker-plugin.version>
@@ -228,19 +227,6 @@
               </goals>
             </execution>
           </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>${release-plugin.version}</version>
-          <configuration>
-            <tagNameFormat>@{project.version}</tagNameFormat>
-            <autoVersionSubmodules>true</autoVersionSubmodules>
-            <releaseProfiles>release</releaseProfiles>
-            <scmReleaseCommitComment>Preparing @{releaseLabel} release</scmReleaseCommitComment>
-            <scmDevelopmentCommitComment>Preparing next development iteration</scmDevelopmentCommitComment>
-            <goals>deploy</goals>
-          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
