@@ -237,6 +237,8 @@
             <tagNameFormat>@{project.version}</tagNameFormat>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <releaseProfiles>release</releaseProfiles>
+            <scmReleaseCommitComment>Preparing @{releaseLabel} release</scmReleaseCommitComment>
+            <scmDevelopmentCommitComment>Preparing next development iteration</scmDevelopmentCommitComment>
             <goals>deploy</goals>
           </configuration>
         </plugin>
