@@ -62,10 +62,11 @@ tests:
         - azul/zulu-openjdk:11
         - azul/zulu-openjdk:17
         - azul/zulu-openjdk:21
-        - openjdk:22-ea-slim
+        - azul/zulu-openjdk:22
+        - openjdk:23-ea-oraclelinux9
   image: $JDK_IMAGE
   script:
-    - ./mvnw $MAVEN_CLI_OPTS verify -P it -Denforcer.skip=true
+    - ./mvnw $MAVEN_CLI_OPTS verify -Denforcer.skip=true
   cache:
     # inherit all global cache settings
     <<: *global_cache
