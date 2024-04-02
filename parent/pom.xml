@@ -8,8 +8,8 @@
   <packaging>pom</packaging>
 
   <name>Stringprep Project</name>
-  <description>Stringprep Java implementation</description>
-  <url>https://gitlab.com/ongresinc/stringprep</url>
+  <description>Stringprep (RFC 3454) Java implementation</description>
+  <url>https://github.com/ongres/stringprep</url>
   <inceptionYear>2019</inceptionYear>
 
   <organization>
@@ -44,14 +44,14 @@
   </developers>
 
   <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
-    <connection>scm:git:git@gitlab.com:ongresinc/stringprep.git</connection>
-    <developerConnection>scm:git:git@gitlab.com:ongresinc/stringprep.git</developerConnection>
-    <url>https://gitlab.com/ongresinc/stringprep</url>
+    <connection>scm:git:git@github.com:ongres/stringprep.git</connection>
+    <developerConnection>scm:git:git@github.com:ongres/stringprep.git</developerConnection>
+    <url>https://github.com/ongres/stringprep</url>
   </scm>
 
   <issueManagement>
-    <system>GitLab</system>
-    <url>https://gitlab.com/ongresinc/stringprep/issues</url>
+    <system>GitHub</system>
+    <url>https://github.com/ongres/stringprep/issues</url>
   </issueManagement>
 
   <distributionManagement>
