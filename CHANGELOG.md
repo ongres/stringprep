@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### :building_construction: Improvements
+- Ensure the LICENSE file is included in the Jar file.
 
 ## [2.1] - 2024-04-01
 ### :bug: Bug Fixes
