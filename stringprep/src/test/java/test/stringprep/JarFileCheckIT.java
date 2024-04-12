@@ -1,10 +1,11 @@
 /*
- * Copyright (C) 2019 OnGres, Inc.
+ * Copyright (c) 2024 OnGres, Inc.
  * SPDX-License-Identifier: BSD-2-Clause
  */
 
 package test.stringprep;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -47,7 +48,7 @@ class JarFileCheckIT {
     JarEntry jarLicense = jarFile.getJarEntry("META-INF/LICENSE");
     assertNotNull(jarLicense, "LICENSE file should be present in the final JAR file");
     try (InputStream is = jarFile.getInputStream(jarLicense);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is, UTF_8))) {
       String line = reader.readLine();
       assertEquals("Copyright (c) 2019 OnGres, Inc.", line);
     }
@@ -63,8 +64,8 @@ class JarFileCheckIT {
 
   @Test
   void checkModuleInfoPresent() throws IOException {
-    JarEntry jarModuleInfo = jarFile.getJarEntry("META-INF/versions/9/module-info.class");
-    ModuleDescriptor moduleDescriptor = ModuleDescriptor.read(jarFile.getInputStream(jarModuleInfo));
+    JarEntry moduleInfo = jarFile.getJarEntry("META-INF/versions/9/module-info.class");
+    ModuleDescriptor moduleDescriptor = ModuleDescriptor.read(jarFile.getInputStream(moduleInfo));
     assertNotNull(moduleDescriptor);
     assertEquals("com.ongres.stringprep", moduleDescriptor.name());
   }
