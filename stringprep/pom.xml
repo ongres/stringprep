@@ -13,10 +13,6 @@
   <name>Stringprep (RFC 3454)</name>
   <description>Preparation of Internationalized Strings ("stringprep")</description>
 
-  <properties>
-    <checks.location>${project.basedir}/../checks</checks.location>
-  </properties>
-
   <profiles>
     <profile>
       <id>codegen</id>
@@ -35,7 +31,7 @@
               <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
-                <version>2.0.12</version>
+                <version>2.0.13</version>
               </dependency>
             </dependencies>
             <executions>

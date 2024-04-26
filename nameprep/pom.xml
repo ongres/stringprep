@@ -13,10 +13,6 @@
   <name>Nameprep (RFC 3491)</name>
   <description>Nameprep: A Stringprep Profile for Internationalized Domain Names (IDN)</description>
 
-  <properties>
-    <checks.location>${project.basedir}/../checks</checks.location>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>com.ongres.stringprep</groupId>

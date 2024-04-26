@@ -21,10 +21,6 @@
     <module>nameprep</module>
   </modules>
 
-  <properties>
-    <checks.location>${project.basedir}/checks</checks.location>
-  </properties>
-
   <profiles>
     <profile>
       <id>codegen</id>

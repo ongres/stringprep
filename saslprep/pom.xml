@@ -13,10 +13,6 @@
   <name>SASLprep (RFC 4013)</name>
   <description>SASLprep: Stringprep Profile for User Names and Passwords</description>
 
-  <properties>
-    <checks.location>${project.basedir}/../checks</checks.location>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>com.ongres.stringprep</groupId>
