@@ -488,9 +488,7 @@
               <compilerArgs>
                 <arg>-Xlint:all,-options</arg>
                 <arg>-XDcompilePolicy=simple</arg>
-                <arg>-Xplugin:ErrorProne \
-                  -XepAllErrorsAsWarnings \
-                  -XepDisableWarningsInGeneratedCode</arg>
+                <arg>-Xplugin:ErrorProne -XepAllErrorsAsWarnings -XepDisableWarningsInGeneratedCode</arg>
                 <!-- Required on JDK 16+ due to JEP 396 -->
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
