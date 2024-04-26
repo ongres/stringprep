@@ -10,6 +10,7 @@ import java.text.Normalizer;
 import java.util.EnumSet;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Set;
 import java.util.function.IntPredicate;
 
 /**
@@ -53,7 +54,7 @@ public final class Stringprep {
    */
   Stringprep(Profile profile, boolean storedStrings) {
     Objects.requireNonNull(profile);
-    EnumSet<Option> options = EnumSet.copyOf(Objects.requireNonNull(profile.profile()));
+    Set<Option> options = EnumSet.copyOf(Objects.requireNonNull(profile.profile()));
     this.mapToNothing = options.contains(Option.MAP_TO_NOTHING);
     this.additionalMapping = options.contains(Option.ADDITIONAL_MAPPING);
     this.caseFoldNfkc = options.contains(Option.CASE_FOLD_NFKC);

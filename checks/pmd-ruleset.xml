@@ -1,42 +1,30 @@
 <?xml version="1.0"?>
-<ruleset name="Custom Rules" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+<ruleset name="Custom Rules" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
 
   <description>Custom Rules</description>
 
   <exclude-pattern>.*/target/.*</exclude-pattern>
   <exclude-pattern>.*/generated/.*</exclude-pattern>
-  <exclude-pattern>.*/Tables.java</exclude-pattern>
+  <exclude-pattern>.*/com/ongres/stringprep/Tables.*</exclude-pattern>
 
-  <!-- Your rules will come here -->
-  <rule ref="rulesets/java/quickstart.xml">
-    <exclude name="ClassNamingConventions" />
+  <rule ref="rulesets/java/quickstart.xml" />
+
+  <rule ref="category/java/bestpractices.xml">
+    <exclude name="UseVarargs" />
+    <exclude name="ForLoopVariableCount" />
+    <exclude name="AvoidReassigningLoopVariables" />
   </rule>
 
-  <rule ref="category/java/codestyle.xml/TooManyStaticImports" />
+  <rule ref="category/java/errorprone.xml" />
 
-  <rule ref="category/java/design.xml">
-    <exclude name="CognitiveComplexity" />
-    <exclude name="CyclomaticComplexity" />
-    <exclude name="LawOfDemeter" />
-    <exclude name="LoosePackageCoupling" />
-    <exclude name="NPathComplexity" />
-    <exclude name="GodClass" />
-    <exclude name="TooManyFields" />
+  <rule ref="category/java/multithreading.xml" />
+
+  <rule ref="category/java/performance.xml">
+    <exclude name="StringInstantiation" />
   </rule>
 
-  <rule ref="category/java/errorprone.xml">
-    <exclude name="AvoidLiteralsInIfCondition" />
-    <exclude name="DataflowAnomalyAnalysis" />
-    <exclude name="CloseResource" />
-  </rule>
-
-  <rule ref="category/java/errorprone.xml/EmptyCatchBlock">
-    <properties>
-      <property name="allowCommentedBlocks" value="true" />
-      <property name="allowExceptionNameRegex" value="^(ignored|expected)$" />
-    </properties>
-  </rule>
-
-  <rule ref="category/java/performance.xml" />
+  <rule ref="category/java/security.xml" />
 
 </ruleset>

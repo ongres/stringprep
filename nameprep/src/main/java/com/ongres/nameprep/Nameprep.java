@@ -23,7 +23,7 @@ import com.ongres.stringprep.ProfileName;
 @ProfileName("Nameprep")
 public final class Nameprep implements Profile {
 
-  private final EnumSet<Option> nameprepProfile;
+  private final Set<Option> nameprepProfile;
 
   /**
    * Construct an instance of the {@code Nameprep} profile.
@@ -47,7 +47,7 @@ public final class Nameprep implements Profile {
 
   @Override
   public Set<Option> profile() {
-    return nameprepProfile.clone();
+    return nameprepProfile;
   }
 
 }

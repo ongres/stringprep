@@ -25,7 +25,7 @@ import com.ongres.stringprep.Tables;
 @ProfileName("SASLprep")
 public final class SASLprep implements Profile {
 
-  private final EnumSet<Option> saslprepProfile;
+  private final Set<Option> saslprepProfile;
 
   /**
    * Construct an instance of the {@code SASLprep} profile.
@@ -50,7 +50,7 @@ public final class SASLprep implements Profile {
 
   @Override
   public Set<Option> profile() {
-    return saslprepProfile.clone();
+    return saslprepProfile;
   }
 
   /**
