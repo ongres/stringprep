@@ -2,8 +2,15 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [2.2] - Unreleased
 ### :building_construction: Improvements
 - Ensure the LICENSE file is included in the Jar file.
+- Fix reproducible build.
+
+### :ghost: Maintenance
+- Migrate the main repo back to GitHub.
+- Updated dependencies and maven plugins.
 
 ## [2.1] - 2024-04-01
 ### :bug: Bug Fixes
@@ -35,6 +42,6 @@ All notable changes to this project will be documented in this file.
 - Refactor of the `stringprep` implementation to make it extensible and modular, now this implemenation is considered feature-complete.
 - Change the module `saslprep` to implement the stringprep `Profile` interface.
 
-[Unreleased]: https://gitlab.com/ongresinc/stringprep/-/compare/2.1...main
-[2.0]: https://gitlab.com/ongresinc/stringprep/-/compare/1.1...2.0
-[2.1]: https://gitlab.com/ongresinc/stringprep/-/compare/2.0...2.1
+[2.0]: https://github.com/ongres/stringprep/compare/1.1...2.0
+[2.1]: https://github.com/ongres/stringprep/compare/2.0...2.1
+[Unreleased]: https://github.com/ongres/stringprep/compare/2.1...main
