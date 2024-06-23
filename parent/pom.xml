@@ -104,7 +104,7 @@
     <pmd-plugin.version>3.23.0</pmd-plugin.version>
     <sonar-plugin.version>4.0.0.4121</sonar-plugin.version>
     <forbiddenapis.version>3.7</forbiddenapis.version>
-    <checks.location>${maven.multiModuleProjectDirectory}/checks</checks.location>
+    <checks.location>${rootDirectory}/checks</checks.location>
     <checkstyle.config.location>${checks.location}/checkstyle.xml</checkstyle.config.location>
     <checkstyle.suppressions.location>${checks.location}/checkstyle-suppressions.xml</checkstyle.suppressions.location>
     <checkstyle.header.file>${checks.location}/checkstyle-header.txt</checkstyle.header.file>
@@ -248,7 +248,7 @@
                 <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
                 <resources>
                   <resource>
-                    <directory>${maven.multiModuleProjectDirectory}</directory>
+                    <directory>${rootDirectory}</directory>
                     <includes>
                       <include>LICENSE</include>
                     </includes>
