@@ -13,11 +13,6 @@
   <name>Tables Code Generator</name>
   <description>Code Generator for StringPrep tables</description>
 
-  <properties>
-    <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
-    <checks.location>${project.basedir}/../checks</checks.location>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.apache.velocity</groupId>
