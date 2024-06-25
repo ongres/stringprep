@@ -24,7 +24,7 @@ Import Maven dependency:
 <dependency>
   <groupId>com.ongres.stringprep</groupId>
   <artifactId>saslprep</artifactId>
-  <version>2.1</version>
+  <version>2.2</version>
 </dependency>
 ```
 
@@ -40,7 +40,7 @@ Import Maven dependency:
 <dependency>
   <groupId>com.ongres.stringprep</groupId>
   <artifactId>nameprep</artifactId>
-  <version>2.1</version>
+  <version>2.2</version>
 </dependency>
 ```
 
@@ -54,7 +54,7 @@ Import the `SASLprep` dependency, this transitively imports the `Stringprep` dep
 <dependency>
   <groupId>com.ongres.stringprep</groupId>
   <artifactId>saslprep</artifactId>
-  <version>2.1</version>
+  <version>2.2</version>
 </dependency>
 ```
 

@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [2.2] - Unreleased
+## [2.2] - 2024-06-25
 ### :building_construction: Improvements
 - Ensure the LICENSE file is included in the Jar file.
 - Fix reproducible build.
@@ -44,4 +44,5 @@ All notable changes to this project will be documented in this file.
 
 [2.0]: https://github.com/ongres/stringprep/compare/1.1...2.0
 [2.1]: https://github.com/ongres/stringprep/compare/2.0...2.1
+[2.2]: https://github.com/ongres/stringprep/compare/2.1...2.2
 [Unreleased]: https://github.com/ongres/stringprep/compare/2.1...main
