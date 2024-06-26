@@ -46,7 +46,7 @@
   <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
     <connection>scm:git:git@github.com:ongres/stringprep.git</connection>
     <developerConnection>scm:git:git@github.com:ongres/stringprep.git</developerConnection>
-    <tag>2.2</tag>
+    <tag>HEAD</tag>
     <url>https://github.com/ongres/stringprep</url>
   </scm>
 
