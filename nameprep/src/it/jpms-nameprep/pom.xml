@@ -7,7 +7,7 @@
   <groupId>com.ongres.stringprep.it</groupId>
   <artifactId>jpms-nameprep</artifactId>
   <name>JPMS Nameprep</name>
-  <version>2.2</version>
+  <version>2.3-SNAPSHOT</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
