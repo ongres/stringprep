@@ -74,7 +74,7 @@
     <maven.compiler.target>${base.java.version}</maven.compiler.target>
     <project.build.outputTimestamp>2024-06-25T23:30:00Z</project.build.outputTimestamp>
     <!-- Dependency versions -->
-    <junit5.version>5.10.2</junit5.version>
+    <junit5.version>5.10.3</junit5.version>
     <!-- Plugins versions -->
     <compiler-plugin.version>3.13.0</compiler-plugin.version>
     <jar-plugin.version>3.4.2</jar-plugin.version>
