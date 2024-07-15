@@ -102,7 +102,7 @@
     <spotbugs-plugin.version>4.8.6.2</spotbugs-plugin.version>
     <findsecbugs.version>1.13.0</findsecbugs.version>
     <pmd.version>7.3.0</pmd.version>
-    <pmd-plugin.version>3.23.0</pmd-plugin.version>
+    <pmd-plugin.version>3.24.0</pmd-plugin.version>
     <sonar-plugin.version>4.0.0.4121</sonar-plugin.version>
     <forbiddenapis.version>3.7</forbiddenapis.version>
     <checks.location>${rootDirectory}/checks</checks.location>
