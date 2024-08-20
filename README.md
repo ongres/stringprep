@@ -1,7 +1,8 @@
-![Maven Central Version](https://img.shields.io/maven-central/v/com.ongres.stringprep/stringprep-aggregator)
-[![Reproducible Builds](https://img.shields.io/badge/Reproducible_Builds-ok-success?labelColor=1e5b96)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/com/ongres/stringprep/README.md)
-
 # Stringprep (RFC 3454) Java implementation
+
+![Maven Central Version](https://img.shields.io/maven-central/v/com.ongres.stringprep/stringprep-aggregator)
+[![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/com/ongres/stringprep/badge.json)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/com/ongres/stringprep/README.md)
+![GitHub License](https://img.shields.io/github/license/ongres/stringprep)
 
 > Preparation of Internationalized Strings ("stringprep")
 
