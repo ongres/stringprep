@@ -13,7 +13,7 @@ package com.ongres.stringprep;
 public enum Option {
 
   /**
-   * B.1 Commonly mapped to nothing
+   * B.1 Commonly mapped to nothing.
    */
   MAP_TO_NOTHING,
   /**
@@ -41,23 +41,23 @@ public enum Option {
    */
   FORBID_ADDITIONAL_CHARACTERS,
   /**
-   * C.1.1 ASCII space characters
+   * C.1.1 ASCII space characters.
    */
   FORBID_ASCII_SPACES,
   /**
-   * C.1.2 Non-ASCII space characters
+   * C.1.2 Non-ASCII space characters.
    */
   FORBID_NON_ASCII_SPACES,
   /**
-   * C.2.1 ASCII control characters
+   * C.2.1 ASCII control characters.
    */
   FORBID_ASCII_CONTROL,
   /**
-   * C.2.2 Non-ASCII control characters
+   * C.2.2 Non-ASCII control characters.
    */
   FORBID_NON_ASCII_CONTROL,
   /**
-   * C.3 Private use
+   * C.3 Private use.
    */
   FORBID_PRIVATE_USE,
   /**
@@ -73,15 +73,15 @@ public enum Option {
    */
   FORBID_INAPPROPRIATE_FOR_PLAIN_TEXT,
   /**
-   * C.7 Inappropriate for canonical representation
+   * C.7 Inappropriate for canonical representation.
    */
   FORBID_INAPPROPRIATE_FOR_CANON_REP,
   /**
-   * C.8 Change display properties or are deprecated
+   * C.8 Change display properties or are deprecated.
    */
   FORBID_CHANGE_DISPLAY_AND_DEPRECATED,
   /**
-   * C.9 Tagging characters
+   * C.9 Tagging characters.
    */
   FORBID_TAGGING;
 
