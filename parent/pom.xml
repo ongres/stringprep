@@ -74,7 +74,7 @@
     <maven.compiler.target>${base.java.version}</maven.compiler.target>
     <project.build.outputTimestamp>2024-06-25T23:30:00Z</project.build.outputTimestamp>
     <!-- Dependency versions -->
-    <junit5.version>5.11.2</junit5.version>
+    <junit5.version>5.11.3</junit5.version>
     <!-- Plugins versions -->
     <compiler-plugin.version>3.13.0</compiler-plugin.version>
     <jar-plugin.version>3.4.2</jar-plugin.version>
@@ -94,7 +94,7 @@
     <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
     <cyclonedx-plugin.version>2.9.0</cyclonedx-plugin.version>
     <sortpom-plugin.version>4.0.0</sortpom-plugin.version>
-    <artifact-plugin.version>3.5.1</artifact-plugin.version>
+    <artifact-plugin.version>3.5.2</artifact-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
     <checkstyle.version>10.18.2</checkstyle.version>
     <checkstyle-plugin.version>3.5.0</checkstyle-plugin.version>
@@ -492,7 +492,7 @@
                 <path>
                   <groupId>com.google.errorprone</groupId>
                   <artifactId>error_prone_core</artifactId>
-                  <version>2.33.0</version>
+                  <version>2.34.0</version>
                 </path>
               </annotationProcessorPaths>
             </configuration>
