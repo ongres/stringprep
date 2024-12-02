@@ -92,16 +92,16 @@
     <jacoco-plugin.verson>0.8.12</jacoco-plugin.verson>
     <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
     <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
-    <cyclonedx-plugin.version>2.9.0</cyclonedx-plugin.version>
+    <cyclonedx-plugin.version>2.9.1</cyclonedx-plugin.version>
     <sortpom-plugin.version>4.0.0</sortpom-plugin.version>
     <artifact-plugin.version>3.5.3</artifact-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
-    <checkstyle.version>10.20.1</checkstyle.version>
+    <checkstyle.version>10.20.2</checkstyle.version>
     <checkstyle-plugin.version>3.6.0</checkstyle-plugin.version>
     <spotbugs.version>4.8.6</spotbugs.version>
     <spotbugs-plugin.version>4.8.6.6</spotbugs-plugin.version>
     <findsecbugs.version>1.13.0</findsecbugs.version>
-    <pmd.version>7.7.0</pmd.version>
+    <pmd.version>7.8.0</pmd.version>
     <pmd-plugin.version>3.26.0</pmd-plugin.version>
     <sonar-plugin.version>5.0.0.4389</sonar-plugin.version>
     <forbiddenapis.version>3.8</forbiddenapis.version>
@@ -475,6 +475,7 @@
               <compilerArgs>
                 <arg>-Xlint:all,-options</arg>
                 <arg>-XDcompilePolicy=simple</arg>
+                <arg>--should-stop=ifError=FLOW</arg>
                 <arg>-Xplugin:ErrorProne -XepAllErrorsAsWarnings -XepDisableWarningsInGeneratedCode</arg>
                 <!-- Required on JDK 16+ due to JEP 396 -->
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
@@ -492,7 +493,7 @@
                 <path>
                   <groupId>com.google.errorprone</groupId>
                   <artifactId>error_prone_core</artifactId>
-                  <version>2.35.1</version>
+                  <version>2.36.0</version>
                 </path>
               </annotationProcessorPaths>
             </configuration>
