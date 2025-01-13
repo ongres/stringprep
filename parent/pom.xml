@@ -94,7 +94,7 @@
     <jdeps-plugin.version>3.1.2</jdeps-plugin.version>
     <cyclonedx-plugin.version>2.9.1</cyclonedx-plugin.version>
     <sortpom-plugin.version>4.0.0</sortpom-plugin.version>
-    <artifact-plugin.version>3.5.3</artifact-plugin.version>
+    <artifact-plugin.version>3.6.0</artifact-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
     <checkstyle.version>10.21.1</checkstyle.version>
     <checkstyle-plugin.version>3.6.0</checkstyle-plugin.version>
