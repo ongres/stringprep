@@ -15,6 +15,7 @@
     <exclude name="UseVarargs" />
     <exclude name="ForLoopVariableCount" />
     <exclude name="AvoidReassigningLoopVariables" />
+    <exclude name="ImplicitFunctionalInterface" />
   </rule>
 
   <rule ref="category/java/errorprone.xml" />
