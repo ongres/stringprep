@@ -7,7 +7,7 @@ updates:
       - "/saslprep/src/it/jpms-saslprep"
       - "/stringprep/src/it/jpms-stringprep"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     groups:
       all-maven-dependencies:
         patterns:
@@ -16,7 +16,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     groups:
       all-github-actions:
         patterns:
