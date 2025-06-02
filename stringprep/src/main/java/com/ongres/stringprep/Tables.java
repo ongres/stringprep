@@ -421,8 +421,7 @@ public final class Tables {
         || codePoint == 0xE0000
         || (codePoint >= 0xE0002 && codePoint <= 0xE001F)
         || (codePoint >= 0xE0080 && codePoint <= 0xEFFFD)
-
-      ;
+        ;
   }
 
   /**
@@ -460,8 +459,7 @@ public final class Tables {
         || codePoint == 0xFE0E
         || codePoint == 0xFE0F
         || codePoint == 0xFEFF
-
-      ;
+        ;
   }
 
   /**
@@ -4919,8 +4917,7 @@ public final class Tables {
    */
   public static boolean prohibitionAsciiSpace(int codePoint) {
     return codePoint == 0x0020
-
-      ;
+        ;
   }
 
   /**
@@ -4948,8 +4945,7 @@ public final class Tables {
         || codePoint == 0x202F
         || codePoint == 0x205F
         || codePoint == 0x3000
-
-      ;
+        ;
   }
 
   /**
@@ -4962,8 +4958,7 @@ public final class Tables {
   public static boolean prohibitionAsciiControl(int codePoint) {
     return (codePoint >= 0x0000 && codePoint <= 0x001F)
         || codePoint == 0x007F
-
-      ;
+        ;
   }
 
   /**
@@ -4990,8 +4985,7 @@ public final class Tables {
         || codePoint == 0xFEFF
         || (codePoint >= 0xFFF9 && codePoint <= 0xFFFC)
         || (codePoint >= 0x1D173 && codePoint <= 0x1D17A)
-
-      ;
+        ;
   }
 
   /**
@@ -5005,8 +4999,7 @@ public final class Tables {
     return (codePoint >= 0xE000 && codePoint <= 0xF8FF)
         || (codePoint >= 0xF0000 && codePoint <= 0xFFFFD)
         || (codePoint >= 0x100000 && codePoint <= 0x10FFFD)
-
-      ;
+        ;
   }
 
   /**
@@ -5035,8 +5028,7 @@ public final class Tables {
         || (codePoint >= 0xEFFFE && codePoint <= 0xEFFFF)
         || (codePoint >= 0xFFFFE && codePoint <= 0xFFFFF)
         || (codePoint >= 0x10FFFE && codePoint <= 0x10FFFF)
-
-      ;
+        ;
   }
 
   /**
@@ -5048,8 +5040,7 @@ public final class Tables {
    */
   public static boolean prohibitionSurrogateCodes(int codePoint) {
     return (codePoint >= 0xD800 && codePoint <= 0xDFFF)
-
-      ;
+        ;
   }
 
   /**
@@ -5066,8 +5057,7 @@ public final class Tables {
         || codePoint == 0xFFFB
         || codePoint == 0xFFFC
         || codePoint == 0xFFFD
-
-      ;
+        ;
   }
 
   /**
@@ -5080,8 +5070,7 @@ public final class Tables {
    */
   public static boolean prohibitionInappropriateCanonicalRepresentation(int codePoint) {
     return (codePoint >= 0x2FF0 && codePoint <= 0x2FFB)
-
-      ;
+        ;
   }
 
   /**
@@ -5108,8 +5097,7 @@ public final class Tables {
         || codePoint == 0x206D
         || codePoint == 0x206E
         || codePoint == 0x206F
-
-      ;
+        ;
   }
 
   /**
@@ -5122,8 +5110,7 @@ public final class Tables {
   public static boolean prohibitionTaggingCharacters(int codePoint) {
     return codePoint == 0xE0001
         || (codePoint >= 0xE0020 && codePoint <= 0xE007F)
-
-      ;
+        ;
   }
 
   /**
@@ -5169,8 +5156,7 @@ public final class Tables {
         || (codePoint >= 0xFDF0 && codePoint <= 0xFDFC)
         || (codePoint >= 0xFE70 && codePoint <= 0xFE74)
         || (codePoint >= 0xFE76 && codePoint <= 0xFEFC)
-
-      ;
+        ;
   }
 
   /**
@@ -5542,8 +5528,7 @@ public final class Tables {
         || (codePoint >= 0x2F800 && codePoint <= 0x2FA1D)
         || (codePoint >= 0xF0000 && codePoint <= 0xFFFFD)
         || (codePoint >= 0x100000 && codePoint <= 0x10FFFD)
-
-      ;
+        ;
   }
 
 }

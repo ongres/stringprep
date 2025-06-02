@@ -31,8 +31,7 @@ codePoint == $unassignedCodePoints.get(0)
 #else
 (codePoint >= $unassignedCodePoints.get(0) && codePoint <= $unassignedCodePoints.get(1))
 #end
-#if($foreach.hasNext)        || #end#end
-      ;
+#if($foreach.hasNext)        || #end#end        ;
   }
 
   /**
@@ -45,8 +44,7 @@ codePoint == $unassignedCodePoints.get(0)
   public static boolean mapToNothing(int codePoint) {
     return #foreach( $mapToNothing in $parser.getMapToNothing() )
 codePoint == $mapToNothing
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -99,8 +97,7 @@ codePoint == $mapToNothing
   public static boolean prohibitionAsciiSpace(int codePoint) {
     return #foreach( $asciiSpace in $parser.getAsciiSpace() )
 codePoint == $asciiSpace
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -113,8 +110,7 @@ codePoint == $asciiSpace
   public static boolean prohibitionNonAsciiSpace(int codePoint) {
     return #foreach( $nonAsciiSpace in $parser.getNonAsciiSpace() )
 codePoint == $nonAsciiSpace
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -131,8 +127,7 @@ codePoint == $asciiControl.get(0)
 #else
 (codePoint >= $asciiControl.get(0) && codePoint <= $asciiControl.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -149,8 +144,7 @@ codePoint == $nonAsciiControl.get(0)
 #else
 (codePoint >= $nonAsciiControl.get(0) && codePoint <= $nonAsciiControl.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -167,8 +161,7 @@ codePoint == $privateUse.get(0)
 #else
 (codePoint >= $privateUse.get(0) && codePoint <= $privateUse.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -185,8 +178,7 @@ codePoint == $nonCharacterCodePoints.get(0)
 #else
 (codePoint >= $nonCharacterCodePoints.get(0) && codePoint <= $nonCharacterCodePoints.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -203,8 +195,7 @@ codePoint == $surrogateCodes.get(0)
 #else
 (codePoint >= $surrogateCodes.get(0) && codePoint <= $surrogateCodes.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -222,8 +213,7 @@ codePoint == $inappropriatePlainText.get(0)
 #else
 (codePoint >= $inappropriatePlainText.get(0) && codePoint <= $inappropriatePlainText.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -241,8 +231,7 @@ codePoint == $inappropriateCanonicalRepresentation.get(0)
 #else
 (codePoint >= $inappropriateCanonicalRepresentation.get(0) && codePoint <= $inappropriateCanonicalRepresentation.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -260,8 +249,7 @@ codePoint == $changeDisplayProperties.get(0)
 #else
 (codePoint >= $changeDisplayProperties.get(0) && codePoint <= $changeDisplayProperties.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -278,8 +266,7 @@ codePoint == $taggingCharacters.get(0)
 #else
 (codePoint >= $taggingCharacters.get(0) && codePoint <= $taggingCharacters.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -297,8 +284,7 @@ codePoint == $propertyRorAL.get(0)
 #else
 (codePoint >= $propertyRorAL.get(0) && codePoint <= $propertyRorAL.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
   /**
@@ -316,8 +302,7 @@ codePoint == $propertyL.get(0)
 #else
 (codePoint >= $propertyL.get(0) && codePoint <= $propertyL.get(1))
 #end
-#if( $foreach.hasNext )        || #end#end
-      ;
+#if( $foreach.hasNext )        || #end#end        ;
   }
 
 }
