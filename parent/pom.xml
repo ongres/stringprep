@@ -87,7 +87,7 @@
     <enforcer-plugin.version>3.6.2</enforcer-plugin.version>
     <install-plugin.version>3.1.4</install-plugin.version>
     <deploy-plugin.version>3.1.4</deploy-plugin.version>
-    <invoker-plugin.version>3.9.1</invoker-plugin.version>
+    <invoker-plugin.version>3.10.0</invoker-plugin.version>
     <gpg-plugin.version>3.2.8</gpg-plugin.version>
     <jacoco-plugin.verson>0.8.14</jacoco-plugin.verson>
     <flatten-maven-plugin.version>1.7.3</flatten-maven-plugin.version>
@@ -96,14 +96,14 @@
     <sortpom-plugin.version>4.0.0</sortpom-plugin.version>
     <artifact-plugin.version>3.6.1</artifact-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
-    <checkstyle.version>13.4.0</checkstyle.version>
+    <checkstyle.version>13.4.1</checkstyle.version>
     <checkstyle-plugin.version>3.6.0</checkstyle-plugin.version>
     <spotbugs.version>4.9.8</spotbugs.version>
     <spotbugs-plugin.version>4.9.8.3</spotbugs-plugin.version>
     <findsecbugs.version>1.14.0</findsecbugs.version>
-    <pmd.version>7.23.0</pmd.version>
+    <pmd.version>7.24.0</pmd.version>
     <pmd-plugin.version>3.28.0</pmd-plugin.version>
-    <sonar-plugin.version>5.5.0.6356</sonar-plugin.version>
+    <sonar-plugin.version>5.6.0.6792</sonar-plugin.version>
     <forbiddenapis.version>3.10</forbiddenapis.version>
     <checks.location>${rootDirectory}/checks</checks.location>
     <checkstyle.config.location>${checks.location}/checkstyle.xml</checkstyle.config.location>
@@ -494,7 +494,7 @@
                 <path>
                   <groupId>com.google.errorprone</groupId>
                   <artifactId>error_prone_core</artifactId>
-                  <version>2.48.0</version>
+                  <version>2.49.0</version>
                 </path>
               </annotationProcessorPaths>
             </configuration>
