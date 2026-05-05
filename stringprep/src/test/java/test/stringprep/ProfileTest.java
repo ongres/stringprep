@@ -9,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.EnumSet;
 import java.util.Locale;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import com.ongres.stringprep.Option;
@@ -22,6 +24,7 @@ import com.ongres.stringprep.Tables;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class ProfileTest {
@@ -234,6 +237,20 @@ class ProfileTest {
         () -> "Character: " + chars + ", CodePoint: " + cp);
     assertThrows(IllegalArgumentException.class, () -> profile.prepareStored(example),
         () -> "Character: " + chars + ", CodePoint: " + cp);
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = { "\u200B\u200C\u200D\u034F", "\uFEFF" })
+  @EmptySource
+  void testEmptyMap(String string) {
+    Profile profile = () -> EnumSet.of(
+        Option.MAP_TO_NOTHING,
+        Option.NORMALIZE_KC,
+        Option.CHECK_BIDI);
+    String stored = profile.prepareStored(string);
+    assertTrue(stored.isEmpty(), () -> stored.codePoints()
+        .mapToObj(cp -> String.format(Locale.ROOT, "0x%04X", cp))
+        .collect(Collectors.joining(", ")));
   }
 
 }

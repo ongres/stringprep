@@ -8,16 +8,22 @@ package test.saslprep;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.util.EnumSet;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 import com.ongres.saslprep.SASLprep;
 import com.ongres.stringprep.Option;
 import com.ongres.stringprep.Profile;
 import com.ongres.stringprep.Stringprep;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class SaslPrepTest {
 
@@ -159,4 +165,24 @@ class SaslPrepTest {
       assertEquals("Unassigned code point \"0x0588\"", e.getMessage());
     }
   }
+
+  @ParameterizedTest
+  @ValueSource(strings = { "\u200B\u200C\u200D\u034F", "\uFEFF" })
+  @EmptySource
+  void testEmptyMap(String string) {
+    String stored = saslPrep.prepareStored(string);
+    assertTrue(stored.isEmpty(), () -> stored.codePoints()
+        .mapToObj(cp -> String.format(Locale.ROOT, "0x%04X", cp))
+        .collect(Collectors.joining(", ")));
+  }
+
+  @Test
+  void testAdditionalMappingOptions() {
+    String stored = saslPrep.prepareStored("\uFEFF\u2000\u3000\u00A0\uFEFF");
+    assertEquals("   ", stored,
+        stored.codePoints()
+            .mapToObj(cp -> String.format(Locale.ROOT, "0x%04X", cp))
+            .collect(Collectors.joining(", ")));
+  }
+
 }
