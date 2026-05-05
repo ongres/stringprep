@@ -52,8 +52,10 @@ Import Maven dependency:
 
 The normal usage is to import the dependency of the Stringprep profile to use, and lookup the provider service that contains the profile.
 
-### Example:
+### Example
+
 Import the `SASLprep` dependency, this transitively imports the `Stringprep` dependency.
+
 ```xml
 <dependency>
   <groupId>com.ongres.stringprep</groupId>
@@ -63,6 +65,7 @@ Import the `SASLprep` dependency, this transitively imports the `Stringprep` dep
 ```
 
 Get the `SASLprep` provider service:
+
 ```java
 Profile saslPrep = Stringprep.getProvider("SASLprep");
 String prepared = saslPrep.prepareStored("I\u00ADX \u2168");
@@ -72,6 +75,7 @@ prepared.equals("IX IX"); // true
 You could also (only) use the stringprep dependency to create your own profiles by implementing the `Profile` interface, just override the `profile()` method with the set of options.
 
 Anonymous on-the-fly profile usage:
+
 ```java
 Profile saslPrep = () -> EnumSet.of(Option.NORMALIZE_KC, Option.MAP_TO_NOTHING);
 String prepared = saslPrep.prepareStored("I\u00ADX ⑳");
@@ -80,7 +84,8 @@ prepared.equals("IX 20"); // true
 
 > Please note that when two protocols that use different profiles of stringprep interoperate, there may be conflict about what characters are and are not allowed in the final string.  Thus, protocol developers should strongly consider re-using existing profiles of stringprep.
 
-### Java Modules (JPMS):
+### Java Modules (JPMS)
+
 The Stringprep and profiles implementation are explicit Java modules with the names:
 
 * `com.ongres.stringprep`
@@ -90,6 +95,7 @@ The Stringprep and profiles implementation are explicit Java modules with the na
 If you depend on a specific profile (`saslprep` or `nameprep`) there is an implied readability on `stringprep`, so you will only need to declare in your `module-info.java` the profile module and get the service from the provider.
 
 Example `module-info.java`:
+
 ```java
 module test.app {
   requires com.ongres.saslprep;
