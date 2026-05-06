@@ -130,11 +130,9 @@ public final class Stringprep {
       return string;
     }
 
-    char[] value = string.clone();
-
     // 1) Map -- For each character in the input, check if it has a mapping
     // and, if so, replace it with its mapping.
-    value = map(value);
+    char[] value = map(string);
 
     // 2) Normalize -- Possibly normalize the result of step 1 using Unicode
     // normalization.
@@ -142,9 +140,13 @@ public final class Stringprep {
       value = Normalizer.normalize(CharBuffer.wrap(value), Normalizer.Form.NFKC).toCharArray();
     }
 
+    // The mapping/normalization removed all chars, return the empty string.
+    if (value.length == 0) {
+      return value;
+    }
+
     boolean firstRandAlCat = Tables.bidirectionalPropertyRorAL(Character.codePointAt(value, 0));
-    boolean lastRandAlCat =
-        Tables.bidirectionalPropertyRorAL(Character.codePointAt(value, value.length - 1));
+    boolean lastRandAlCat = Tables.bidirectionalPropertyRorAL(Character.codePointBefore(value, value.length));
     boolean containsRandAlCat = false;
     boolean containsLcat = false;
     int codePoint;
