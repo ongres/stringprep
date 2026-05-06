@@ -7,6 +7,7 @@ package com.ongres.stringprep;
 
 import java.nio.CharBuffer;
 import java.text.Normalizer;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.Locale;
 import java.util.Objects;
@@ -137,7 +138,12 @@ public final class Stringprep {
     // 2) Normalize -- Possibly normalize the result of step 1 using Unicode
     // normalization.
     if (normalizeKc) {
-      value = Normalizer.normalize(CharBuffer.wrap(value), Normalizer.Form.NFKC).toCharArray();
+      CharBuffer wrap = CharBuffer.wrap(value);
+      if (!Normalizer.isNormalized(wrap, Normalizer.Form.NFKC)) {
+        char[] normalized = Normalizer.normalize(wrap, Normalizer.Form.NFKC).toCharArray();
+        Arrays.fill(value, '\0');
+        value = normalized;
+      }
     }
 
     // The mapping/normalization removed all chars, return the empty string.
