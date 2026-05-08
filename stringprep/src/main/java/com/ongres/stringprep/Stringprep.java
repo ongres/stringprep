@@ -198,40 +198,38 @@ public final class Stringprep {
   }
 
   private char[] map(char[] string) {
-    final StringBuilder mapping = new StringBuilder(string.length);
-    for (int codePoint, i = 0; i < string.length; i += Character.charCount(codePoint)) {
-      codePoint = Character.codePointAt(string, i);
+    try (SecureStringBuilder mapping = new SecureStringBuilder(string.length + 16)) {
+      for (int codePoint, i = 0; i < string.length; i += Character.charCount(codePoint)) {
+        codePoint = Character.codePointAt(string, i);
 
-      if (mapToNothing && Tables.mapToNothing(codePoint)) { // NOPMD
-        // The following characters are simply deleted from the input (that is,
-        // they are mapped to nothing) because their presence or absence in
-        // protocol identifiers should not make two strings different. They are
-        // listed in Table B.1.
-      } else if (normalizeKc && caseFoldNfkc) {
-        // appendix B.2 is for profiles that also use Unicode
-        // normalization form KC
-        for (int cp : Tables.mapWithNfkc(codePoint)) {
-          mapping.appendCodePoint(cp);
+        if (mapToNothing && Tables.mapToNothing(codePoint)) { // NOPMD
+          // The following characters are simply deleted from the input (that is,
+          // they are mapped to nothing) because their presence or absence in
+          // protocol identifiers should not make two strings different. They are
+          // listed in Table B.1.
+        } else if (normalizeKc && caseFoldNfkc) {
+          // appendix B.2 is for profiles that also use Unicode
+          // normalization form KC
+          for (int cp : Tables.mapWithNfkc(codePoint)) {
+            mapping.appendCodePoint(cp);
+          }
+        } else if (!normalizeKc && caseFoldNoNormalization) {
+          // while appendix B.3 is for profiles that do
+          // not use Unicode normalization
+          for (int cp : Tables.mapWithoutNormalization(codePoint)) {
+            mapping.appendCodePoint(cp);
+          }
+        } else if (additionalMapping) {
+          // - Any additional mapping tables specific to the profile
+          for (int cp : profile.additionalMappingTable(codePoint)) {
+            mapping.appendCodePoint(cp);
+          }
+        } else {
+          mapping.appendCodePoint(codePoint);
         }
-      } else if (!normalizeKc && caseFoldNoNormalization) {
-        // while appendix B.3 is for profiles that do
-        // not use Unicode normalization
-        for (int cp : Tables.mapWithoutNormalization(codePoint)) {
-          mapping.appendCodePoint(cp);
-        }
-      } else if (additionalMapping) {
-        // - Any additional mapping tables specific to the profile
-        for (int cp : profile.additionalMappingTable(codePoint)) {
-          mapping.appendCodePoint(cp);
-        }
-      } else {
-        mapping.appendCodePoint(codePoint);
       }
+      return mapping.toCharArray();
     }
-
-    char[] arr = new char[mapping.length()];
-    mapping.getChars(0, mapping.length(), arr, 0);
-    return arr;
   }
 
   private void prohibitedOutput(int codePoint) {
