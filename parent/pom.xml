@@ -4,7 +4,7 @@
 
   <groupId>com.ongres.stringprep</groupId>
   <artifactId>stringprep-parent</artifactId>
-  <version>2.3-SNAPSHOT</version>
+  <version>2.3</version>
   <packaging>pom</packaging>
 
   <name>Stringprep Project</name>
@@ -46,7 +46,7 @@
   <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
     <connection>scm:git:git@github.com:ongres/stringprep.git</connection>
     <developerConnection>scm:git:git@github.com:ongres/stringprep.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>2.3</tag>
     <url>https://github.com/ongres/stringprep</url>
   </scm>
 
@@ -72,7 +72,10 @@
     <base.java.version>8</base.java.version>
     <maven.compiler.source>${base.java.version}</maven.compiler.source>
     <maven.compiler.target>${base.java.version}</maven.compiler.target>
-    <project.build.outputTimestamp>2024-06-25T23:30:00Z</project.build.outputTimestamp>
+    <maven.compiler.testSource>17</maven.compiler.testSource>
+    <maven.compiler.testTarget>17</maven.compiler.testTarget>
+    <maven.compiler.testRelease>17</maven.compiler.testRelease>
+    <project.build.outputTimestamp>2026-05-12T15:05:00Z</project.build.outputTimestamp>
     <!-- Dependency versions -->
     <junit5.version>6.0.3</junit5.version>
     <!-- Plugins versions -->
@@ -95,6 +98,7 @@
     <cyclonedx-plugin.version>2.9.1</cyclonedx-plugin.version>
     <sortpom-plugin.version>4.0.0</sortpom-plugin.version>
     <artifact-plugin.version>3.6.1</artifact-plugin.version>
+    <central-publishing-maven-plugin.version>0.10.0</central-publishing-maven-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
     <checkstyle.version>13.4.2</checkstyle.version>
     <checkstyle-plugin.version>3.6.0</checkstyle-plugin.version>
@@ -159,15 +163,6 @@
                   <compileSourceRoot>${project.basedir}/src/main/java9</compileSourceRoot>
                 </compileSourceRoots>
                 <multiReleaseOutput>true</multiReleaseOutput>
-              </configuration>
-            </execution>
-            <execution>
-              <id>default-testCompile</id>
-              <goals>
-                <goal>testCompile</goal>
-              </goals>
-              <configuration>
-                <release>11</release>
               </configuration>
             </execution>
           </executions>
@@ -300,6 +295,15 @@
           <version>${deploy-plugin.version}</version>
         </plugin>
         <plugin>
+          <groupId>org.sonatype.central</groupId>
+          <artifactId>central-publishing-maven-plugin</artifactId>
+          <version>${central-publishing-maven-plugin.version}</version>
+          <extensions>true</extensions>
+          <configuration>
+            <publishingServerId>central</publishingServerId>
+          </configuration>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
           <version>${clean-plugin.version}</version>
@@ -421,6 +425,7 @@
               <goals>
                 <goal>makeAggregateBom</goal>
               </goals>
+              <phase>package</phase>
             </execution>
           </executions>
         </plugin>
@@ -690,6 +695,10 @@
           <plugin>
             <groupId>org.cyclonedx</groupId>
             <artifactId>cyclonedx-maven-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
           </plugin>
         </plugins>
       </build>
