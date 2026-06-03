@@ -77,7 +77,7 @@
     <maven.compiler.testRelease>17</maven.compiler.testRelease>
     <project.build.outputTimestamp>2026-05-12T15:05:00Z</project.build.outputTimestamp>
     <!-- Dependency versions -->
-    <junit5.version>6.0.3</junit5.version>
+    <junit5.version>6.1.0</junit5.version>
     <!-- Plugins versions -->
     <compiler-plugin.version>3.15.0</compiler-plugin.version>
     <jar-plugin.version>3.5.0</jar-plugin.version>
@@ -85,9 +85,9 @@
     <javadoc-plugin.version>3.12.0</javadoc-plugin.version>
     <clean-plugin.version>3.5.0</clean-plugin.version>
     <resources-plugin.version>3.5.0</resources-plugin.version>
-    <surefire-plugin.version>3.5.5</surefire-plugin.version>
-    <failsafe-plugin.version>3.5.5</failsafe-plugin.version>
-    <enforcer-plugin.version>3.6.2</enforcer-plugin.version>
+    <surefire-plugin.version>3.5.6</surefire-plugin.version>
+    <failsafe-plugin.version>3.5.6</failsafe-plugin.version>
+    <enforcer-plugin.version>3.6.3</enforcer-plugin.version>
     <install-plugin.version>3.1.4</install-plugin.version>
     <deploy-plugin.version>3.1.4</deploy-plugin.version>
     <invoker-plugin.version>3.10.1</invoker-plugin.version>
@@ -100,14 +100,14 @@
     <artifact-plugin.version>3.6.1</artifact-plugin.version>
     <central-publishing-maven-plugin.version>0.10.0</central-publishing-maven-plugin.version>
     <!-- Checkstyle, SpotBugs and PMD properties -->
-    <checkstyle.version>13.4.2</checkstyle.version>
+    <checkstyle.version>13.5.0</checkstyle.version>
     <checkstyle-plugin.version>3.6.0</checkstyle-plugin.version>
     <spotbugs.version>4.9.8</spotbugs.version>
     <spotbugs-plugin.version>4.9.8.3</spotbugs-plugin.version>
     <findsecbugs.version>1.14.0</findsecbugs.version>
-    <pmd.version>7.24.0</pmd.version>
+    <pmd.version>7.25.0</pmd.version>
     <pmd-plugin.version>3.28.0</pmd-plugin.version>
-    <sonar-plugin.version>5.6.0.6792</sonar-plugin.version>
+    <sonar-plugin.version>5.7.0.6970</sonar-plugin.version>
     <forbiddenapis.version>3.10</forbiddenapis.version>
     <checks.location>${rootDirectory}/checks</checks.location>
     <checkstyle.config.location>${checks.location}/checkstyle.xml</checkstyle.config.location>
