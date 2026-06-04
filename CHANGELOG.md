@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.4] - 2026-06-04
+
+### :bug: Bug Fixes
+
+- Fixed Reproducible Build.
+
+### :ghost: Maintenance
+
+- Updated project dependencies and Maven plugins to their latest stable versions.
+- Remove sonar-maven-plugin and cyclonedx-maven-plugin.
+
 ## [2.3] - 2026-05-12
 
 ### :bug: Bug Fixes
@@ -79,4 +90,5 @@ All notable changes to this project will be documented in this file.
 [2.1]: https://github.com/ongres/stringprep/compare/2.0...2.1
 [2.2]: https://github.com/ongres/stringprep/compare/2.1...2.2
 [2.3]: https://github.com/ongres/stringprep/compare/2.2...2.3
-[Unreleased]: https://github.com/ongres/stringprep/compare/2.3...main
+[2.4]: https://github.com/ongres/stringprep/compare/2.3...2.4
+[Unreleased]: https://github.com/ongres/stringprep/compare/2.4...main
